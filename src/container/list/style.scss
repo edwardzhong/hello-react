@@ -3,60 +3,12 @@
 }
 .form{
     padding: 0 20px;
-    div{
-        margin-bottom: 8px;
-    }
-    input{
-        display: block;
-        border:1px solid #eee;
-        outline: none;
-        padding: 10px;
-        border-radius: 4px;
-        font-size: 14px;
-        width: 90%;
-        &:focus{
-            background-color:hsla(60,80%,90%,1);
-        }
-    }
-    .tip{
-        color: hsla(200,100%,50%,1);
-    }
-    ul{
-        list-style: none;
-        margin: 0 0 15px 0;
-        padding: 0;
-    }
-    li{
-        padding: 5px;
-        width: 90%;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 5px;
-    }
-    i{
-        float: right;
-        color:hsla(0,50%,50%,1);
-        cursor: pointer;
-    }
-    button{
-        display: block;
-        padding: 8px 20px;
-        background-color: hsla(200,100%,50%,1);
-        color:#fff;
-        border-radius: 5px;
-        font-size: 14px;
-        margin: 10px 0;
-        outline: none;
-        cursor: pointer;
-        &:hover{
-            background-color: hsla(200,100%,70%,1);
-        }
-    }
-    .link{
-        font-size: 16px;
-        text-decoration: underline;
-        color: hsla(200,100%,50%,1);
-        &:hover{
-            color:hsla(200,100%,70%,1);
-        }
+}
+.link{
+    font-size: 16px;
+    text-decoration: underline;
+    color: hsla(200,100%,50%,1);
+    &:hover{
+        color:hsla(200,100%,70%,1);
     }
 }
