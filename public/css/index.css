@@ -1,0 +1,127 @@
+html,body{
+  /* font-family: "Roboto","Droid Sans","Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif; */
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+  color: #555;
+  width: 100%;
+  height: 100%;
+  line-height: 1.6;
+  user-select: none;/* 文本不能选择 */
+  -webkit-text-size-adjust: 100%;/* 关闭字体大小自动调整功能(iPhone 和 Android 的浏览器纵向 (Portrate mode) 和橫向 (Landscape mode) 模式皆有自动调整字体大小的功能) */
+  -webkit-tap-highlight-color: transparent;/* 消除ios点击后的背景 */
+  font-size-adjust: 100%;
+}
+body,p,h1,h2,h3,h4,h5,h6{margin:0;}
+ul,ol{ list-style: none; margin:0; padding:0;}
+
+a,a:active,a:hover{
+  text-decoration: none;
+}
+select {
+  appearance:none;
+}
+input, textarea {
+  /* appearance: none; */
+  outline: none;
+  resize: none;
+}
+
+img,a{
+  -webkit-touch-callout: none;/* 禁止系统默认菜单 */
+}
+*.active{
+  color:#108ee9 !important;
+}
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?4353859');
+  src: url('../font/fontello.eot?4353859#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff2?4353859') format('woff2'),
+       url('../font/fontello.woff?4353859') format('woff'),
+       url('../font/fontello.ttf?4353859') format('truetype'),
+       url('../font/fontello.svg?4353859#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?4353859#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-bell:before { content: '\e800'; } /* '' */
+.icon-record:before { content: '\e801'; } /* '' */
+.icon-briefcase:before { content: '\e802'; } /* '' */
+.icon-feather:before { content: '\e803'; } /* '' */
+.icon-location:before { content: '\e804'; } /* '' */
+.icon-tag:before { content: '\e805'; } /* '' */
+.icon-heart:before { content: '\e806'; } /* '' */
+.icon-cog:before { content: '\e807'; } /* '' */
+.icon-forward:before { content: '\e808'; } /* '' */
+.icon-eye:before { content: '\e809'; } /* '' */
+.icon-search:before { content: '\e80a'; } /* '' */
+.icon-logout:before { content: '\e80b'; } /* '' */
+.icon-edit-alt:before { content: '\e80c'; } /* '' */
+.icon-camera:before { content: '\e80d'; } /* '' */
+.icon-globe:before { content: '\e80f'; } /* '' */
+.icon-minus:before { content: '\e81a'; } /* '' */
+.icon-ok:before { content: '\e828'; } /* '' */
+.icon-list:before { content: '\f0ca'; } /* '' */
+.icon-ellipsis:before { content: '\f141'; } /* '' */
+.icon-qq:before { content: '\f1d6'; } /* '' */
+.icon-wechat:before { content: '\f1d7'; } /* '' */
+.icon-paper:before { content: '\f1d8'; } /* '' */
+.icon-venus:before { content: '\f221'; } /* '' */
+.icon-mars:before { content: '\f222'; } /* '' */
+.icon-transgender:before { content: '\f224'; } /* '' */
+.icon-venus-double:before { content: '\f226'; } /* '' */
+.icon-mars-double:before { content: '\f227'; } /* '' */
+.icon-venus-mars:before { content: '\f228'; } /* '' */
+.icon-neuter:before { content: '\f22c'; } /* '' */
+.icon-whatsapp:before { content: '\f232'; } /* '' */
+.icon-hourglass:before { content: '\f252'; } /* '' */
+.icon-user:before { content: '\f2bd'; } /* '' */
+.icon-facebook:before { content: '\f308'; } /* '' */
+.icon-weibo:before { content: '\f33f'; } /* '' */
+.icon-comment:before { content: '\f4ac'; } /* '' */
