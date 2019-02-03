@@ -1,0 +1,42 @@
+.form{
+    padding: 0 20px;
+    div{
+        margin-bottom: 8px;
+    }
+    input{
+        display: block;
+        border:1px solid #eee;
+        outline: none;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        width: 100%;
+    }
+    ul{
+        list-style: none;
+        margin: 0 0 15px 0;
+        padding: 0;
+    }
+    li{
+        padding: 5px;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 5px;
+    }
+    i{
+        float: right;
+        color:hsla(0,80%,50%,1);
+    }
+    button{
+        display: block;
+        padding: 8px 20px;
+        background-color: hsla(200,100%,50%,1);
+        color:#fff;
+        border-radius: 5px;
+        font-size: 14px;
+        margin: 10px 0;
+        outline: none;
+        &:hover{
+            background-color: hsla(200,100%,70%,1);
+        }
+    }
+}

@@ -39,8 +39,21 @@ module.exports = {
                 use:'html-loader'
             },
             {
-                test:/\.less$/,
-                use:['style-loader','css-loader','postcss-loader','less-loader']
+                test:/\.css$/,
+                use:['style-loader','css-loader']
+            },
+            {
+                test:/\.scss$/,
+                use:['style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: { 
+                            importLoaders: 2,
+                            modules: true,//css modules
+                            localIdentName: "[local]___[hash:base64:5]"  
+                        },
+                    },
+                  'postcss-loader',"sass-loader"]
             },
             {   /* 
                 当文件体积小于 limit 时，url-loader 把文件转为 Data URI 的格式内联到引用的地方
@@ -58,10 +71,11 @@ module.exports = {
     },
     plugins:[
         new CleanWebpackPlugin(['dist']),//生成新文件时，清空生出目录
-        new HtmlWebpackPlugin({ //和 webpack 4 的兼容性问题，chunksSortMode 参数需要设置为 none
+        new HtmlWebpackPlugin({ 
             template:'./public/index.html',//模版路径
             filename:'index.html',//生成后的文件名,默认index.html
-            chunksSortMode:'none'
+            favicon:'./public/favicon.png',
+            // chunksSortMode:'none'//和 webpack 4 的兼容性问题，chunksSortMode 参数需要设置为 none
         }),
         new webpack.HotModuleReplacementPlugin()
     ]

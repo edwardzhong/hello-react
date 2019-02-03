@@ -1,24 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import '../public/less/index.less';//引入less
+import React, { useReducer } from 'react'
+import { render } from 'react-dom'
+import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import Context from './context'
+import Home from './component/home'
+import List from './component/list'
+import rootReducer from './reducer'
 
-const title = 'Let\'s start to learn React Webpack Babel !';
-
-ReactDOM.render(
-  <div>{title}</div>,
-  document.getElementById('content')
-);
-
-// import {sayHi} from './component/foo';
-// import {consoleHi} from './component/bar';
-// import list from './view/list.html';//引入html
-// import detail from './view/detail.html';
-// import '../public/css/index.css';//引入css
-
-// setTimeout(() => {
-//   document.getElementById('content').innerHTML=detail;
-//   sayHi();
-// }, 3000);
-
-// consoleHi();
-// document.getElementById('content').innerHTML=list;
+const Root = () => {
+    const initState = {
+        list:[
+            { id: 1, txt: 'webpack' }, 
+            { id: 2, txt: 'react' }
+        ],
+        user:{
+            name:'alex',
+            email:'alex@gmail.com'
+        }
+    };
+    const [state, dispatch] = useReducer(rootReducer, initState);
+    return <Context.Provider value={{ state, dispatch }}>
+        <Router>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/list" component={List} />
+                <Route render={() => (<Redirect to="/" />)} />
+            </Switch>
+        </Router>
+    </Context.Provider>
+}
+render(
+    <Root />,
+    document.getElementById('root')
+)
