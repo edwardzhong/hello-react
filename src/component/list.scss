@@ -1,3 +1,6 @@
+.sub-title{
+    text-align: center;
+}
 .form{
     padding: 0 20px;
     div{
@@ -10,7 +13,13 @@
         padding: 10px;
         border-radius: 4px;
         font-size: 14px;
-        width: 100%;
+        width: 90%;
+        &:focus{
+            background-color:hsla(60,80%,90%,1);
+        }
+    }
+    .tip{
+        color: hsla(200,100%,50%,1);
     }
     ul{
         list-style: none;
@@ -19,12 +28,14 @@
     }
     li{
         padding: 5px;
+        width: 90%;
         border-bottom: 1px solid #eee;
         margin-bottom: 5px;
     }
     i{
         float: right;
-        color:hsla(0,80%,50%,1);
+        color:hsla(0,50%,50%,1);
+        cursor: pointer;
     }
     button{
         display: block;
@@ -35,8 +46,17 @@
         font-size: 14px;
         margin: 10px 0;
         outline: none;
+        cursor: pointer;
         &:hover{
             background-color: hsla(200,100%,70%,1);
+        }
+    }
+    .link{
+        font-size: 16px;
+        text-decoration: underline;
+        color: hsla(200,100%,50%,1);
+        &:hover{
+            color:hsla(200,100%,70%,1);
         }
     }
 }

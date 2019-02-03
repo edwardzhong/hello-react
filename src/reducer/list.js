@@ -1,4 +1,4 @@
-import { ADD_COMMENT, REMOVE_COMMENT } from '../constants'
+import { ADD_COMMENT, REMOVE_COMMENT } from '../constants.js'
 
 const list = (state = [], payload) => {
     switch (payload.type) {
@@ -9,9 +9,9 @@ const list = (state = [], payload) => {
                 return [...state, payload.comment];
             }
         case REMOVE_COMMENT:
-            return state.filter(i => i.id != payload.key);
+            return state.filter(i => i.id != payload.id);
         default: return state;
     }
 };
 
-export default list;
+export default list

@@ -1,21 +1,23 @@
 import React, { useReducer } from 'react'
 import { render } from 'react-dom'
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
-import Context from './context'
-import Home from './component/home'
-import List from './component/list'
+import Context from './context.js'
+import Home from './component/home.js'
+import List from './component/list.js'
 import rootReducer from './reducer'
+import '../public/css/index.css'
 
 const Root = () => {
     const initState = {
-        list:[
-            { id: 1, txt: 'webpack' }, 
-            { id: 2, txt: 'react' }
-        ],
-        user:{
-            name:'alex',
-            email:'alex@gmail.com'
-        }
+        user: {
+            name: 'jeff',
+            email: 'jeff@gmail.com'
+        },
+        list: [
+            { id: 0, txt: 'webpack 4' },
+            { id: 1, txt: 'react' },
+            { id: 2, txt: 'redux' },
+        ]
     };
     const [state, dispatch] = useReducer(rootReducer, initState);
     return <Context.Provider value={{ state, dispatch }}>

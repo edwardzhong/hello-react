@@ -7,16 +7,23 @@
         "@babel/plugin-proposal-class-properties",
         "@babel/plugin-transform-runtime",
         [
-            "import", { "libraryName": "antd-mobile", "style": "css" }
+            "import",
+            {
+                "libraryName": "antd-mobile",
+                "style": "css"
+            }
         ],
         [
-            "react-css-modules", {
+            "react-css-modules",
+            {
                 "exclude": "node_modules",
                 "filetypes": {
-                    ".scss": { "syntax": "postcss-scss" }
+                    ".scss": {
+                        "syntax": "postcss-scss"
+                    }
                 },
-                "generateScopedName":"[local]___[hash:base64:5]"
+                "generateScopedName": "[name]___[local]___[hash:base64:5]"
             }
-        ]           
+        ]
     ]
 }

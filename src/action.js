@@ -1,31 +1,31 @@
-import * as types from './constants'
+import { ADD_COMMENT, REMOVE_COMMENT, UPDATE_NAME, UPDATE_EMAIL } from './constants'
 
 export function addComment(comment) {
-    return {
-      type: types.ADD_COMMENT,
-      comment
-    }
+  return {
+    type: ADD_COMMENT,
+    comment
   }
-  
-  export function removeComment(key) {
-    return {
-      type: types.REMOVE_COMMENT,
-      key
-    }
+}
+
+export function removeComment(id) {
+  return {
+    type: REMOVE_COMMENT,
+    id
   }
-  
-  
-  export function updateName(name) {
-    return {
-      type: types.UPDATE_NAME,
-      name
-    }
+}
+
+
+export function updateName(name) {
+  return {
+    type: UPDATE_NAME,
+    name
   }
-  
-  
-  export function updateEmail(email) {
-    return {
-      type: types.UPDATE_EMAIL,
-      email
-    }
+}
+
+
+export function updateEmail(email) {
+  return {
+    type: UPDATE_EMAIL,
+    email
   }
+}
