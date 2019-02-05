@@ -1,10 +1,10 @@
-import { UPDATE_NAME, UPDATE_EMAIL } from '../constants.js'
+import { updateName, updateEmail } from '../action';
 
 const user = (state = { name: '', email: '' }, payload) => {
     switch (payload.type) {
-        case UPDATE_NAME:
+        case updateName.type:
             return Object.assign({}, state, { name: payload.name });
-        case UPDATE_EMAIL:
+        case updateEmail.type:
             return Object.assign({}, state, { email: payload.email });
         default: return state;
     }

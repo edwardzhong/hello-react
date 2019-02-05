@@ -85,6 +85,6 @@ module.exports = {
              },
             // chunksSortMode:'none'//和 webpack 4 的兼容性问题，chunksSortMode 参数需要设置为 none
         }),
-        new HotModuleReplacementPlugin()
+        new HotModuleReplacementPlugin()//HMR
     ]
 };
