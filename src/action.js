@@ -15,6 +15,7 @@ const createAction = (typeName, argName) => {
         return payload;
     };
     fn.type = typeName;
+    fn.toString = () => typeName;
     return fn;
 };
 

@@ -14,9 +14,9 @@ const Root = () => {
             email: 'jeff@gmail.com'
         },
         list: [
-            { id: 0, txt: 'webpack 4' },
-            { id: 1, txt: 'react' },
-            { id: 2, txt: 'redux' },
+            { id: 1, txt: 'webpack 4' },
+            { id: 2, txt: 'react' },
+            { id: 3, txt: 'redux' },
         ]
     };
     const [state, dispatch] = useReducer(rootReducer, initState);
