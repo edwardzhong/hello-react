@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useContext } from 'react'
-import { bindActionCreators } from 'redux'
+import bindActions  from './common/bindActions'
 import * as actions from './action'
 import rootReducer from './reducer'
 
@@ -9,7 +9,7 @@ export const getContext = () => useContext(Context);
 
 export const Provider = props => {
     //执行一遍rootReducer获取每个reducer中的默认值，最后再覆盖初始值
-    const initState = Object.assign(rootReducer({}, {}), {
+    const initState = Object.assign(rootReducer({},{}), {
         user: {
             name: 'jeff',
             email: 'jeff@gmail.com'
@@ -21,7 +21,7 @@ export const Provider = props => {
         ]
     });//初始状态
     const [state, dispatch] = useReducer(rootReducer, initState);
-    return <Context.Provider {...props} value={{ state, dispatch, actions: { ...bindActionCreators(actions, dispatch) } }} />
+    return <Context.Provider {...props} value={{ state, dispatch, actions: { ...bindActions(actions, dispatch) } }} />
 };
 
 export default Context
