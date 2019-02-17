@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import Context from '../context.js'
+import { getContext } from '../context.js'
 import './home.scss'
 
 const Home = () => {
-    const ctx = useContext(Context);
+    const ctx = getContext();
     const { user } = ctx.state;
     const { updateName, updateEmail } = ctx.actions;
 

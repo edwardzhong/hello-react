@@ -1,9 +1,11 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useReducer, useContext } from 'react'
 import { bindActionCreators } from 'redux'
 import * as actions from './action'
 import rootReducer from './reducer'
 
 const Context = createContext(null);
+
+export const getContext = () => useContext(Context);
 
 export const Provider = props => {
     //执行一遍rootReducer获取每个reducer中的默认值，最后再覆盖初始值
@@ -19,8 +21,7 @@ export const Provider = props => {
         ]
     });//初始状态
     const [state, dispatch] = useReducer(rootReducer, initState);
-    const acts = bindActionCreators(actions, dispatch);
-    return <Context.Provider {...props} value={{ state, dispatch, actions: { ...acts } }} />
-}
+    return <Context.Provider {...props} value={{ state, dispatch, actions: { ...bindActionCreators(actions, dispatch) } }} />
+};
 
 export default Context
