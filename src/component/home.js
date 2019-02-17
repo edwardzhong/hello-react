@@ -1,22 +1,20 @@
 import React, { useContext } from 'react'
-import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 import Context from '../context.js'
-import * as actions from '../action.js'
 import './home.scss'
 
 const Home = () => {
     const ctx = useContext(Context);
     const { user } = ctx.state;
-    const { updateName, updateEmail } = bindActionCreators(actions, ctx.dispatch);
+    const { updateName, updateEmail } = ctx.actions;
 
     const changeName = (e) => {
         console.log(e.target.type);
-        updateName(e.target.value);
+        updateName({ name: e.target.value });
     }
 
     const changeEmail = (e) => {
-        updateEmail(e.target.value);
+        updateEmail({ email: e.target.value });
     }
 
     return <div styleName="form">

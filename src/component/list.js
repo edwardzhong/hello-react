@@ -1,8 +1,6 @@
 import React, { useRef, useState, useContext } from 'react'
-import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 import Context from '../context.js'
-import * as actions from '../action.js'
 import Dialog from './dialog.js'
 import './list.scss'
 
@@ -12,7 +10,7 @@ const List = () => {
     const [visible, setVisible] = useState(false);
     const [rid, setRid] = useState('');
     const inputRef = useRef(null);
-    const { removeComment, addComment } = bindActionCreators(actions, ctx.dispatch);
+    const { removeComment, addComment } = ctx.actions;
 
     const confirmHandle = () => {
         setVisible(false);

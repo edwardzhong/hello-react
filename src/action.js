@@ -10,6 +10,7 @@ const createAction = (typeName, argName) => {
     let fn = (arg) => {
         if (arg) {
             if (argName) payload[argName] = arg;
+            else if (typeof arg == 'object') Object.assign(payload, arg);
             else payload[0] = arg;
         }
         return payload;
@@ -21,5 +22,5 @@ const createAction = (typeName, argName) => {
 
 export const addComment = createAction('ADD_COMMENT', 'comment');
 export const removeComment = createAction('REMOVE_COMMENT', 'id');
-export const updateName = createAction('UPDATE_NAME', 'name');
-export const updateEmail = createAction('UPDATE_EMAIL', 'email');
+export const updateName = createAction('UPDATE_NAME');
+export const updateEmail = createAction('UPDATE_EMAIL');
