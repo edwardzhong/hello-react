@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getContext } from '../context.js'
+import { getContext } from '../context'
 import './home.scss'
 
 const Home = () => {
-    const ctx = getContext();
-    const { user } = ctx.state;
-    const { updateName, updateEmail } = ctx.actions;
+    const { state, actions } = getContext();
+    const { user } = state;
+    const { updateName, updateEmail } = actions;
 
     const changeName = (e) => {
         console.log(e.target.type);

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
-import { Provider } from './context.js'
+import { Provider } from './context'
 import Home from './component/home.js'
 import List from './component/list.js'
 import '../public/css/index.css'

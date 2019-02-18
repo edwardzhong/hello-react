@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import Modal from './modal.js'
+import Modal from './modal'
 import './dialog.scss'
 
-const Dialog = ({ children, visible, cancel, confirm }) => {
-    return <Modal visible={visible}>
+const Dialog = ({ children, visible, cancel, confirm }) => (
+    <Modal visible={visible}>
         <div styleName="dialog">
             <div styleName="body">{children}</div>
             <div styleName="foot">
@@ -12,6 +12,6 @@ const Dialog = ({ children, visible, cancel, confirm }) => {
             </div>
         </div>
     </Modal>
-}
+);
 
 export default Dialog

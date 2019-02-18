@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getContext } from '../context.js'
+import { getContext } from '../context'
 import Dialog from './dialog.js'
 import './list.scss'
 
 const List = () => {
-    const ctx = getContext();
-    const { user, list } = ctx.state;
-    const { removeComment, addComment } = ctx.actions;
+    const { state, actions } = getContext();
+    const { user, list } = state;
+    const { removeComment, addComment } = actions;
     const [visible, setVisible] = useState(false);
     const [rid, setRid] = useState('');
     const inputRef = useRef(null);

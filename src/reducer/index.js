@@ -1,6 +1,6 @@
 import combineReducers from '../common/combineReducers'
-import list from './list.js'
-import user from './user.js'
+import list from './list'
+import user from './user'
 
 const rootReducer = combineReducers({
   list,
