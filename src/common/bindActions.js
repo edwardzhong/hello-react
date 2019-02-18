@@ -1,3 +1,8 @@
+/**
+ * bind dispatch to action
+ * @param {Object} actions 
+ * @param {Function} dispatch 
+ */
 const bindActions = (actions, dispatch) => {
     if (typeof actions === 'function') {
         return (args) => dispatch(actions(args));
