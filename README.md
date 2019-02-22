@@ -2,7 +2,6 @@
 ### Based on the following
 * webpack 4
 * react hooks
-* redux
 * react-router
 * css modules
 
