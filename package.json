@@ -8,10 +8,7 @@
     "watch": "webpack --watch",
     "build": "webpack --config webpack.prod.js"
   },
-  "keywords": [
-    "react",
-    "redux"
-  ],
+  "keywords": [ "react", "react-router" ],
   "author": "jeff",
   "license": "MIT",
   "devDependencies": {

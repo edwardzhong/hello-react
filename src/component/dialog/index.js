@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Modal from './modal'
-import './dialog.scss'
+import Modal from '../modal'
+import './style.scss'
 
 const Dialog = ({ children, visible, cancel, confirm }) => (
     <Modal visible={visible}>

@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getContext } from '../context'
-import Dialog from './dialog.js'
-import './list.scss'
+import { getContext } from '../../context'
+import Dialog from '../dialog'
+import './style.scss'
 
 const List = () => {
     const { state, actions } = getContext();

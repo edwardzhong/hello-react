@@ -14,6 +14,7 @@ const initState = Object.assign(rootReducer({}, {}), {
         { id: 1, txt: 'webpack 4' },
         { id: 2, txt: 'react' },
         { id: 3, txt: 'redux' },
+        { id: 4, txt: 'react-hooks' },
     ]
 });
 
@@ -21,6 +22,7 @@ export const getContext = () => useContext(Context);
 
 export const Provider = props => {
     const [state, dispatch] = useReducer(rootReducer, initState);
+    console.log(state);
     return <Context.Provider {...props} value={{ state, dispatch, actions: { ...bindActions(actions, dispatch) } }} />
 };
 

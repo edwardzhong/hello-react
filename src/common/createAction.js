@@ -13,6 +13,7 @@ const createAction = (typeName, argName) => {
             else if (typeof arg == 'object') Object.assign(payload, arg);
             else payload[0] = arg;
         }
+        console.log(payload);
         return payload;
     };
     fn.type = typeName;
