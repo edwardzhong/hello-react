@@ -1,20 +1,22 @@
 import { addComment, removeComment } from '../action';
 import produce from 'immer';
 
-const list = (state = [], payload) => {
+const list = (state = [], payload) => produce(state, draft => {
     switch (payload.type) {
         case addComment.type:
             if (Array.isArray(payload.comment)) {
                 // return [...state, ...payload.comment];
-                return produce(state, draft => { draft.concat(payload.comment)});
+                draft.concat(payload.comment);
             } else {
                 // return [...state, payload.comment];
-                return produce(state, draft => { draft.push(payload.comment)});
+                draft.push(payload.comment);
             }
         case removeComment.type:
-            return state.filter(i => i.id != payload.id);
-        default: return state;
+            const index = draft.findIndex(obj => obj.id == payload.id);
+            if(index >= 0){
+                draft.splice(index, index);
+            }
     }
-};
+});
 
 export default list;
