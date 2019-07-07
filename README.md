@@ -3,6 +3,7 @@
 * webpack 4
 * react hooks
 * react-router
+* immer
 * css modules
 
 ### develop
