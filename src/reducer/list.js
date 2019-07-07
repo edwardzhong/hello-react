@@ -14,7 +14,7 @@ const list = (state = [], payload) => produce(state, draft => {
         case removeComment.type:
             const index = draft.findIndex(obj => obj.id == payload.id);
             if(index >= 0){
-                draft.splice(index, index);
+                draft.splice(index, 1);
             }
     }
 });
