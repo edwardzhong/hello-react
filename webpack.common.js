@@ -8,7 +8,7 @@ module.exports = {
     entry: './src/index.js',//单入口
     output: {
         path: resolve(__dirname, 'dist'),
-        // publicPath: '/public/',//虚拟目录
+        publicPath: '/',
         // filename: 'bundle.js'
         filename: '[name].[hash].js'//输出文件添加hash
     },

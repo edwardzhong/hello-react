@@ -5,10 +5,8 @@ const list = (state = [], payload) => produce(state, draft => {
     switch (payload.type) {
         case addComment.type:
             if (Array.isArray(payload.comment)) {
-                // return [...state, ...payload.comment];
                 draft.concat(payload.comment);
             } else {
-                // return [...state, payload.comment];
                 draft.push(payload.comment);
             }
         case removeComment.type:
