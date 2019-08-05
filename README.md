@@ -5,6 +5,7 @@
 * react-router
 * immer
 * css modules
+* pug
 
 ### Project setup
 ```
