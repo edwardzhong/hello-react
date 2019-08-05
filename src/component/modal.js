@@ -2,10 +2,10 @@ import React from 'react'
 import { createPortal } from 'react-dom';
 
 const Modal = ({ children, visible }) => (
-    createPortal(
-        <div className={visible ? 'modal show' : 'modal'}>
-            {children}
-        </div>,
+    createPortal(pug`
+        .modal(className=visible?'show':'')
+            ${children}
+        `,
         document.getElementById('modalRoot')
     )
 );
