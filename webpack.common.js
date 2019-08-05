@@ -1,6 +1,6 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -36,22 +36,25 @@ module.exports = {
                 import htmlString from './template.html';
                 template.html 的文件内容会被转成一个 js 字符串，合并到 js 文件里。
                 */
-                test: /\.html$/,
+                test: /\.html$/i,
                 use: 'html-loader'
             },
             {
-                test: /\.css$/,
+                test: /\.css$/i,
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.scss$/,
+                test: /\.scss$/i,
                 use: ['style-loader',
                     {
                         loader: 'css-loader',
                         options: {
-                            importLoaders: 1,
-                            modules: true,//css modules
-                            localIdentName: '[name]___[local]___[hash:base64:5]'
+                            importLoaders: 2,
+                            modules: {
+                                mode: 'local',
+                                context: resolve(__dirname, 'src/component/'),
+                                localIdentName: '[path][name]_[local]_[hash:base64:5]',
+                            }
                         },
                     },
                     'postcss-loader', 'sass-loader']
@@ -71,7 +74,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),//生成新文件时，清空生出目录
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: ['dist']
+        }),//生成新文件时，清空生出目录
         new HtmlWebpackPlugin({
             template: './public/index.html',//模版路径
             filename: 'index.html',//生成后的文件名,默认index.html
