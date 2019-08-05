@@ -9,7 +9,6 @@ const Home = () => {
     const { updateName, updateEmail } = actions;
 
     const changeName = (e) => {
-        console.log(e.target.type);
         updateName({ name: e.target.value });
     }
 
