@@ -1,4 +1,4 @@
-## Webpack 4 Quickstart For React
+# Webpack 4 Quickstart For React
 ### Based on the following
 * webpack 4
 * react hooks
@@ -6,12 +6,17 @@
 * immer
 * css modules
 
-### develop
+### Project setup
+```
+npm install
+```
+
+### Develop
 ```
 npm start
 ```
 
-### production
+### Production
 ```
 npm run build
 ```
