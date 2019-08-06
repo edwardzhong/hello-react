@@ -19,11 +19,11 @@ const initState = Object.assign(rootReducer({}, {}), {
 });
 
 export const getContext = () => useContext(Context);
-
 export const Provider = props => {
     const [state, dispatch] = useReducer(rootReducer, initState);
     console.log(state);
     return <Context.Provider {...props} value={{ state, dispatch, actions: { ...bindActions(actions, dispatch) } }} />
+    // return pug `Context.Provider(...props value={ state, dispatch })`
 };
 
 export default Context

@@ -22,8 +22,8 @@ const List = () => {
     }
 
     const add = () => {
-        const input = inputRef.current,
-            val = input.value.trim();
+        const input = inputRef.current;
+        const val = input.value.trim();
         if (!val) return;
         addComment({
             id: Math.round(Math.random() * 1000000),
