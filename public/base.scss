@@ -1,0 +1,23 @@
+$font-color: #555;
+$blue: hsl(205, 87%, 49%);
+$gray: #999;
+
+@mixin imagebg {
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: 50%;
+}
+
+@mixin nowrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+}
+
+@mixin nowrapTwo{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}

@@ -46,18 +46,25 @@ module.exports = {
             {
                 test: /\.scss$/i,
                 use: ['style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 2,
-                            modules: {
-                                mode: 'local',
-                                context: resolve(__dirname, 'src/component/'),
-                                localIdentName: '[path][name]_[local]_[hash:base64:5]',
-                            }
-                        },
+                {
+                    loader: 'css-loader',
+                    options: {
+                        importLoaders: 3,
+                        modules: {
+                            mode: 'local',
+                            context: resolve(__dirname, 'src/component/'),
+                            localIdentName: '[path][name]_[local]_[hash:base64:5]',
+                        }
                     },
-                    'postcss-loader', 'sass-loader']
+                },
+                'postcss-loader', 
+                'sass-loader',
+                { 
+                    loader: 'sass-resources-loader',
+                    options: {
+                        resources: [ resolve(__dirname,'public/base.scss') ]
+                    }
+                }]
             },
             {   /* 
                 当文件体积小于 limit 时，url-loader 把文件转为 Data URI 的格式内联到引用的地方

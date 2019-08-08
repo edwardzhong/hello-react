@@ -4,7 +4,7 @@ import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { Provider } from './context'
 import Home from './component/home'
 import List from './component/list'
-import '../public/css/index.css'
+import '../public/index.css'
 
 render(pug`
     Provider

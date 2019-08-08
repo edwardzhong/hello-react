@@ -5,15 +5,9 @@
     ],
     "plugins": [
         "transform-react-pug",
+        "@babel/transform-react-jsx",
         "@babel/plugin-proposal-class-properties",
         "@babel/plugin-transform-runtime",
-        [
-            "import",
-            {
-                "libraryName": "antd-mobile",
-                "style": "css"
-            }
-        ],
         [
             "react-css-modules",
             {
