@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getContext } from '../../context'
-import Dialog from '../dialog'
+import Dialog from '../../component/dialog'
 import './style.scss'
 
 const List = () => {
@@ -69,7 +69,7 @@ const List = () => {
             input(ref=inputRef type="text")
             button(onClick=add title="add item") Add Item
             Link(styleName="link" to="/") redirect to home
-        Dialog(visible=visible confirm=confirmHandle cancel=cancelHandle) remove this item ?
+        Dialog(visible=visible confirm=confirmHandle cancel=()=>setVisible(false)) remove this item ?
     `
 }
 

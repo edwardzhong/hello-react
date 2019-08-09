@@ -52,7 +52,7 @@ module.exports = {
                         importLoaders: 3,
                         modules: {
                             mode: 'local',
-                            context: resolve(__dirname, 'src/component/'),
+                            context: resolve(__dirname, 'src/'),
                             localIdentName: '[path][name]_[local]_[hash:base64:5]',
                         }
                     },

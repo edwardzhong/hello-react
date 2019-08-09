@@ -17,7 +17,7 @@
                         "syntax": "postcss-scss"
                     }
                 },
-                "context": "src/component/",
+                "context": "src/",
                 "generateScopedName": "[path][name]_[local]_[hash:base64:5]"
             }
         ]
