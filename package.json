@@ -44,7 +44,6 @@
   "dependencies": {
     "axios": "^0.19.0",
     "babel-plugin-react-css-modules": "^5.2.6",
-    "babel-plugin-transform-react-pug": "^7.0.1",
     "immer": "^3.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

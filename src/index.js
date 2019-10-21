@@ -6,13 +6,15 @@ import Home from './container/home'
 import List from './container/list'
 import '../public/index.css'
 
-render(pug`
-    Provider
-        Router
-            Switch
-                Route(exact path="/" component=Home)
-                Route(exact path="/list" component=List)
-                Route(render=() => Redirect(to="/"))
-    `,
+render(
+    <Provider>
+        <Router>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/list" component={List} />
+                <Redirect to="/"/>
+            </Switch>
+        </Router>
+    </Provider>,
     document.getElementById('root')
 )
