@@ -51,15 +51,14 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: [
-                    {
-                      loader: MiniCssExtractPlugin.loader,
-                      options: {
-                        hmr: devMode,
-                      },
+                use:[{
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: devMode,
+                        },
                     },
                     'css-loader',
-                  ],          
+                ],          
             },
             {
                 test: /\.scss$/i,
@@ -103,9 +102,7 @@ module.exports = {
     },
     plugins: [
         new BundleAnalyzerPlugin(),
-        new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns:['dist']
-        }),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './public/index.html',
             filename: 'index.html',
