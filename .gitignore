@@ -1,16 +1,16 @@
 # dependencies
-**/node_modules
+node_modules
 
 # production
-/dist
-/.vscode
+dist
+.vscode
 
 # misc
 .DS_Store
 npm-debug.log*
 yarn-error.log
 
-/coverage
+coverage
 .idea
 yarn.lock
 package-lock.json
