@@ -1,25 +1,39 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    entry: './src/index.js',//单入口
+    entry: './src/index.js',
     output: {
         path: resolve(__dirname, 'dist'),
         publicPath: '/',
-        // filename: 'bundle.js'
-        filename: '[name].[hash].js'//输出文件添加hash
-    },
-    optimization: { // 代替commonchunk, 代码分割
+        filename: '[name].[hash].js'
+    },  
+    optimization: { 
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
         runtimeChunk: 'single',
         splitChunks: {
+            minSize:100000,
+            maxSize:300000,
             cacheGroups: {
                 vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all'
+                    test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,//test: /[\\/]node_modules[\\/]/,
+                    chunks: 'all',
+                    name:'base',
+                    priority: 10,
+                },
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true,
+                    priority: 20, 
                 }
             }
         }
@@ -29,23 +43,33 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: ['babel-loader']//'eslint-loader'
+                use: ['babel-loader'],
             },
-            {   /*
-                使用 html-loader, 将 html 内容存为 js 字符串，比如当遇到
-                import htmlString from './template.html';
-                template.html 的文件内容会被转成一个 js 字符串，合并到 js 文件里。
-                */
+            {
                 test: /\.html$/i,
                 use: 'html-loader'
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader']
+                use: [
+                    {
+                      loader: MiniCssExtractPlugin.loader,
+                      options: {
+                        hmr: devMode,
+                      },
+                    },
+                    'css-loader',
+                  ],          
             },
             {
                 test: /\.scss$/i,
-                use: ['style-loader',
+                exclude: /node_modules/,
+                use: [          {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                      hmr: devMode,
+                    },
+                },
                 {
                     loader: 'css-loader',
                     options: {
@@ -53,7 +77,7 @@ module.exports = {
                         modules: {
                             mode: 'local',
                             context: resolve(__dirname, 'src/'),
-                            localIdentName: '[path][name]_[local]_[hash:base64:5]',
+                            localIdentName: '[path][local]_[hash:base64:5]',//'[path][name]_[local]_[hash:base64:5]'
                         }
                     },
                 },
@@ -66,10 +90,7 @@ module.exports = {
                     }
                 }]
             },
-            {   /* 
-                当文件体积小于 limit 时，url-loader 把文件转为 Data URI 的格式内联到引用的地方
-                当文件大于 limit 时，url-loader 会调用 file-loader, 把文件储存到输出目录，并把引用的文件路径改写成输出后的路径 
-                */
+            {
                 test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
                 use: [{
                     loader: 'url-loader',
@@ -83,11 +104,11 @@ module.exports = {
     plugins: [
         new BundleAnalyzerPlugin(),
         new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: ['dist']
-        }),//生成新文件时，清空生出目录
+            cleanOnceBeforeBuildPatterns:['dist']
+        }),
         new HtmlWebpackPlugin({
-            template: './public/index.html',//模版路径
-            filename: 'index.html',//生成后的文件名,默认index.html
+            template: './public/index.html',
+            filename: 'index.html',
             favicon: './public/favicon.png',
             minify: {
                 removeAttributeQuotes:true,
@@ -96,7 +117,11 @@ module.exports = {
                 removeScriptTypeAttributes:true,
                 removeStyleLinkTypeAttributes:true
              },
-            // chunksSortMode:'none'//和 webpack 4 的兼容性问题，chunksSortMode 参数需要设置为 none
+        }),
+        new MiniCssExtractPlugin({
+            filename: devMode ? '[name].css' : '[name].[hash].css',
+            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+            ignoreOrder: true,    
         }),
         new HotModuleReplacementPlugin()//HMR
     ]
