@@ -1,4 +1,24 @@
-dist
-node_modules
-*.log
+# dependencies
+**/node_modules
+
+# production
+/dist
+/.vscode
+
+# misc
 .DS_Store
+npm-debug.log*
+yarn-error.log
+
+/coverage
+.idea
+yarn.lock
+package-lock.json
+*bak
+.vscode
+
+# visual studio code
+.history
+*.log
+functions/*
+.temp/**
