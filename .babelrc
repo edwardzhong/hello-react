@@ -17,7 +17,7 @@
                     }
                 },
                 "context": "src/",
-                "generateScopedName": "[path][name]_[local]_[hash:base64:5]"
+                "generateScopedName": "[path][local]_[hash:base64:5]"//"[path][name]_[local]_[hash:base64:5]"
             }
         ]
     ]

@@ -30,3 +30,17 @@
         }
     }
 }
+.btn{
+    display: block;
+    padding: 8px 20px;
+    background-color: hsla(200,100%,50%,1);
+    color:#fff;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 10px 0;
+    outline: none;
+    cursor: pointer;
+    &:hover{
+        background-color: hsla(200,100%,70%,1);
+    }
+}

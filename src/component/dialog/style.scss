@@ -21,6 +21,7 @@
         a{
             color: hsla(200,100%,50%,1);
             line-height: 4;
+            cursor: pointer;
             &:hover{
                 color: hsla(200,50%,50%,1);   
             }

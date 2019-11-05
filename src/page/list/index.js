@@ -1,20 +1,24 @@
 import React, { useRef, useState } from 'react'
-import { Route, Redirect, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { getContext } from '../../context'
 import Dialog from '../../component/dialog'
 import './style.scss'
 
 const List = () => {
-    const { state, actions } = getContext();
+    const { state, action } = getContext();
     const { user, list } = state;
-    const { removeComment, addComment } = actions;
+    const { removeComment, addComment } = action;
     const [visible, setVisible] = useState(false);
-    const [rid, setRid] = useState('');
+    const [comId, setComId] = useState('');
     const inputRef = useRef(null);
 
+    const showDialog = id =>{
+        setVisible(true); 
+        setComId(id); 
+    }
     const confirmHandle = () => {
         setVisible(false);
-        removeComment(rid);
+        removeComment({ id: comId });
     }
 
     const cancelHandle = () => {
@@ -40,25 +44,17 @@ const List = () => {
                 <p>your email is {user.email} !</p>
                 <p styleName="tip">please add and remove the list item !!</p>
             </div>
-            <ul> {
-                list.map(l => <li key={l.id}>{l.txt}<i className="icon-minus" title="remove item" onClick={() => {
-                    setVisible(true);
-                    setRid(l.id);
-                }}></i></li>)
-            } </ul>
+            <ul> 
+            {
+                list.map((l,i) => <li key={i}>{l.txt}
+                    <i className="icon-minus" title="remove item" onClick={() => showDialog(l.id)}/>
+                </li>
+            )} 
+            </ul>
             <input ref={inputRef} type="text" />
             <button onClick={add} title="add item">Add Item</button>
             <Link styleName="link" to="/">redirect to home</Link>
         </div>
-        <Switch>
-            <Route path="/list/one">
-                <div>item one</div>
-            </Route>
-            <Route path="/list/two">
-                <div>item two</div>
-            </Route>
-            <Redirect to="/list/one" />
-        </Switch>
         <Dialog visible={visible} confirm={confirmHandle} cancel={cancelHandle}>remove this item ?</Dialog>
     </>
     // return pug`

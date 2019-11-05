@@ -3,18 +3,23 @@ import { Link } from 'react-router-dom'
 import { getContext } from '../../context'
 import './style.scss'
 
-const Home = () => {
-    const { state, actions } = getContext();
+const Home = ({history}) => {
+    const { state, action, dispatch } = getContext();
     const { user } = state;
-    const { updateName, updateEmail } = actions;
+    const { updateUser, login, logout } = action;
 
     const changeName = (e) => {
-        updateName({ name: e.target.value });
+        updateUser({ name: e.target.value });
     }
 
     const changeEmail = (e) => {
-        updateEmail({ email: e.target.value });
+        updateUser({ email: e.target.value });
     }
+
+    const loginHandler = ()=>{
+        login({name:'alex',email:'alex@123.com'});
+    }
+
     return  <div styleName="form">
         <h3 styleName="sub-title">this is home page</h3>
         <div>
@@ -28,6 +33,8 @@ const Home = () => {
         <div>
             <input type="email" placeholder="email" defaultValue={user.email} onChange= {e => changeEmail(e)} />
         </div>
+        <button styleName="btn" onClick={loginHandler}>login</button>
+        <button styleName="btn" onClick={logout}>logout</button>
         <Link styleName="link" to="/list"> redirect to list </Link>
     </div>
     // return pug`

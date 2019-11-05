@@ -7,8 +7,8 @@ const Dialog = ({ children, visible, cancel, confirm }) => (
         <div styleName="dialog">
             <div styleName="body">{children}</div>
             <div styleName="foot">
-                <a href="javascript:;" onClick={cancel}> cancel</a>
-                <a href="javascript:;" onClick={confirm}> yes</a>
+                <a onClick={cancel}> cancel</a>
+                <a onClick={confirm}> yes</a>
             </div>
         </div>
     </Modal>

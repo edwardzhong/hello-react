@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 const Modal = ({ children, visible }) => (
     createPortal(
-        <div className="modal" className={ visible ? 'show' : ''}>
+        <div className={ visible ? 'modal show' : 'modal'}>
             {children}
         </div>,
         document.getElementById('modalRoot')
