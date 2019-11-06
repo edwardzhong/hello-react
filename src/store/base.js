@@ -1,4 +1,4 @@
-import { login, register, logout } from "./service";
+import { login, register, logout } from "../service";
 
 export const states = {
 	isLoading: false,
@@ -8,12 +8,6 @@ export const states = {
 		name: "jeff",
 		email: "jeff@gmail.com"
 	},
-	list: [
-		{ id: 1, txt: "webpack 4" },
-		{ id: 2, txt: "react" },
-		{ id: 3, txt: "redux" },
-		{ id: 4, txt: "react-hooks" }
-	]
 };
 
 export const actions = {
@@ -34,19 +28,6 @@ export const actions = {
 		user.name = null;
 		user.email = null;
 	},
-	addComment({ list }, payload) {
-		if (Array.isArray(payload)) {
-			list.concat(payload);
-		} else {
-			list.push(payload);
-		}
-	},
-	removeComment({ list }, payload) {
-		const index = list.findIndex(obj => obj.id == payload.id);
-		if (index >= 0) {
-			list.splice(index, 1);
-		}
-	}
 };
 
 export const asyncs = {

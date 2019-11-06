@@ -4,20 +4,16 @@ import { getContext } from '../../context'
 import './style.scss'
 
 const Home = ({history}) => {
-    const { state, action, dispatch } = getContext();
+    const { state, action } = getContext();
     const { user } = state;
-    const { updateUser, login, logout } = action;
+    const { setUser } = action;
 
     const changeName = (e) => {
-        updateUser({ name: e.target.value });
+        setUser({ name: e.target.value });
     }
 
     const changeEmail = (e) => {
-        updateUser({ email: e.target.value });
-    }
-
-    const loginHandler = ()=>{
-        login({name:'alex',email:'alex@123.com'});
+        setUser({ email: e.target.value });
     }
 
     return  <div styleName="form">
@@ -33,8 +29,6 @@ const Home = ({history}) => {
         <div>
             <input type="email" placeholder="email" defaultValue={user.email} onChange= {e => changeEmail(e)} />
         </div>
-        <button styleName="btn" onClick={loginHandler}>login</button>
-        <button styleName="btn" onClick={logout}>logout</button>
         <Link styleName="link" to="/list"> redirect to list </Link>
     </div>
     // return pug`
