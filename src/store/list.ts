@@ -9,14 +9,14 @@ const list = {
         ]
     },
     actions : {
-        addComment({ list }, payload) {
+        addComment({ list }, payload:any) {
             if (Array.isArray(payload)) {
                 list.concat(payload);
             } else {
                 list.push(payload);
             }
         },
-        removeComment({ list }, payload) {
+        removeComment({ list }, payload:any) {
             const index = list.findIndex(obj => obj.id == payload.id);
             if (index >= 0) {
                 list.splice(index, 1);

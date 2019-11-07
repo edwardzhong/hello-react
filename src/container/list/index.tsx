@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getContext } from '../../context'
-import Dialog from '../../component/dialog'
+import { getContext } from '@/context'
+import Dialog from '@/component/dialog'
 import './style.scss'
 
 const List = () => {
@@ -12,7 +12,7 @@ const List = () => {
     const [comId, setComId] = useState('');
     const inputRef = useRef(null);
 
-    const showDialog = id =>{
+    const showDialog = (id:string) =>{
         setVisible(true); 
         setComId(id); 
     }

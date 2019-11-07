@@ -4,10 +4,8 @@
  * @param {Object} p 
  * @param {Object} c 
  */
-function deepCopy(p, c) {
-    if (null == p || "object" != typeof p) return p;
-    var c = c || {};
-    for (var i in p) {
+function deepCopy(p: object, c: object={}):object {
+    for (let i in p) {
         if (typeof p[i] === 'object') {
             c[i] = (p[i].constructor === Array) ? [] : {};
             deepCopy(p[i], c[i]);
@@ -23,7 +21,7 @@ function deepCopy(p, c) {
  * @param {String} str 
  * @param  {...any} args 
  */
-function stringFormat(str, ...args) {
+function stringFormat(str:string, ...args: any[]):string {
     // args = args.flat();// Array can be Array, because flat function
     return str.replace(/\$(\d+)/g, function (match, num) {
         let m = args[parseInt(num, 10) - 1];
@@ -31,10 +29,10 @@ function stringFormat(str, ...args) {
     });
 }
 
-function formatTime (str) {
+function formatTime (str:string):string {
     const d = new Date(str);
     const n = new Date();
-    const r = n - d;
+    const r = n.getTime() - d.getTime();
     const dateStr = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
     const timeStr = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" + ("0" + d.getSeconds()).slice(-2);
     const just = 1000 * 10;
@@ -78,7 +76,7 @@ function formatTime (str) {
  * @param  {String} str [description]
  * @return {String}     [description]
  */
-function htmlEncode(str) {
+function htmlEncode(str:string):string {
     if (!str) return '';
     return str.replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -94,7 +92,7 @@ function htmlEncode(str) {
  * @param  {String} str [description]
  * @return {String}     [description]
  */
-function htmlDecode(str) {
+function htmlDecode(str:string):string {
     if (!str) return '';
     return str.replace(/&amp;/g, "&")
         .replace(/&lt;/g, '<')
@@ -109,7 +107,7 @@ function htmlDecode(str) {
  * @param {String} str 
  * @param {Number} n 
  */
-function getContentSummary(str, n) {
+function getContentSummary(str:string, n:number):string {
     let replaceHtmlTags = str => str.replace(/<\s*\/?\s*\w+[\S\s]*?>/g, ''),//过滤掉html标签
         pattern = /^[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+/,
         ret = '', count = 0, m;
@@ -141,12 +139,12 @@ function getContentSummary(str, n) {
  * @param  {String} str
  * @return {Number} string number
  */
-function wordCount(str) {
-    var pattern = /[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+/g;
-    var m = str.match(pattern);
-    var count = 0;
+function wordCount(str:string):number {
+    const pattern = /[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+/g;
+    const m = str.match(pattern);
+    let count = 0;
     if (m === null) return count;
-    for (var i = 0; i < m.length; i++) {
+    for (let i = 0; i < m.length; i++) {
         if (m[i].charCodeAt(0) >= 0x4E00) {
             count += m[i].length;
         } else {
@@ -161,7 +159,7 @@ function wordCount(str) {
  * @param {Image} img 
  * @param {Number} size 
  */
-function compressPicture(img, size) {
+function compressPicture(img:any, size:number):string {
     const canvas = document.createElement("canvas"),
         ctx = canvas.getContext("2d"),
         w = img.width,
@@ -179,6 +177,22 @@ function compressPicture(img, size) {
     return canvas.toDataURL("image/jpeg");
 }
 
+/**
+ * base64 装换为 Blob 对象
+ * @param {String} base64 
+ */
+function dataURLtoBlob(base64:string):Blob {
+    let arr = base64.split(','), 
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), 
+        n = bstr.length, 
+        u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {type:mime});
+}
+
 module.exports = {
     deepCopy,
     stringFormat,
@@ -187,5 +201,6 @@ module.exports = {
     htmlDecode,
     getContentSummary,
     wordCount,
-    compressPicture
+    compressPicture,
+    dataURLtoBlob
 };

@@ -9,12 +9,18 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     output: {
         path: resolve(__dirname, 'dist'),
         publicPath: '/',
         filename: '[name].[hash].js'
     },  
+    resolve: {
+        alias: {
+            '@/': resolve(__dirname, 'src/'),
+        },
+        extensions: [".ts", ".tsx", ".js", "jsx"]  // Add `.ts` and `.tsx` as a resolvable extension.
+    }, 
     optimization: { 
         minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
         runtimeChunk: 'single',
@@ -38,12 +44,12 @@ module.exports = {
             }
         }
     },
-    module: {
+    module: { 
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.tsx?$/,
                 exclude: /node_modules/,
-                use: ['babel-loader'],
+                use: ['babel-loader','ts-loader'],
             },
             {
                 test: /\.html$/i,
@@ -101,7 +107,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './public/index.html',

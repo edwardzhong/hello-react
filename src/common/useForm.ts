@@ -1,4 +1,4 @@
-import react, { useReducer } from "react";
+import { useReducer } from "react";
 
 function stateReducer(state, newState) {
 	return typeof newState == "function" ? newState(state) : { ...state, ...newState };

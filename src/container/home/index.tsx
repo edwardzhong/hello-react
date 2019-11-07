@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getContext } from '../../context'
+import { getContext } from '@/context'
 import './style.scss'
 
 const Home = ({history}) => {
