@@ -37,28 +37,37 @@ import { Store, Action, Reducer } from "types/context";
 // 	};
 // };
 
+/**
+ * combine stores
+ * @param obj 
+ */
 const combineStore = (obj: object): Store => {
 	const store = {
-		states:{},
-		actions:{},
-		asyncs:{}
+		states: {},
+		actions: {},
+		asyncs: {}
 	};
-	for(let values of Object.values(obj)){
-		Object.assign(store.states, values.states||{});
-		Object.assign(store.actions, values.actions||{});
-		Object.assign(store.asyncs, values.asyncs||{});
+	for (let values of Object.values(obj)) {
+		Object.assign(store.states, values.states || {});
+		Object.assign(store.actions, values.actions || {});
+		Object.assign(store.asyncs, values.asyncs || {});
 	}
 	return store;
 };
 
-const createReducers = (store: Store, dispatch: Function):Reducer => {
+/**
+ * create reducer
+ * @param store 
+ * @param dispatch 
+ */
+const createReducer = (store: Store, dispatch: Function): Reducer => {
 	const { actions, asyncs } = store;
-	return (state:object = {}, action:Action) => produce(state, draft => {
+	return (state: object = {}, action: Action) => produce(state, draft => {
 		const { type, arg } = action;
 		console.log(type, arg); // develop log
 		if (actions[type]) actions[type](draft, arg);
 		if (asyncs[type])
-			asyncs[type]((type:string, arg:any) => dispatch({ type, arg }), arg);
+			asyncs[type]((type: string, arg: any) => dispatch({ type, arg }), arg);
 	});
 };
 
@@ -70,13 +79,13 @@ const createReducers = (store: Store, dispatch: Function):Reducer => {
 const bindActions = (store: Store, dispatch: Function): object => {
 	const { actions, asyncs } = store;
 	return Object.keys({ ...actions, ...asyncs }).reduce((next, key) => {
-		next[key] = (arg:any) => dispatch({ type: key, arg });
+		next[key] = (arg: any) => dispatch({ type: key, arg });
 		return next;
 	}, {});
 };
 
 export {
 	combineStore,
-	createReducers,
+	createReducer,
 	bindActions
 }

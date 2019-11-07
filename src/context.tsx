@@ -1,10 +1,10 @@
 import React, { createContext, useReducer, useContext } from "react";
-import { createReducers, bindActions } from "./common/store";
+import { createReducer, bindActions } from "./common/store";
 import store from "./store";
 
 let dispatch: Function;
 const { states } = store;
-const rootReducer = createReducers(store, dispatch);
+const rootReducer = createReducer(store, dispatch);
 const Context = createContext(null);
 
 export const getContext = () => useContext(Context);
