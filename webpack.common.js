@@ -19,7 +19,7 @@ module.exports = {
         alias: {
             '@': resolve(__dirname, 'src'),
         },
-        extensions: [".ts", ".tsx", ".js", "jsx"]
+        extensions: [".ts", ".tsx", ".js", ".jsx"]
     }, 
     optimization: { 
         minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
