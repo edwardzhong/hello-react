@@ -17,7 +17,7 @@ const list = {
             }
         },
         removeComment({ list }, payload: any) {
-            const index = list.findIndex(obj => obj.id == payload.id);
+            const index = list.findIndex((obj:{id:number}) => obj.id == payload.id);
             if (index >= 0) {
                 list.splice(index, 1);
             }

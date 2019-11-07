@@ -12,16 +12,16 @@ export const states = {
 };
 
 export const actions = {
-	setLoading({ isLoading }, payload: any) {
-		isLoading = payload;
-	},
-	setLogin({ loginInfo }, payload: any) {
-		loginInfo = payload;
-	},
+	// setLoading({ isLoading }, payload: boolean) {
+	// 	isLoading = payload;
+	// },
+	// setLogin({ loginInfo }, payload: object) {
+	// 	loginInfo = payload;
+	// },
 	clearLogin({ loginInfo }) {
 		loginInfo.token = null;
 	},
-	setUser({ user }, payload: any) {
+	setUser({ user }, payload: object) {
 		Object.assign(user, payload);
 	},
 	clearUser({ user }) {
@@ -32,7 +32,7 @@ export const actions = {
 };
 
 export const asyncs = {
-	async login(dispatch: Dispatch, payload: any) {
+	async login(dispatch: Dispatch, payload: object) {
 		dispatch("setLoading", true);
 		const ret = await login(payload);
 		const data = ret.data;
@@ -46,7 +46,7 @@ export const asyncs = {
 		}
 		return ret;
 	},
-	async register(dispatch: Dispatch, payload: any) {
+	async register(dispatch: Dispatch, payload: object) {
 		dispatch("setLoading", true);
 		const ret = await register(payload);
 		const data = ret.data;
