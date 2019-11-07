@@ -8,15 +8,15 @@ const list = {
             { id: 4, txt: "react-hooks" }
         ]
     },
-    actions : {
-        addComment({ list }, payload:any) {
+    actions: {
+        addComment({ list }, payload: any) {
             if (Array.isArray(payload)) {
                 list.concat(payload);
             } else {
                 list.push(payload);
             }
         },
-        removeComment({ list }, payload:any) {
+        removeComment({ list }, payload: any) {
             const index = list.findIndex(obj => obj.id == payload.id);
             if (index >= 0) {
                 list.splice(index, 1);

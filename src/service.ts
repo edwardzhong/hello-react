@@ -1,4 +1,4 @@
-import { post } from "./common/request";
+import { post } from "./common/request"
 
 const login = (arg: any) => post("/sign", arg);
 const register = (arg: any) => post("/register", arg);
