@@ -8,11 +8,9 @@ function useForm(initialState) {
 	const [state, setState] = useReducer(stateReducer, initialState || {});
 
 	const createPropsGetter = type => (name, ownValue) => {
-		const hasOwnValue = !!ownValue;
 		const hasValueInState = state[name] !== undefined;
-
 		function setInitialValue() {
-			let value = "";
+			let value = ownValue ||'';
 			setState({ [name]: value });
 		}
 
@@ -34,7 +32,6 @@ function useForm(initialState) {
 				setState({ [name]: value }); // 修改对应 Key 的值
 			}
 		};
-
 		return inputProps;
 	};
 

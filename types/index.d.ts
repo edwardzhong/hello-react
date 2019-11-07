@@ -1,6 +1,6 @@
+import { DOMAttributes } from 'react';
 // import * as axios from './axios'
 // import * as context from './context'
-import { DOMAttributes } from 'react';
 
 // declare namespace Axios {
 //     export type Data = axios.Data;

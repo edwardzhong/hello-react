@@ -1,7 +1,6 @@
-import React, { createContext, useReducer, useContext, Reducer } from "react";
+import React, { createContext, useReducer, useContext } from "react";
 import { createReducers, bindActions } from "./common/store";
 import store from "./store/index";
-import { Action } from "history";
 
 let dispatch;
 const { states } = store;
