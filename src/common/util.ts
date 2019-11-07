@@ -4,7 +4,7 @@
  * @param {Object} p 
  * @param {Object} c 
  */
-function deepCopy(p: object, c: object={}):object {
+function deepCopy(p: object, c: object = {}): object {
     for (let i in p) {
         if (typeof p[i] === 'object') {
             c[i] = (p[i].constructor === Array) ? [] : {};
@@ -21,7 +21,7 @@ function deepCopy(p: object, c: object={}):object {
  * @param {String} str 
  * @param  {...any} args 
  */
-function stringFormat(str:string, ...args: any[]):string {
+function stringFormat(str: string, ...args: any[]): string {
     // args = args.flat();// Array can be Array, because flat function
     return str.replace(/\$(\d+)/g, function (match, num) {
         let m = args[parseInt(num, 10) - 1];
@@ -29,7 +29,7 @@ function stringFormat(str:string, ...args: any[]):string {
     });
 }
 
-function formatTime (str:string):string {
+function formatTime(str: string): string {
     const d = new Date(str);
     const n = new Date();
     const r = n.getTime() - d.getTime();
@@ -41,7 +41,7 @@ function formatTime (str:string):string {
     const day = hour * 24;
     const month = day * 30;
     let i = timeStr;
-    
+
     if (r < day && n.getDate() - d.getDate() == 0) {
         if (r < just) {
             i = "刚刚";
@@ -54,7 +54,7 @@ function formatTime (str:string):string {
         }
     } else if (r < day * 2 && new Date(n.getTime() - day).getDate() - d.getDate() == 0) {
         i = `昨天 ${timeStr}`;
-    } else if (r < day * 3 && new Date(n.getTime() - day *2).getDate() - d.getDate() == 0) {
+    } else if (r < day * 3 && new Date(n.getTime() - day * 2).getDate() - d.getDate() == 0) {
         i = `前天 ${timeStr}`;
     } else if (r < day * 8) {
         i = Math.floor(r / day) + "天前";
@@ -76,7 +76,7 @@ function formatTime (str:string):string {
  * @param  {String} str [description]
  * @return {String}     [description]
  */
-function htmlEncode(str:string):string {
+function htmlEncode(str: string): string {
     if (!str) return '';
     return str.replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -92,7 +92,7 @@ function htmlEncode(str:string):string {
  * @param  {String} str [description]
  * @return {String}     [description]
  */
-function htmlDecode(str:string):string {
+function htmlDecode(str: string): string {
     if (!str) return '';
     return str.replace(/&amp;/g, "&")
         .replace(/&lt;/g, '<')
@@ -107,8 +107,8 @@ function htmlDecode(str:string):string {
  * @param {String} str 
  * @param {Number} n 
  */
-function getContentSummary(str:string, n:number):string {
-    let replaceHtmlTags = str => str.replace(/<\s*\/?\s*\w+[\S\s]*?>/g, ''),//过滤掉html标签
+function getContentSummary(str: string, n: number): string {
+    let replaceHtmlTags = (str: string) => str.replace(/<\s*\/?\s*\w+[\S\s]*?>/g, ''),//过滤掉html标签
         pattern = /^[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+/,
         ret = '', count = 0, m;
     str = replaceHtmlTags(htmlDecode(str));
@@ -139,7 +139,7 @@ function getContentSummary(str:string, n:number):string {
  * @param  {String} str
  * @return {Number} string number
  */
-function wordCount(str:string):number {
+function wordCount(str: string): number {
     const pattern = /[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+/g;
     const m = str.match(pattern);
     let count = 0;
@@ -159,7 +159,7 @@ function wordCount(str:string):number {
  * @param {Image} img 
  * @param {Number} size 
  */
-function compressPicture(img:any, size:number):string {
+function compressPicture(img: any, size: number): string {
     const canvas = document.createElement("canvas"),
         ctx = canvas.getContext("2d"),
         w = img.width,
@@ -181,16 +181,16 @@ function compressPicture(img:any, size:number):string {
  * base64 装换为 Blob 对象
  * @param {String} base64 
  */
-function dataURLtoBlob(base64:string):Blob {
-    let arr = base64.split(','), 
+function dataURLtoBlob(base64: string): Blob {
+    let arr = base64.split(','),
         mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[1]), 
-        n = bstr.length, 
+        bstr = atob(arr[1]),
+        n = bstr.length,
         u8arr = new Uint8Array(n);
-    while(n--){
+    while (n--) {
         u8arr[n] = bstr.charCodeAt(n);
     }
-    return new Blob([u8arr], {type:mime});
+    return new Blob([u8arr], { type: mime });
 }
 
 module.exports = {

@@ -3,10 +3,12 @@ interface Store {
 	actions:object;
 	asyncs:object;
 }
+
 interface Action {
     type:string;
     arg?:any
 }
+
 interface Reducer {
     (state:object, action:Action): object;
 }
