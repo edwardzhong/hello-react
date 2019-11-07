@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useContext } from "react";
 import { createReducers, bindActions } from "./common/store";
 import store from "./store/index";
 
-let dispatch;
+let dispatch: Function;
 const { states } = store;
 const rootReducer = createReducers(store, dispatch);
 const Context = createContext(null);

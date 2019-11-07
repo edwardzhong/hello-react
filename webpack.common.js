@@ -19,7 +19,7 @@ module.exports = {
         alias: {
             '@': resolve(__dirname, 'src'),
         },
-        extensions: [".ts", ".tsx", ".js", "jsx"]  // Add `.ts` and `.tsx` as a resolvable extension.
+        extensions: [".ts", ".tsx", ".js", "jsx"]
     }, 
     optimization: { 
         minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
@@ -64,7 +64,7 @@ module.exports = {
                         },
                     },
                     'css-loader',
-                ],          
+                ], 
             },
             {
                 test: /\.scss$/i,
