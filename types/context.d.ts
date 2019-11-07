@@ -1,23 +1,23 @@
 interface Store {
-	states:object;
-	actions:object;
-	asyncs:object;
+    states: object;
+    actions: object;
+    asyncs: object;
 }
 
 interface Action {
-    type:string;
-    arg?:any
+    type: string;
+    arg?: any
 }
 
 interface Reducer {
-    (state:object, action:Action): object;
+    (state: object, action: Action): object;
 }
 
 interface Dispatch {
-    (type:string,arg?:any):void
+    (type: string, arg?: any): void
 }
 
-export{
+export {
     Store,
     Action,
     Reducer,
