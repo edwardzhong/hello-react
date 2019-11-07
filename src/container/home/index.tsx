@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { getContext } from '@/context'
 import './style.scss'
 
-const Home = ({history}) => {
+const Home = () => {
     const { state, action } = getContext();
     const { user } = state;
     const { setUser } = action;
