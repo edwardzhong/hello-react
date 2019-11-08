@@ -19,3 +19,7 @@ declare module 'react' {
         styleName?: string
     }
 }
+
+interface EventTarget {
+    value: string;
+}

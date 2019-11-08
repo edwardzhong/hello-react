@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { FC, MouseEventHandler } from 'react'
 import Modal from '../modal'
 import './style.scss'
 
-const Dialog = ({ children, visible, cancel, confirm }) => (
-    <Modal visible={visible} >
+const Dialog: FC<{ visible: boolean, cancel: MouseEventHandler, confirm: MouseEventHandler }> = ({ children, visible, cancel, confirm }) => (
+    <Modal visible={ visible } >
         <div styleName="dialog">
-            <div styleName="body">{children}</div>
+            <div styleName="body">{ children }</div>
             <div styleName="foot">
-                <a onClick={cancel}> cancel</a>
-                <a onClick={confirm}> yes</a>
+                <a onClick={ cancel }> cancel</a>
+                <a onClick={ confirm }> yes</a>
             </div>
         </div>
     </Modal>

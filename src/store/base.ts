@@ -1,7 +1,7 @@
 import { login, register, logout } from '../service'
-import { Dispatch } from 'types/context'
+import { BaseState, Dispatch } from 'types/context'
 
-export const states = {
+export const states: BaseState = {
 	isLoading: false,
 	loginInfo: { token: "" },
 	user: {
@@ -15,16 +15,16 @@ export const actions = {
 	// setLoading({ isLoading }, payload: boolean) {
 	// 	isLoading = payload;
 	// },
-	// setLogin({ loginInfo }, payload: object) {
+	// setLogin({ loginInfo }, payload = {}) {
 	// 	loginInfo = payload;
 	// },
-	clearLogin({ loginInfo }) {
+	clearLogin({ loginInfo }: BaseState) {
 		loginInfo.token = null;
 	},
-	setUser({ user }, payload: object) {
+	setUser({ user }: BaseState, payload = {}) {
 		Object.assign(user, payload);
 	},
-	clearUser({ user }) {
+	clearUser({ user }: BaseState) {
 		user.id = null;
 		user.name = null;
 		user.email = null;
@@ -32,7 +32,7 @@ export const actions = {
 };
 
 export const asyncs = {
-	async login(dispatch: Dispatch, payload: object) {
+	async login(dispatch: Dispatch, payload = {}) {
 		dispatch("setLoading", true);
 		const ret = await login(payload);
 		const data = ret.data;
@@ -46,7 +46,7 @@ export const asyncs = {
 		}
 		return ret;
 	},
-	async register(dispatch: Dispatch, payload: object) {
+	async register(dispatch: Dispatch, payload = {}) {
 		dispatch("setLoading", true);
 		const ret = await register(payload);
 		const data = ret.data;

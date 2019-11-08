@@ -62,7 +62,7 @@ const combineStore = (obj: object): Store => {
  */
 const createReducer = (store: Store, dispatch: Function): Reducer => {
 	const { actions, asyncs } = store;
-	return (state: object = {}, action: Action) => produce(state, draft => {
+	return (state = {}, action: Action) => produce(state, draft => {
 		const { type, arg } = action;
 		console.log(type, arg); // develop log
 		if (actions[type]) actions[type](draft, arg);

@@ -4,7 +4,7 @@
  * @param {Object} p 
  * @param {Object} c 
  */
-function deepCopy(p: object, c: object = {}): object {
+function deepCopy(p: object, c = {}): object {
     for (let i in p) {
         if (typeof p[i] === 'object') {
             c[i] = (p[i].constructor === Array) ? [] : {};
@@ -92,7 +92,7 @@ function htmlEncode(str: string): string {
  * @param  {String} str [description]
  * @return {String}     [description]
  */
-function htmlDecode(str: string): string {
+function htmlDecode(str: string = ''): string {
     if (!str) return '';
     return str.replace(/&amp;/g, "&")
         .replace(/&lt;/g, '<')
@@ -159,7 +159,7 @@ function wordCount(str: string): number {
  * @param {Image} img 
  * @param {Number} size 
  */
-function compressPicture(img: any, size: number): string {
+function compressPicture(img: HTMLImageElement, size: number): string {
     const canvas = document.createElement("canvas"),
         ctx = canvas.getContext("2d"),
         w = img.width,
