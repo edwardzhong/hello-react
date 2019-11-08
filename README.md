@@ -1,5 +1,6 @@
 # Webpack 4 Quickstart For React
 ### Based on the following
+* typesscript
 * webpack 4
 * react hooks
 * react-router
