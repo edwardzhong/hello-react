@@ -1,6 +1,6 @@
 import axios from 'axios'
 import config from '../config/app'
-import { Response } from 'types/axios'
+import { AxiosFun } from 'types';
 
 axios.defaults.baseURL = config.url;
 axios.defaults.timeout = 20000;
@@ -35,7 +35,7 @@ axios.interceptors.response.use(res => {
     return res.data;
 });
 
-export const get = (url: string, param: any): Promise<Response> => axios.get(url, { params: param });
-export const post = (url: string, param: any): Promise<Response> => axios.post(url, param);
-export const put = (url: string, param: any): Promise<Response> => axios.put(url, param);
-export const del = (url: string, param: any): Promise<Response> => axios.delete(url, { data: param });
+export const get: AxiosFun = (url, param) => axios.get(url, { params: param });
+export const post: AxiosFun = (url, param) => axios.post(url, param);
+export const put: AxiosFun = (url, param) => axios.put(url, param);
+export const del: AxiosFun = (url, param) => axios.delete(url, { data: param });
