@@ -1,4 +1,3 @@
-type List<T> = [T];
 type PItem = { id: string, txt: string };
 
 interface Store {
@@ -31,14 +30,13 @@ interface BaseState {
 }
 
 interface ListState extends BaseState {
-    list: List<PItem>;
+    list: Array<PItem>;
 }
 
 export {
     Store,
     BaseState,
     ListState,
-    List,
     PItem,
     Action,
     Reducer,

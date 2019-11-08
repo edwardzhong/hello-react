@@ -1,4 +1,4 @@
-import { ListState, List, PItem } from '../../types/context'
+import { ListState, PItem } from '../../types/context'
 
 const list = {
     states: {
@@ -10,7 +10,7 @@ const list = {
         ]
     },
     actions: {
-        addComment({ list }: ListState, payload: List<PItem> | PItem) {
+        addComment({ list }: ListState, payload: Array<PItem> | PItem) {
             if (Array.isArray(payload)) {
                 list.concat(payload);
             } else {

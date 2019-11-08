@@ -13,6 +13,5 @@ interface Response {
 }
 
 export {
-    Data,
     Response
 }
