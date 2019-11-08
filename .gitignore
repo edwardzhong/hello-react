@@ -3,7 +3,6 @@ node_modules
 
 # production
 dist
-.vscode
 
 # misc
 .DS_Store
@@ -18,6 +17,7 @@ package-lock.json
 .vscode
 
 # visual studio code
+.vscode
 .history
 *.log
 functions/*
