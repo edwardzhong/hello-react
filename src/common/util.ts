@@ -4,7 +4,7 @@
  * @param {Object} p 
  * @param {Object} c 
  */
-function deepCopy(p: object, c = {}): object {
+function deepCopy(p: object, c: object = {}): object {
     for (let i in p) {
         if (typeof p[i] === 'object') {
             c[i] = (p[i].constructor === Array) ? [] : {};

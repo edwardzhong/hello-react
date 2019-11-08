@@ -1,41 +1,41 @@
 import produce from 'immer'
 import { Store, Action, Reducer } from 'types/context'
 
-// /**
-//  * generate Redux action
-//  * @param {String} typeName
-//  * @param {String} argName
-//  */
-// const createAction = (typeName: string, argName: string): Function => {
-// 	typeName = typeName || "TYPE_ID_" + new Date().getTime() + Math.ceil(Math.random() * 100000000);
-// 	let payload = { type: typeName };
-// 	if (argName) payload[argName] = null;
-// 	let fn = (arg:any) => {
-// 		if (arg) {
-// 			if (argName) payload[argName] = arg;
-// 			else if (typeof arg == "object") Object.assign(payload, arg);
-// 			else payload[0] = arg;
-// 		}
-// 		// console.log(payload); // develop log
-// 		return payload;
-// 	};
-// 	// fn.type = typeName;
-// 	fn.toString = () => typeName;
-// 	return fn;
-// };
+/**
+ * generate Redux action
+ * @param {String} typeName
+ * @param {String} argName
+ */
+const createAction = (typeName: string, argName: string): Function => {
+	typeName = typeName || "TYPE_ID_" + new Date().getTime() + Math.ceil(Math.random() * 100000000);
+	let payload = { type: typeName };
+	if (argName) payload[argName] = null;
+	let fn = (arg:any) => {
+		if (arg) {
+			if (argName) payload[argName] = arg;
+			else if (typeof arg == "object") Object.assign(payload, arg);
+			else payload[0] = arg;
+		}
+		// console.log(payload); // develop log
+		return payload;
+	};
+	// fn.type = typeName;
+	fn.toString = () => typeName;
+	return fn;
+};
 
-// /**
-//  * combine reducers Object
-//  * @param {Object} reducers
-//  */
-// const combineReducers = (reducers: object): object => {
-// 	return (state:object = {}, action: object) => {
-// 		return Object.keys(reducers).reduce((nextState, key) => {
-// 			nextState[key] = reducers[key](state[key], action);
-// 			return nextState;
-// 		}, {});
-// 	};
-// };
+/**
+ * combine reducers Object
+ * @param {Object} reducers
+ */
+const combineReducers = (reducers: object): object => {
+	return (state:object = {}, action: object) => {
+		return Object.keys(reducers).reduce((nextState, key) => {
+			nextState[key] = reducers[key](state[key], action);
+			return nextState;
+		}, {});
+	};
+};
 
 /**
  * combine stores
@@ -85,6 +85,8 @@ const bindActions = (store: Store, dispatch: Function): object => {
 };
 
 export {
+	createAction,
+	combineReducers,
 	combineStore,
 	createReducer,
 	bindActions
