@@ -17,7 +17,6 @@
 		"noImplicitReturns": true,
 		"experimentalDecorators": true, // 开启装饰器的使用
 		"emitDecoratorMetadata": true,
-		"removeComments": true,
 		"allowJs": true,
 		"paths": {
 			"@/*": [ "src/*" ]
