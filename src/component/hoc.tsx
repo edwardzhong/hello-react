@@ -1,30 +1,38 @@
 import React from 'react'
-import { getContext } from '@/context'
-// import { ListState } from 'types/context'
 
-const HOC:React.FC = ({children}) => {
-    const { state } = getContext();
-
-    return children(state);
-    // return pug`
-    //     div(styleName="form")
-    //         h3(styleName="sub-title") This is list page
-    //         div
-    //             p hello, #{user.name} !
-    //             p your email is #{user.email} !
-    //             p(styleName="tip") please add and remove the list item !!
-    //         ul 
-    //             each l in list
-    //                 li(key=l.id) #{l.txt}
-    //                     i.icon-minus(title="remove item" onClick=() => {
-    //                         setVisible(true);
-    //                         setRid(l.id);
-    //                     })
-    //         input(ref=inputRef type="text")
-    //         button(onClick=add title="add item") Add Item
-    //         Link(styleName="link" to="/") redirect to home
-    //     Dialog(visible=visible confirm=confirmHandle cancel=()=>setVisible(false)) remove this item ?
-    // `
+interface ComProps {
+    theme: string;
+}
+interface Props extends ComProps {
+    url: string;
 }
 
-export default HOC;
+/**
+ * class component with hoc
+ */
+const hoc = (WrappedComponent: React.ComponentType<ComProps>) => class extends React.Component<Props, { name: string }>{
+    state = {
+        name: 'hoc'
+    }
+    render() {
+        return <div>
+            <h2>this is { this.state.name }</h2>
+            <p>url : { this.props.url }</p>
+            <WrappedComponent { ...this.props } />
+        </div>
+    }
+}
+
+/**
+ * function component with hoc
+ */
+// const hoc = (Com: React.FC<ComProps>): React.FC<Props> => (props) => {
+//     const [name] = React.useState('function hoc');
+//     return <div>
+//         <h2>this is { name }</h2>
+//         <p>url : { props.url }</p>
+//         <Com { ...props } />
+//     </div>
+// }
+
+export default hoc
