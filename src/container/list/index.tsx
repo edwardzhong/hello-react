@@ -20,7 +20,7 @@ class ComA extends React.Component<{ theme: string }, {}>{
 }
 const HocA = hoc(ComA);
 
-const ComFun: React.FC<{}> = () => (
+const ComFun: React.FC = () => (
     <div>this is function hoc</div>
 )
 const HocFun = funHoc(ComFun);
@@ -35,7 +35,7 @@ const List = () => (
         <HocA theme="blue" url="http://aa.com" />
         <HocFun url="http://ccc.com" />
         <RenderProps render={
-            ({ user,list }: State) => <div>
+            ({ user, list }: State) => <div>
                 <div>name: { user.name }</div>
                 <div>Email: { user.email }</div>
                 <ul>
