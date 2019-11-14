@@ -140,7 +140,7 @@ function getContentSummary(str: string, n: number): string {
  * @return {Number} string number
  */
 function wordCount(str: string): number {
-    const pattern = /[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+/g;
+    const pattern = /[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g;
     const m = str.match(pattern);
     let count = 0;
     if (m === null) return count;
@@ -152,6 +152,12 @@ function wordCount(str: string): number {
         }
     }
     return count;
+}
+
+// 计算包含双字节字符和emoji的准确长度
+function charCount(str: string): number {
+    const reg = /[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g;
+    return str.replace(reg,'a').length;
 }
 
 /**
@@ -200,6 +206,7 @@ module.exports = {
     htmlEncode,
     htmlDecode,
     getContentSummary,
+    charCount,
     wordCount,
     compressPicture,
     dataURLtoBlob

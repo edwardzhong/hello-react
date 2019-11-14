@@ -49,8 +49,8 @@ const ListEdit = () => {
                 {
                     list.map((l, i) => <li key={ i }>{ l.txt }
                         <i className="icon-minus" title="remove item" onClick={ () => showDialog(l.id) } />
-                    </li>
-                    ) }
+                    </li>)
+                }
             </ul>
             <input ref={ inputRef } type="text" />
             <button onClick={ add } title="add item">Add Item</button>
