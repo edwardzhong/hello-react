@@ -91,7 +91,7 @@ module.exports = {
                 { 
                     loader: 'sass-resources-loader',
                     options: {
-                        resources: [ resolve(__dirname,'public/base.scss') ]
+                        resources: [ resolve(__dirname,'src/base.scss') ]
                     }
                 }]
             },
@@ -107,7 +107,7 @@ module.exports = {
         ]
     },
     plugins: [
-        // new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './public/index.html',
