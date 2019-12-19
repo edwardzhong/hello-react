@@ -1,4 +1,4 @@
-import { ListState, PItem } from '../../types/context'
+import { ListState, PItem } from 'types/context'
 
 const list = {
     states: {
