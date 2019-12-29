@@ -1,5 +1,4 @@
 import { DOMAttributes } from 'react';
-import { AxiosResponse } from 'axios';
 
 //为 jsx 添加自定义属性
 declare module 'react' {
@@ -14,9 +13,6 @@ type ResData = {
     msg: string;
 }
 
-declare interface AxiosFun {
-    (url: string, param: any): Promise<AxiosResponse<ResData>>
-}
 
 // import * as axios from './axios'
 // import * as context from './context'

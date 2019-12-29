@@ -17,14 +17,20 @@ interface Store<S> {
     asyncs?: AsyncsTree;
 }
 
+type LoginInfo = {
+    token: string;
+}
+
+type UserInfo = {
+    id?: string;
+    name?: string;
+    email?: string;
+}
+
 interface BaseState {
     isLoading: boolean;
-    loginInfo: { token: string };
-    user: {
-        id?: string;
-        name?: string;
-        email?: string;
-    },
+    loginInfo: LoginInfo;
+    user: UserInfo;
 }
 
 type PItem = { id: string, txt: string };
@@ -32,7 +38,17 @@ interface ListState extends Partial<BaseState> {
     list: Array<PItem>;
 }
 
+interface ResData<T> {
+    code: number;
+    msg?: string;
+    data?: T;
+}
+type ActionRes = Promise<ResData<any>>;
+type ActionFn<T> = (arg?: T) => ActionRes;
+type AxiosFn = (url: string, param?: any) => ActionRes;
+
 export {
+    AxiosFn,
     ActionTree,
     AsyncsTree,
     Store,

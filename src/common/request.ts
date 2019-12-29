@@ -1,6 +1,6 @@
 import axios from 'axios'
 import config from '../config/app'
-import { AxiosFun } from 'types';
+import { AxiosFn } from 'types/context';
 
 axios.defaults.baseURL = config.url;
 axios.defaults.timeout = 20000;
@@ -35,7 +35,7 @@ axios.interceptors.response.use(res => {
     return res.data;
 });
 
-export const get: AxiosFun = (url, param) => axios.get(url, { params: param });
-export const post: AxiosFun = (url, param) => axios.post(url, param);
-export const put: AxiosFun = (url, param) => axios.put(url, param);
-export const del: AxiosFun = (url, param) => axios.delete(url, { data: param });
+export const get: AxiosFn = (url, param) => axios.get(url, { params: param });
+export const post: AxiosFn = (url, param) => axios.post(url, param);
+export const put: AxiosFn = (url, param) => axios.put(url, param);
+export const del: AxiosFn = (url, param) => axios.delete(url, { data: param });
