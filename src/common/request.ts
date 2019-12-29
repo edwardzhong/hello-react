@@ -2,7 +2,7 @@ import axios from 'axios'
 import config from '../config/app'
 import { AxiosFn } from 'types/context';
 
-axios.defaults.baseURL = config.url;
+axios.defaults.baseURL = config.api;
 axios.defaults.timeout = 20000;
 axios.defaults.withCredentials = true;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -35,7 +35,31 @@ axios.interceptors.response.use(res => {
     return res.data;
 });
 
-export const get: AxiosFn = (url, param) => axios.get(url, { params: param });
-export const post: AxiosFn = (url, param) => axios.post(url, param);
-export const put: AxiosFn = (url, param) => axios.put(url, param);
-export const del: AxiosFn = (url, param) => axios.delete(url, { data: param });
+export const get: AxiosFn = (url, param) => {
+    return axios.get(url, { params: param }).then(res => {
+        return res.data;
+    }).catch((err: Error) => {
+        return { code: -99, msg: err.message };
+    })
+}
+export const post: AxiosFn = (url, param) => {
+    return axios.post(url, param).then(res => {
+        return res.data;
+    }).catch((err: Error) => {
+        return { code: -99, msg: err.message };
+    })
+}
+export const put: AxiosFn = (url, param) => {
+    return axios.put(url, param).then(res => {
+        return res.data;
+    }).catch((err: Error) => {
+        return { code: -99, msg: err.message };
+    })
+}
+export const del: AxiosFn = (url, param) => {
+    return axios.delete(url, { data: param }).then(res => {
+        return res.data;
+    }).catch((err: Error) => {
+        return { code: -99, msg: err.message };
+    })
+}

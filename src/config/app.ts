@@ -1,4 +1,4 @@
 export default {
-    url:'/',
+    api:'/',
     debug:true
 }
