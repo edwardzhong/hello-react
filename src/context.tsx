@@ -3,7 +3,7 @@ import { createReducer, bindActions } from "./common/store";
 import store from "./store";
 
 let dispatch: Function;
-const { states } = store;
+const states = store.state;
 const rootReducer = createReducer(store, dispatch);
 const Context = createContext(null);
 
@@ -13,7 +13,7 @@ export const Provider = (props: JSX.IntrinsicAttributes & React.ProviderProps<an
 	const action = bindActions(store, commit);
 	dispatch = commit;
 	console.log(state); // develop log
-	return <Context.Provider {...props} value={{ state, action }} />;
+	return <Context.Provider { ...props } value={ { state, action } } />;
 };
 
 export default Context;

@@ -1,7 +1,7 @@
 import { login, register, logout } from '../service'
-import { BaseState, Dispatch } from 'types/context'
+import { AsyncsTree, ActionTree, BaseState } from 'types/context'
 
-export const states: BaseState = {
+export const state: BaseState = {
 	isLoading: false,
 	loginInfo: { token: "" },
 	user: {
@@ -11,28 +11,29 @@ export const states: BaseState = {
 	},
 };
 
-export const actions = {
+export const actions: ActionTree<BaseState> = {
 	// setLoading({ isLoading }, payload: boolean) {
 	// 	isLoading = payload;
 	// },
 	// setLogin({ loginInfo }, payload = {}) {
 	// 	loginInfo = payload;
 	// },
-	clearLogin({ loginInfo }: BaseState) {
+	clearLogin({ loginInfo }) {
 		loginInfo.token = null;
 	},
-	setUser({ user }: BaseState, payload = {}) {
+	setUser({ user }, payload = {}) {
 		Object.assign(user, payload);
 	},
-	clearUser({ user }: BaseState) {
+	clearUser({ user }) {
 		user.id = null;
 		user.name = null;
 		user.email = null;
 	},
 };
 
-export const asyncs = {
-	async login(dispatch: Dispatch, payload = {}) {
+export const asyncs: AsyncsTree = {
+	async login(dispatch, payload = {}) {
+		// dispatch(setLoading(true));
 		dispatch("setLoading", true);
 		const ret = await login(payload);
 		const data = ret.data;
@@ -46,7 +47,7 @@ export const asyncs = {
 		}
 		return ret;
 	},
-	async register(dispatch: Dispatch, payload = {}) {
+	async register(dispatch, payload = {}) {
 		dispatch("setLoading", true);
 		const ret = await register(payload);
 		const data = ret.data;
@@ -62,7 +63,7 @@ export const asyncs = {
 		}
 		return ret;
 	},
-	async logoutService(dispatch: Dispatch) {
+	async logoutService(dispatch) {
 		dispatch("setLoading", true);
 		const ret = await logout();
 		const data = ret.data;

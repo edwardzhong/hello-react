@@ -5,12 +5,7 @@ import funHoc from '@/component/functionHoc'
 import RenderProps from '@/component/renderProps'
 import FunctionRender from '@/component/functionRender'
 import './style.scss'
-import { PItem } from 'types/context'
-
-interface State {
-    user: { name: string; email: string };
-    list: Array<PItem>;
-}
+import { ListState } from 'types/context'
 
 // @hoc
 class ComA extends React.Component<{ theme: string }, {}>{
@@ -35,7 +30,7 @@ const List = () => (
         <HocA theme="blue" url="http://aa.com" />
         <HocFun url="http://ccc.com" />
         <RenderProps render={
-            ({ user, list }: State) => <div>
+            ({ user, list }: ListState) => <div>
                 <div>name: { user.name }</div>
                 <div>Email: { user.email }</div>
                 <ul>
@@ -46,7 +41,7 @@ const List = () => (
             </div>
         } />
         <FunctionRender name="Function Props">{
-            ({ list }: State) => <>
+            ({ list }: ListState) => <>
                 <ul>
                     {
                         list.map((l, i) => <li key={ i }>{ l.txt } </li>)

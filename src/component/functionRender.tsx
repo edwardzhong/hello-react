@@ -5,12 +5,9 @@ import { ListState } from 'types/context';
 /* 
  * function component with render props
  */
-interface Child {
-    (props: ListState): JSX.Element
-}
 interface Prop {
     name: string;
-    children: Child;
+    children: (props: ListState) => JSX.Element;
 }
 
 const FunctionRender: React.FC<Prop> = ({ name, children }) => {

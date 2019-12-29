@@ -1,6 +1,6 @@
 import React from 'react'
 import { getContext } from '@/context'
-import { PItem } from 'types/context';
+import { ListState } from 'types/context';
 
 /**
  * function component with hoc
@@ -11,7 +11,7 @@ interface Props {
 
 const funHoc = (Com: React.FC): React.FC<Props> => (props) => {
     const { state } = getContext();
-    const list: Array<PItem> = state.list;
+    const { list }: ListState = state;
     const [name] = React.useState('function hoc');
     return <div>
         <h2>this is { name }</h2>

@@ -1,7 +1,7 @@
-import { ListState, PItem } from 'types/context'
+import { ListState, PItem, Store } from 'types/context'
 
-const list = {
-    states: {
+const list: Store<ListState> = {
+    state: {
         list: [
             { id: '1', txt: "webpack 4" },
             { id: '2', txt: "react" },
@@ -10,14 +10,14 @@ const list = {
         ]
     },
     actions: {
-        addComment({ list }: ListState, payload: Array<PItem> | PItem) {
+        addComment({ list }, payload: Array<PItem> | PItem) {
             if (Array.isArray(payload)) {
                 list.concat(payload);
             } else {
                 list.push(payload);
             }
         },
-        removeComment({ list }: ListState, payload: PItem) {
+        removeComment({ list }, payload: PItem) {
             const index = list.findIndex(obj => obj.id == payload.id);
             if (index >= 0) {
                 list.splice(index, 1);

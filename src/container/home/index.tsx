@@ -2,10 +2,11 @@ import React, { ChangeEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { getContext } from '@/context'
 import './style.scss'
+import { BaseState } from 'types/context'
 
 const Home = () => {
     const { state, action } = getContext();
-    const { user } = state;
+    const { user }: BaseState = state;
     const { setUser } = action;
 
     const changeName = (e: ChangeEvent) => {

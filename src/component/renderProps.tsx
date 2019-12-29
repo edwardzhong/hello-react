@@ -1,21 +1,13 @@
 import React from 'react'
-import { PItem } from 'types/context'
+import { ListState } from 'types/context'
 
 /*
  * class component with render props
  */
-
-interface State {
-    user: { name: string; email: string };
-    list: Array<PItem>;
-}
-interface Child {
-    (props: State): JSX.Element
-}
 interface Prop {
-    render: Child;
+    render: (props: ListState) => JSX.Element;
 }
-// class RenderProps extends React.Component<Prop, State> {
+// class RenderProps extends React.Component<Prop, ListState> {
 //     state = {
 //         user: { name: 'alex', email: 'alex@alex.com' },
 //         list: [

@@ -1,5 +1,5 @@
 import produce from 'immer'
-import { Store, Action, Reducer } from 'types/context'
+import { Command, Reducer, Store } from 'types/context'
 
 /**
  * generate Redux action
@@ -10,7 +10,7 @@ const createAction = (typeName: string, argName: string): Function => {
 	typeName = typeName || "TYPE_ID_" + new Date().getTime() + Math.ceil(Math.random() * 100000000);
 	let payload = { type: typeName };
 	if (argName) payload[argName] = null;
-	let fn = (arg:any) => {
+	let fn = (arg: any) => {
 		if (arg) {
 			if (argName) payload[argName] = arg;
 			else if (typeof arg == "object") Object.assign(payload, arg);
@@ -29,7 +29,7 @@ const createAction = (typeName: string, argName: string): Function => {
  * @param {Object} reducers
  */
 const combineReducers = (reducers: object): object => {
-	return (state:object = {}, action: object) => {
+	return (state: object = {}, action: object) => {
 		return Object.keys(reducers).reduce((nextState, key) => {
 			nextState[key] = reducers[key](state[key], action);
 			return nextState;
@@ -41,14 +41,14 @@ const combineReducers = (reducers: object): object => {
  * combine stores
  * @param obj 
  */
-const combineStore = (obj: object): Store => {
+const combineStore = (obj: object) => {
 	const store = {
-		states: {},
+		state: {},
 		actions: {},
 		asyncs: {}
 	};
 	for (let values of Object.values(obj)) {
-		Object.assign(store.states, values.states || {});
+		Object.assign(store.state, values.state || {});
 		Object.assign(store.actions, values.actions || {});
 		Object.assign(store.asyncs, values.asyncs || {});
 	}
@@ -60,9 +60,9 @@ const combineStore = (obj: object): Store => {
  * @param store 
  * @param dispatch 
  */
-const createReducer = (store: Store, dispatch: Function): Reducer => {
+const createReducer = (store: Store<{}>, dispatch: Function): Reducer => {
 	const { actions, asyncs } = store;
-	return (state = {}, action: Action) => produce(state, draft => {
+	return (state = {}, action: Command) => produce(state, draft => {
 		const { type, arg } = action;
 		console.log(type, arg); // develop log
 		if (actions[type]) actions[type](draft, arg);
@@ -76,7 +76,7 @@ const createReducer = (store: Store, dispatch: Function): Reducer => {
  * @param {Object} actions
  * @param {Function} dispatch
  */
-const bindActions = (store: Store, dispatch: Function): object => {
+const bindActions = (store: Store<{}>, dispatch: Function): object => {
 	const { actions, asyncs } = store;
 	return Object.keys({ ...actions, ...asyncs }).reduce((next, key) => {
 		next[key] = (arg: any) => dispatch({ type: key, arg });
