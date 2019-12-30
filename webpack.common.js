@@ -28,18 +28,25 @@ module.exports = {
             minSize:100000,
             maxSize:300000,
             cacheGroups: {
-                vendor: {
+                react: {
                     test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,//test: /[\\/]node_modules[\\/]/,
                     chunks: 'all',
-                    name:'base',
                     priority: 10,
+                    name:'base'
                 },
+                vendors: {
+					test: /[\\/]node_modules[\\/]/,
+					chunks: 'async',
+					priority: 9,
+					minChunks: 2,
+					name: 'vendors'
+				},
                 styles: {
-                    name: 'styles',
                     test: /\.css$/,
                     chunks: 'all',
                     enforce: true,
                     priority: 20, 
+                    name: 'styles'
                 }
             }
         }
