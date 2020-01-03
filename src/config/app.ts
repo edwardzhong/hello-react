@@ -1,4 +1,1 @@
-export default {
-    api:'/',
-    debug:true
-}
+export const api = '/'

@@ -1,4 +1,3 @@
-
 /**
  * deep copy
  * @param {Object} p 
@@ -29,6 +28,10 @@ function stringFormat(str: string, ...args: any[]): string {
     });
 }
 
+/**
+ * 格式化日期
+ * @param str 日期格式字符串
+ */
 function formatTime(str: string): string {
     const d = new Date(str);
     const n = new Date();
@@ -154,10 +157,13 @@ function wordCount(str: string): number {
     return count;
 }
 
-// 计算包含双字节字符和emoji的准确长度
+/**
+ * 计算包含双字节字符和emoji的准确长度
+ * @param str 字符串
+ */
 function charCount(str: string): number {
     const reg = /[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g;
-    return str.replace(reg,'a').length;
+    return str.replace(reg, 'a').length;
 }
 
 /**
@@ -165,7 +171,7 @@ function charCount(str: string): number {
  * @param {Image} img 
  * @param {Number} size 
  */
-function compressPicture(img: HTMLImageElement, size: number): string {
+function compressPicture(img: HTMLImageElement, size: number = 400): HTMLCanvasElement {
     const canvas = document.createElement("canvas"),
         ctx = canvas.getContext("2d"),
         w = img.width,
@@ -180,7 +186,17 @@ function compressPicture(img: HTMLImageElement, size: number): string {
         }
     }
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    return canvas.toDataURL("image/jpeg");
+    return canvas;
+}
+
+function compressPictureToBase64(img: HTMLImageElement, size = 400): string {
+    return compressPicture(img, size).toDataURL("image/jpeg");
+}
+
+function compressPictureToBlob(img: HTMLImageElement, size = 400): Promise<Blob> {
+    return new Promise(resolve => {
+        compressPicture(img, size).toBlob(resolve, "image/jpeg");
+    });
 }
 
 /**
@@ -199,7 +215,25 @@ function dataURLtoBlob(base64: string): Blob {
     return new Blob([u8arr], { type: mime });
 }
 
-module.exports = {
+type ShareArg = { url: string; title: string; pic?: string; desc?: string };
+/**
+ * sns分享链接
+ * @param type sns type
+ * @param opts sns option
+ */
+function shareUrl(type: string, opts: ShareArg): string {
+    const configs = {
+        weibo: ({ url, title, pic }: ShareArg) => `http://service.weibo.com/share/share.php?url=${encodeURI(url)}&title=${title}&pic=${encodeURIComponent(pic || '')}`,
+        qq: ({ url, title, desc }: ShareArg) => `http://connect.qq.com/widget/shareqq/index.html?url=${encodeURI(url)}&title=${title}&source=${desc || ''}`,
+        douban: ({ url, title, pic, desc }: ShareArg) => `https://www.douban.com/share/service?href=${encodeURI(url)}&name=${title}&image=${encodeURIComponent(pic || '')}&text=${desc || ''}`,
+        qzone: ({ url, title, pic, desc }: ShareArg) => `http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${encodeURI(url)}&title=${title}&pics=${encodeURIComponent(pic || '')}&summary=${desc || ''}&desc=${desc || ''}&site=${encodeURI(url)}`,
+        facebook: ({ url }: ShareArg) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURI(url)}`,
+        twitter: ({ url, title }: ShareArg) => `https://twitter.com/intent/tweet?text=${title}&url=${encodeURI(url)}&via=${encodeURI(url)}`,
+    }
+    return configs[type](opts);
+}
+
+export {
     deepCopy,
     stringFormat,
     formatTime,
@@ -209,5 +243,8 @@ module.exports = {
     charCount,
     wordCount,
     compressPicture,
-    dataURLtoBlob
+    compressPictureToBase64,
+    compressPictureToBlob,
+    dataURLtoBlob,
+    shareUrl
 };

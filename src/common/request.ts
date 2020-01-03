@@ -1,8 +1,8 @@
 import axios from 'axios'
-import config from '../config/app'
+import { api } from '../config/app'
 import { AxiosFn } from 'types/context';
 
-axios.defaults.baseURL = config.api;
+axios.defaults.baseURL = api;
 axios.defaults.timeout = 20000;
 axios.defaults.withCredentials = true;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
