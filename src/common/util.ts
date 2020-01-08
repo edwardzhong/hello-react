@@ -184,6 +184,9 @@ function compressPicture(img: HTMLImageElement, size: number = 400): HTMLCanvasE
             canvas.height = size;
             canvas.width = (w / h) * size;
         }
+    } else {
+        canvas.width = w;
+        canvas.height = h;
     }
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     return canvas;
