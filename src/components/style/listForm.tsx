@@ -11,10 +11,13 @@ export const ListForm = styled.div`
         color:hsl(0,50%,50%);
         cursor: pointer;
     }`
+    
 export const SubTitle = styled.h3`
     ${nowrap}
     text-align: center;`
+
 export const Tip = styled.p`color: hsl(200,100%,50%);`
+
 export const Input = styled.input`
     display: block;
     border:1px solid #eee;
