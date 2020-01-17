@@ -3,14 +3,9 @@ import { DOMAttributes } from 'react';
 //为 jsx 添加自定义属性
 declare module 'react' {
     interface HTMLAttributes<T> extends DOMAttributes<T> {
-        styleName?: string
+        styleName?: string;
+        css?: any;
     }
-}
-
-type ResData = {
-    code: number;
-    data: any;
-    msg: string;
 }
 
 

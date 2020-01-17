@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { api } from '../config/app'
-import { AxiosFn } from 'types/context';
+import { api } from '@/config/app'
+import { AxiosFn } from 'type';
 
 axios.defaults.baseURL = api;
 axios.defaults.timeout = 20000;

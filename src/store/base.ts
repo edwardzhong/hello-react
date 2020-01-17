@@ -1,5 +1,5 @@
 import { login, register, logout } from '../service'
-import { AsyncsTree, ActionTree, BaseState } from 'types/context'
+import { AsyncsTree, ActionTree, BaseState } from 'type'
 
 export const state: BaseState = {
 	isLoading: false,

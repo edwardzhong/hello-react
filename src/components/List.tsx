@@ -1,11 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import hoc from '@/component/hoc'
-import funHoc from '@/component/functionHoc'
-import RenderProps from '@/component/renderProps'
-import FunctionRender from '@/component/functionRender'
-import './style.scss'
-import { ListState } from 'types/context'
+import hoc from './common/hoc'
+import funHoc from './common/functionHoc'
+import RenderProps from './common/renderProps'
+import FunctionRender from './common/functionRender'
+import { ListState } from 'type'
 
 // @hoc
 class ComA extends React.Component<{ theme: string }, {}>{
@@ -19,7 +18,6 @@ const ComFun: React.FC = () => (
     <div>this is function hoc</div>
 )
 const HocFun = funHoc(ComFun);
-
 // const ComB: React.FC<{ theme: string }> = ({ theme }) => (
 //     <div>the theme is { theme }</div>
 // )
@@ -51,6 +49,7 @@ const List = () => (
             </>
         }
         </FunctionRender>
+        <Link css="font-size:16px; color: hsl(200,100%,50%)" to="/"> redirect to home </Link>
     </>
 )
 

@@ -1,5 +1,5 @@
 import produce from 'immer'
-import { Command, Reducer, Store } from 'types/context'
+import { Command, Reducer, Store } from 'type'
 
 /**
  * generate Redux action

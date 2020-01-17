@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getContext } from '@/context'
-import Dialog from '@/component/dialog'
-import './style.scss'
-import { ListState } from 'types/context'
+import Dialog from './common/Dialog'
+import { ListForm, SubTitle, Tip, Input, Button, LinkStyle } from "./style/listForm";
+import styled from 'styled-components'
+import { ListState } from 'type'
 
 const ListEdit = () => {
     const { state, action } = getContext();
@@ -37,25 +38,36 @@ const ListEdit = () => {
         input.value = '';
     }
 
+    const UL = styled.ul`
+        list-style-type: none;
+        margin: 0 0 15px 0;
+        padding: 0;
+        li{
+            padding: 5px;
+            width: 90%;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 5px;
+        }`
+
     return <>
-        <div styleName="form">
-            <h3 styleName="sub-title">This is list page</h3>
+        <ListForm>
+            <SubTitle>This is list page</SubTitle>
             <div>
                 <p>hello, { user.name } !</p>
                 <p>your email is { user.email } !</p>
-                <p styleName="tip">please add and remove the list item !!</p>
+                <Tip>please add and remove the list item !!</Tip>
             </div>
-            <ul>
+            <UL>
                 {
                     list.map((l, i) => <li key={ i }>{ l.txt }
                         <i className="icon-minus" title="remove item" onClick={ () => showDialog(l.id) } />
                     </li>)
                 }
-            </ul>
-            <input ref={ inputRef } type="text" />
-            <button onClick={ add } title="add item">Add Item</button>
-            <Link styleName="link" to="/">redirect to home</Link>
-        </div>
+            </UL>
+            <Input ref={ inputRef } type="text" />
+            <Button onClick={ add } title="add item">Add Item</Button>
+            <Link css={ LinkStyle } to="/">redirect to home</Link>
+        </ListForm>
         <Dialog visible={ visible } confirm={ confirmHandle } cancel={ cancelHandle }>remove this item ?</Dialog>
     </>
 }

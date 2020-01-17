@@ -1,6 +1,6 @@
 import React from 'react'
 import { getContext } from '@/context'
-import { ListState } from 'types/context';
+import { ListState } from 'type';
 
 /**
  * function component with hoc

@@ -6,18 +6,13 @@
     "plugins": [
         "@babel/plugin-proposal-class-properties",
         "@babel/plugin-transform-runtime",
-        [
-            "react-css-modules",
-            {
-                "exclude": "node_modules",
-                "filetypes": {
-                    ".scss": {
-                        "syntax": "postcss-scss"
-                    }
-                },
-                "context": "src/",
-                "generateScopedName": "[path][local]_[hash:base64:5]"//"[path][name]_[local]_[hash:base64:5]"
-            }
-        ]
+        ["babel-plugin-styled-components",
+        {
+            "displayName": false,
+            "minify": true,
+            "transpileTemplateLiterals": true,      
+            "ssr": false,
+            "pure": true
+        }]
     ]
 }

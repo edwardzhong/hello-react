@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListState } from 'types/context'
+import { ListState } from 'type'
 
 /*
  * class component with render props
