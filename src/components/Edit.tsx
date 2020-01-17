@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getContext } from '@/context'
 import Dialog from './common/Dialog'
-import { ListForm, SubTitle, Tip, Input, Button, LinkStyle } from "./style/listForm";
+import { ListForm, SubTitle, Tip, Input, Button, LinkStyle } from "./style/styles";
 import styled from 'styled-components'
 import { ListState } from 'type'
 

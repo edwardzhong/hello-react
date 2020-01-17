@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { getContext } from '@/context'
 import { BaseState } from 'type'
-import { ListForm, SubTitle, Tip, Input, LinkStyle } from "./style/listForm";
+import { ListForm, SubTitle, Tip, Input, LinkStyle } from "./style/styles";
 
 const Home = () => {
     const { state, action } = getContext();
