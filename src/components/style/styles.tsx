@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components"
-import { nowrap } from './mixin'
+import styled, { css } from 'styled-components';
+import { nowrap } from './mixin';
 
 export const ListForm = styled.div`
     padding: 0 20px;
@@ -10,13 +10,13 @@ export const ListForm = styled.div`
         float: right;
         color:hsl(0,50%,50%);
         cursor: pointer;
-    }`
-    
+    }`;
+
 export const SubTitle = styled.h3`
     ${nowrap}
-    text-align: center;`
+    text-align: center;`;
 
-export const Tip = styled.p`color: hsl(200,100%,50%);`
+export const Tip = styled.p`color: hsl(200,100%,50%);`;
 
 export const Input = styled.input`
     display: block;
@@ -28,7 +28,7 @@ export const Input = styled.input`
     width: 90%;
     &:focus{
         background-color:hsl(60,80%,90%);
-    }`
+    }`;
 
 export const Button = styled.button`
     display: block;
@@ -42,7 +42,7 @@ export const Button = styled.button`
     cursor: pointer;
     &:hover{
         background-color: hsl(200,100%,70%);
-    }`
+    }`;
 
 export const LinkStyle = css`
     display: block;
@@ -50,4 +50,4 @@ export const LinkStyle = css`
     color: hsl(200,100%,50%);
     &:hover{
         color:hsl(200,100%,70%);
-    }`
+    }`;

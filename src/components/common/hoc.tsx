@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 interface ComProps {
     theme: string;
@@ -10,18 +10,27 @@ interface Props extends ComProps {
 /**
  * class component with hoc
  */
-const hoc = (WrappedComponent: React.ComponentType<ComProps>) => class extends React.Component<Props, { name: string }>{
+const hoc = (WrappedComponent: React.ComponentType<ComProps>) => class extends React.Component<Props, { name: string }> {
     state = {
-        name: 'hoc'
+      name: 'hoc',
     }
+
     render() {
-        return <div>
-            <h2>this is { this.state.name }</h2>
-            <p>url : { this.props.url }</p>
-            <WrappedComponent { ...this.props } />
+      return (
+        <div>
+          <h2>
+            this is
+            { this.state.name }
+          </h2>
+          <p>
+            url :
+            { this.props.url }
+          </p>
+          <WrappedComponent {...this.props} />
         </div>
+      );
     }
-}
+};
 
 /**
  * function component with hoc
@@ -35,4 +44,4 @@ const hoc = (WrappedComponent: React.ComponentType<ComProps>) => class extends R
 //     </div>
 // }
 
-export default hoc
+export default hoc;
