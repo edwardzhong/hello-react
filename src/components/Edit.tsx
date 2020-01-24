@@ -72,12 +72,12 @@ const ListEdit = () => {
         </div>
         <UL>
           {
-              list.map((l, i) => (
-                <li key={i}>
-                  { l.txt }
-                  <i className="icon-minus" title="remove item" onClick={() => showDialog(l.id)} />
-                </li>
-              ))
+            list.map((l, i) => (
+              <li key={i}>
+                { l.txt }
+                <i className="icon-minus" title="remove item" onClick={() => showDialog(l.id)} />
+              </li>
+            ))
           }
         </UL>
         <Input ref={inputRef} type="text" />

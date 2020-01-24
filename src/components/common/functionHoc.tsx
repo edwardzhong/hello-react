@@ -26,7 +26,7 @@ const funHoc = (Com: React.FC): React.FC<Props> => (props) => {
       </p>
       <ul>
         {
-            list.map((l, i) => <li key={i}>{ l.txt }</li>)
+          list.map((l, i) => <li key={i}>{ l.txt }</li>)
         }
       </ul>
     </div>

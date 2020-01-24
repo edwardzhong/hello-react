@@ -39,7 +39,7 @@ const RenderProps: React.FC<Prop> = ({ render }) => {
     <div>
       <h2>render props</h2>
       {
-          render({ user, list })
+        render({ user, list })
       }
     </div>
   );

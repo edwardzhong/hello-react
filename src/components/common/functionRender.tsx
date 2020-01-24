@@ -22,7 +22,7 @@ const FunctionRender: React.FC<Prop> = ({ name, children }) => {
         { name }
       </h4>
       {
-          children({ ...state })
+        children({ ...state })
       }
     </div>
   );
