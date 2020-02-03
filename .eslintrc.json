@@ -1,40 +1,40 @@
 {
-	"env": {
-		"browser": true,
-		"es6": true
-	},
-	"extends": [
-		// "airbnb",
-		"eslint:recommended",
-		"plugin:react/recommended",
-		"plugin:@typescript-eslint/eslint-recommended"
-	],
-	"globals": {
-		"Atomics": "readonly",
-		"SharedArrayBuffer": "readonly"
-	},
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": 2018,
-		"sourceType": "module"
-	},
-	"plugins": [
-		"react",
-		"react-hooks",
-		"@typescript-eslint"
-	],
-	"rules": {
-		"indent": ["warn", 2],
-		"no-unused-vars": 0,
-		"react/display-name": 0,
-		"react/prop-types": 0
-	},
-	"settings": {
-		"react": {
-			"version": "detect"
-		}
-	}
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    // "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "indent": [ "warn", 2 ],
+    "no-unused-vars": 0,
+    "react/display-name": 0,
+    "react/prop-types": 0
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

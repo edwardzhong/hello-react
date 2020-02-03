@@ -1,38 +1,38 @@
 {
-	"compilerOptions": {
-		"baseUrl": ".", // import的相对起始路径
-		"outDir": "./dist", // 构建输出目录，但因为使用了`webpack`，所以这个配置并没什么用
-		"module": "esnext",
-		"target": "esnext",
-		"allowSyntheticDefaultImports": true,
-		"jsx": "preserve", // 开启`JSX`模式, `preserve`的配置让`tsc`不会去处理它，而是使用后续的`babel-loader`进行处理
-		"importHelpers": true,
-		"strict": false,
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"noImplicitAny": true,
-		"suppressImplicitAnyIndexErrors": true,
-		"noUnusedParameters": true,
-		"noUnusedLocals": true,
-		"noImplicitReturns": true,
-		"experimentalDecorators": true, // 开启装饰器的使用
-		"emitDecoratorMetadata": true,
-		"allowJs": true,
-		"sourceMap": true,
-		"paths": {
-			"@/*": [ "src/*" ]
-		},
-		"lib": [
-			"esnext",
-			"dom",
-			"dom.iterable",
-			"scripthost"
-		]
-	},
-	"exclude": [
-		"node_modules",
-		"dist",
-		"public"
-	]
+  "compilerOptions": {
+    "baseUrl": ".", // import的相对起始路径
+    "outDir": "./dist", // 构建输出目录，但因为使用了`webpack`，所以这个配置并没什么用
+    "module": "esnext",
+    "target": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve", // 开启`JSX`模式, `preserve`的配置让`tsc`不会去处理它，而是使用后续的`babel-loader`进行处理
+    "importHelpers": true,
+    "strict": false,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "experimentalDecorators": true, // 开启装饰器的使用
+    "emitDecoratorMetadata": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "paths": {
+      "@/*": [ "src/*" ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "public"
+  ]
 }
