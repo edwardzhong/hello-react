@@ -1,22 +1,25 @@
 {
-    "presets": [
-        [ 
-            "@babel/preset-env", { "useBuiltIns": "entry" } 
-        ],
-        "@babel/preset-react"
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry"
+      }
     ],
-    "plugins": [
-        "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-transform-runtime",
-        [
-            "babel-plugin-styled-components",
-            {
-                "displayName": false,
-                "minify": true,
-                "transpileTemplateLiterals": true,      
-                "ssr": false,
-                "pure": true
-            }
-        ]
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-runtime",
+    [
+      "babel-plugin-styled-components",
+      {
+        "displayName": false,
+        "minify": true,
+        "transpileTemplateLiterals": true,
+        "ssr": false,
+        "pure": true
+      }
     ]
+  ]
 }
