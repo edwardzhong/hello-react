@@ -1,15 +1,13 @@
 import React, { lazy, Suspense } from 'react';
 import { render } from 'react-dom';
-import {
-  HashRouter as Router, Route, Redirect, Switch,
-} from 'react-router-dom';
+import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import { Provider } from './context';
 import '../public/index.css';
 // import Home from './components/Home'
 // import Edit from './components/Edit'
 // import List from './components/List'
-import PageLoading from './components/PageLoading';
+import PageLoad from './components/Pageload';
 
 const GlobalStyle = createGlobalStyle`body{ padding:50px;}`;
 const Home = lazy(() => import('./components/Home'));
@@ -20,7 +18,7 @@ render(
     <GlobalStyle />
     <Router>
       <Switch>
-        <Suspense fallback={<PageLoading />}>
+        <Suspense fallback={<PageLoad />}>
           <Route exact path="/" component={Home} />
           <Route exact path="/edit" component={Edit} />
           <Route exact path="/list" component={List} />
