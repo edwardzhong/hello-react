@@ -12,6 +12,9 @@ export const ListForm = styled.div`
         cursor: pointer;
     }`;
 
+export const Title = styled.h2`
+    text-align: center;`;
+
 export const SubTitle = styled.h3`
     ${nowrap}
     text-align: center;`;

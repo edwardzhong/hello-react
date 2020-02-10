@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BaseState } from 'type';
 import { getContext } from '@/context';
 import {
-  ListForm, SubTitle, Tip, Input, LinkStyle,
+  ListForm, Title, SubTitle, Tip, Input, LinkStyle,
 } from './style/styles';
 
 const Home = () => {
@@ -21,6 +21,7 @@ const Home = () => {
 
   return (
     <ListForm>
+      <Title>Hello Webpack React Hooks!</Title>
       <SubTitle>this is home page</SubTitle>
       <div>
         <p>
