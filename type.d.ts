@@ -38,6 +38,8 @@ interface ListState extends Partial<BaseState> {
   list: Array<PItem>;
 }
 
+type PlainObject = { [P: string]: any };
+
 interface ResData<T> {
   code: number;
   msg?: string;
@@ -48,6 +50,7 @@ type ActionFn<T> = (arg?: T) => ActionRes;
 type AxiosFn = (url: string, param?: any) => ActionRes;
 
 export {
+  PlainObject,
   AxiosFn,
   ActionTree,
   AsyncsTree,
