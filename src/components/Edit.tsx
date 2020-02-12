@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ListState } from 'type';
 import { getContext } from '@/context';
 import Dialog from './common/Dialog';
 import {
@@ -10,7 +9,7 @@ import {
 
 const ListEdit = () => {
   const { state, action } = getContext();
-  const { user, list }: ListState = state;
+  const { user, list } = state;
   const { removeComment, addComment } = action;
   const [visible, setVisible] = useState(false);
   const [comId, setComId] = useState('');

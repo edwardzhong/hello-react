@@ -4,9 +4,6 @@ import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { createGlobalStyle } from 'styled-components';
 import { Provider } from './context';
 import '../public/index.css';
-// import Home from './components/Home'
-// import Edit from './components/Edit'
-// import List from './components/List'
 import PageLoad from './components/Pageload';
 
 const GlobalStyle = createGlobalStyle`body{ padding:50px;}`;

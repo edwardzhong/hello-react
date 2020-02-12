@@ -1,5 +1,4 @@
 import React from 'react';
-import { ListState } from 'type';
 import { getContext } from '@/context';
 
 /**
@@ -11,7 +10,7 @@ interface Props {
 
 const funHoc = (Com: React.FC): React.FC<Props> => (props) => {
   const { state } = getContext();
-  const { list }: ListState = state;
+  const { list } = state;
   const [name] = React.useState('function hoc');
   return (
     <div>

@@ -1,9 +1,10 @@
+type PlainObject = { [P: string]: any };
 type Command = { type: string; arg?: any }
-type Dispatch = (type: string, arg?: any) => void;
-type Action<S> = (state: S, payload?: any) => any;
-type Async = (dispatch: Dispatch, payload?: any) => any;
+type Dispatch = (param: Command) => void;
+type Action<S> = (state: S, payload?: any) => void;
+type Async = (dispatch: (type: string, arg?: any) => void, payload?: any) => any;
 interface Reducer {
-  (state: object, action: Command): object;
+  (state: PlainObject, action: Command): PlainObject;
 }
 interface ActionTree<S> {
   [key: string]: Action<S>;
@@ -28,7 +29,6 @@ type UserInfo = {
 }
 
 interface BaseState {
-  isLoading: boolean;
   loginInfo: LoginInfo;
   user: UserInfo;
 }
@@ -37,8 +37,6 @@ type PItem = { id: string, txt: string };
 interface ListState extends Partial<BaseState> {
   list: Array<PItem>;
 }
-
-type PlainObject = { [P: string]: any };
 
 interface ResData<T> {
   code: number;

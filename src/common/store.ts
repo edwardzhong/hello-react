@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { Command, Reducer, Store, PlainObject } from 'type';
+import { PlainObject, Command, Reducer, Store, Dispatch } from 'type';
 
 /**
  * generate Redux action
@@ -33,6 +33,7 @@ const combineReducers = (reducers: object): object => (state: object = {}, actio
   return nextState;
 }, {});
 
+
 /**
  * combine stores
  * @param obj
@@ -56,7 +57,7 @@ const combineStore = (obj: PlainObject) => {
  * @param store
  * @param dispatch
  */
-const createReducer = (store: Store<PlainObject>, dispatch: Function): Reducer => {
+const createReducer = (store: Store<PlainObject>, dispatch: Dispatch): Reducer => {
   const { actions, asyncs } = store;
   return (state = {}, action: Command) => produce(state, (draft) => {
     const { type, arg } = action;
@@ -71,7 +72,7 @@ const createReducer = (store: Store<PlainObject>, dispatch: Function): Reducer =
  * @param {Object} actions
  * @param {Function} dispatch
  */
-const bindActions = (store: Store<PlainObject>, dispatch: Function): object => {
+const bindActions = (store: Store<PlainObject>, dispatch: Dispatch): PlainObject => {
   const { actions, asyncs } = store;
   return Object.keys({ ...actions, ...asyncs }).reduce((next, key) => {
     next[key] = (arg: any) => dispatch({ type: key, arg });

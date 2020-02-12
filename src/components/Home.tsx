@@ -1,6 +1,5 @@
 import React, { ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { BaseState } from 'type';
 import { getContext } from '@/context';
 import {
   ListForm, Title, SubTitle, Tip, Input, LinkStyle,
@@ -8,7 +7,7 @@ import {
 
 const Home = () => {
   const { state, action } = getContext();
-  const { user }: BaseState = state;
+  const { user } = state;
   const { setUser } = action;
 
   const changeName = (e: ChangeEvent) => {

@@ -2,22 +2,11 @@ import { AsyncsTree, ActionTree, BaseState } from 'type';
 import { login, register, logout } from '../service';
 
 export const state: BaseState = {
-  isLoading: false,
   loginInfo: { token: '' },
-  user: {
-    id: '1',
-    name: 'jeff',
-    email: 'jeff@gmail.com',
-  },
+  user: { id: '1', name: 'jeff', email: 'jeff@gmail.com', },
 };
 
 export const actions: ActionTree<BaseState> = {
-  // setLoading({ isLoading }, payload: boolean) {
-  // 	isLoading = payload;
-  // },
-  // setLogin({ loginInfo }, payload = {}) {
-  // 	loginInfo = payload;
-  // },
   clearLogin({ loginInfo }) {
     loginInfo.token = null;
   },
@@ -32,26 +21,18 @@ export const actions: ActionTree<BaseState> = {
 };
 
 export const asyncs: AsyncsTree = {
-  async login(dispatch, payload = {}) {
-    // dispatch(setLoading(true));
-    dispatch('setLoading', true);
+  async loginDis(dispatch, payload = {}) {
     const ret = await login(payload);
     const { data } = ret;
-    dispatch('setLoading', false);
     if (data.code == 200) {
       dispatch('setLogin', data.data);
       localStorage.setItem('loginInfo', JSON.stringify(data.data));
-    } else {
-      dispatch('clearLogin');
-      localStorage.removeItem('loginInfo');
     }
     return ret;
   },
-  async register(dispatch, payload = {}) {
-    dispatch('setLoading', true);
+  async registerDis(dispatch, payload = {}) {
     const ret = await register(payload);
     const { data } = ret;
-    dispatch('setLoading', false);
     if (data.code == 200) {
       const loginRet = await login(payload);
       const rdata = loginRet.data;
@@ -60,14 +41,13 @@ export const asyncs: AsyncsTree = {
         localStorage.setItem('loginInfo', JSON.stringify(rdata.data));
       }
       return loginRet;
+    } else {
+      return ret;
     }
-    return ret;
   },
-  async logoutService(dispatch) {
-    dispatch('setLoading', true);
+  async logoutDis(dispatch) {
     const ret = await logout();
     const { data } = ret;
-    dispatch('setLoading', false);
     if (data.code == 200) {
       dispatch('clearLogin');
       dispatch('clearUser');

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ListState } from 'type';
 import hoc from './common/hoc';
 import funHoc from './common/functionHoc';
 import RenderProps from './common/renderProps';
@@ -33,7 +32,7 @@ const List = () => (
     <HocA theme="blue" url="http://aa.com" />
     <HocFun url="http://ccc.com" />
     <RenderProps render={
-      ({ user, list }: ListState) => (
+      ({ user, list }) => (
         <div>
           <div>
                   name:
@@ -59,7 +58,7 @@ const List = () => (
     />
     <FunctionRender name="Function Props">
       {
-        ({ list }: ListState) => (
+        ({ list }) => (
           <>
             <ul>
               {
