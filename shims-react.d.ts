@@ -6,6 +6,7 @@ declare module 'react' {
     styleName?: string;
     css?: any;
     active?: any;
+    visible?: any;
   }
 }
 
