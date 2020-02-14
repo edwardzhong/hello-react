@@ -59,4 +59,5 @@ export {
   BaseState,
   PItem,
   ListState,
+  ResData,
 }
