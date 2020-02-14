@@ -4,30 +4,28 @@ import styled from 'styled-components';
 import Mask from './mask';
 
 const PopLayer = styled.div`
-  position: fixed;
-  left: 50%;
-  top: 30%;
-  width:300px;
-  height:auto;
-  transform:translate(-50%,-50%);
+  position: relative;
+  margin: 0 auto;
+  top: 100px;
+  width: 300px;
   z-index: 100;
   border-radius: 8px;
   box-shadow: 0 0 2px 2px hsla(0,100%,0%,.1);
   background-color: #fff;
   overflow: hidden;
-  transition: .3s ease-in-out;
+  transition: all .3s ease-in-out;
   transform-style: preserve-3d;
+  visibility:visible;
   visibility: ${props => props.active ? 'visible' : 'hidden'};
   opacity: ${props => props.active ? '1' : '0'};
-  /* max-height: ${props => props.active ? '200px' : '0'}; */
-  `
+  transform: ${props => props.active ? 'scale(1,1)' : 'scale(0,0)'};`
 
 const Body = styled.div`
   display: flex;
   flex-flow:column nowrap;
   justify-content:center;
-  height:80px;
-  padding:10px;
+  height: 80px;
+  padding: 10px;
   text-align: center;
   font-size: 16px;
   border-bottom:1px solid #eee;`
@@ -45,6 +43,24 @@ const Footer = styled.footer`
     }
   }`
 
+let mousePos: { x: number, y: number } | null;
+const getClickPosition = function getClickPosition(e: MouseEvent) {
+  mousePos = {
+    x: e.pageX - window.innerWidth / 2 + 100,
+    y: e.pageY - 100
+  };
+  // 100ms 内发生过点击事件，则从点击位置动画展示
+  // 否则直接 zoom 展示
+  // 这样可以兼容非点击方式展开
+  setTimeout(() => {
+    mousePos = null;
+  }, 100);
+}; // 只有点击事件支持从鼠标位置动画展开
+
+if (typeof window !== 'undefined' && window.document && window.document.documentElement) {
+  document.documentElement.addEventListener('click', getClickPosition);
+}
+
 type Option = {
   title?: string;
   content?: string;
@@ -55,28 +71,18 @@ type Option = {
 class Model extends Component {
   state = {
     visible: false,
-    maskVisible: false,
     title: '',
     content: '',
     onOk: () => { },
     onCancel: () => { },
   }
-
   open = (opt: Option) => {
-    this.setState({ visible: true });
-    this.setState({ maskVisible: true });
-    if (opt.title) this.setState({ title: opt.title });
-    if (opt.content) this.setState({ content: opt.content });
-    if (opt.onCancel) this.setState({ onCancel: opt.onCancel });
-    if (opt.onOk) this.setState({ onOk: opt.onOk });
-  };
+    this.setState({ ...opt, visible: true });
+  }
 
   close = () => {
     this.setState({ visible: false });
-    setTimeout(() => {
-      this.setState({ maskVisible: false });
-    }, 300)
-  };
+  }
 
   cancel = () => {
     this.close();
@@ -89,19 +95,20 @@ class Model extends Component {
   }
 
   render() {
-    const { visible, maskVisible, title, content } = this.state
+    const { visible, title, content } = this.state
     return <>
-      <Mask active={ visible } visible={ maskVisible } />
-      <PopLayer active={ visible }>
-        <Body>
-          { title && <h3> { title }</h3> }
-          { content && <p>{ content }</p> }
-        </Body>
-        <Footer>
-          <a onClick={ this.cancel }> cancel</a>
-          <a onClick={ this.confirm }> yes</a>
-        </Footer>
-      </PopLayer>
+      <Mask visible={ visible } >
+        <PopLayer active={ visible } style={ { transformOrigin: `${mousePos ? mousePos.x + 'px' : '50%'} ${mousePos ? mousePos.y + 'px' : '50%'}` } }>
+          <Body>
+            { title && <h3> { title }</h3> }
+            { content && <p>{ content }</p> }
+          </Body>
+          <Footer>
+            <a onClick={ this.cancel }> cancel</a>
+            <a onClick={ this.confirm }> yes</a>
+          </Footer>
+        </PopLayer>
+      </Mask>
     </>
   }
 }

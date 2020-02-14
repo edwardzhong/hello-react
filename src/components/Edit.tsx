@@ -22,6 +22,10 @@ const ListEdit = () => {
   };
 
   const add = () => {
+    Model.open({
+      title:'are you sure',
+      content: 'remove this item ?',
+    })
     const input = inputRef.current;
     const val = input.value.trim();
     if (!val) return;
