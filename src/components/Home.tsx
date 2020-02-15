@@ -68,7 +68,7 @@ const Home = () => {
         <Input type="email" placeholder="email" defaultValue={ user.email } onChange={ (e: ChangeEvent) => changeEmail(e) } />
       </div>
       <Link css={ LinkStyle } to="/edit"> redirect to edit </Link>
-      <Link css={ LinkStyle } to="/list"> redirect to list </Link>
+      <Link css={ LinkStyle } to="/sample"> redirect to sample </Link>
       <Pages>
         <li onClick={ () => setPage(1) }> 1 </li>
         <li onClick={ () => setPage(2) }> 2 </li>
