@@ -4,7 +4,7 @@ import { getContext } from '@/context';
 import { getNewList } from '@/service'
 import { wrapPromise } from '@/common/util'
 import SuspenseHoc from './common/suspenseHoc'
-import NewList from './common/NewList'
+import NewList from './NewList'
 import styled from 'styled-components'
 import { ListForm, Title, SubTitle, Tip, Input, LinkStyle } from './style/styles';
 
