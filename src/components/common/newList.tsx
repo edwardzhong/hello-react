@@ -2,11 +2,11 @@ import React from 'react';
 import { ResData } from 'type';
 
 const NewList: React.FC<{
-  resource: ResData<Array<{ title: string, content: string }>>
-}> = ({ resource }) => {
-  if (resource.code === 1 && resource.data.length) {
+  response: ResData<Array<{ title: string, content: string }>>
+}> = ({ response }) => {
+  if (response.code === 1 && response.data.length) {
     return <ul>{
-      resource.data.map((m, i) => <li key={ i }>{ m.title }</li>)
+      response.data.map((m, i) => <li key={ i }>{ m.title }</li>)
     }
     </ul>
   }

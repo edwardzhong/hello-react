@@ -1,2 +1,1 @@
-const host = 'develop.inaopao.com';
-export const api = `http://${host}/backend/api/`;
+export const api = `http://develop.inaopao.com/backend/api/`;

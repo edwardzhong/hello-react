@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import hoc from './common/hoc';
-import funHoc from './common/functionHoc';
-import RenderProps from './common/renderProps';
-import FunctionRender from './common/functionRender';
+import hoc from './Hoc';
+import funHoc from './FunctionHoc';
+import RenderProps from './RenderProps';
+import FunctionRender from './FunctionRender';
 
 // @hoc
 class ComA extends React.Component<{ theme: string }, {}> {

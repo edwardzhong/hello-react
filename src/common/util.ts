@@ -257,13 +257,13 @@ function shareUrl(type: string, opts: ShareArg): string {
  * 包装为 suspense 的数据子组件
  * @param promise Promise 函数
  */
-function wrapPromise(promise: (...args: any[]) => Promise<any>) {
+function wrapPromise(promise: (...args: any[]) => Promise<any>, ...args: any[]) {
   let status = 'pending';
   let result: any;
   let thenable: Promise<void>;
-  return (...arg: any[]) => {
+  return () => {
     if (!thenable) {
-      thenable = promise(arg).then(
+      thenable = promise(...args).then(
         r => {
           status = "success";
           result = r;
