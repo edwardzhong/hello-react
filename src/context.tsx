@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import React, { createContext, useReducer, useContext, useMemo } from 'react';
 import { createReducer, bindActions } from './common/store';
 import store from './store';
 import { ListState, PlainObject, Dispatch } from 'type';
@@ -14,7 +14,7 @@ export const Provider = (props: JSX.IntrinsicAttributes & React.ProviderProps<an
   const action = bindActions(store, commit);
   dispatch = commit;
   console.log(state); // develop log
-  return <Context.Provider { ...props } value={ { state, action } } />;
+  return useMemo(() => (<Context.Provider { ...props } value={ { state, action } } />), [state, dispatch])
 };
 
 export default Context;

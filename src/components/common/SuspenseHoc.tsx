@@ -1,6 +1,6 @@
 import React from 'react';
 import { ResData } from 'type';
 
-const SuspenseHoc = (Com: React.FC<{ response: ResData<any> }>): React.FC<{ fetchData: () => any }> => ({ fetchData }) => <Com response={ fetchData() } />
+const SuspenseHoc = (Com: React.FC<{ res: ResData<any> }>): React.FC<{ fetch: () => any }> => ({ fetch }) => <Com res={ fetch() } />
 
 export default SuspenseHoc

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Suspense, useState } from 'react';
+import React, { ChangeEvent, Suspense, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { getContext } from '@/context';
 import { getNewList } from '@/service'
@@ -18,11 +18,11 @@ const Pages = styled.ul`
 
 // const lazyNewList = wrapPromise(getNewList, 2);
 // const NewListFetch = () => {
-//   const response = lazyNewList();
-//   return <NewList response={ response } />;
+//   const res = lazyNewList();
+//   return <NewList res={ res } />;
 // }
 
-// const NewListFetch: React.FC<{ fetchData: () => any }> = ({ fetchData }) => <NewList response={ fetchData() } />
+// const NewListFetch: React.FC<{ fetch: () => any }> = ({ fetch }) => <NewList res={ fetch() } />
 
 const NewListFetch = SuspenseHoc(NewList);
 
@@ -39,8 +39,8 @@ const Home = () => {
     setUser({ email: (e.target as HTMLInputElement).value });
   };
 
-  const lazyNewList = wrapPromise(getNewList, page);
-  // const lazyNewList = useCallback(wrapPromise(getNewList, page), [page]);
+  // const lazyNewList = wrapPromise(getNewList, page);
+  const lazyNewList = useCallback(wrapPromise(getNewList, page), [page]);
 
   return (
     <ListForm>
@@ -74,7 +74,7 @@ const Home = () => {
         <li onClick={ () => setPage(2) }> 2 </li>
       </Pages>
       <Suspense fallback={ <div>Fetching Data ...</div> }>
-        <NewListFetch fetchData={ lazyNewList } />
+        <NewListFetch fetch={ lazyNewList } />
       </Suspense>
     </ListForm>
   );
