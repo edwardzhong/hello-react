@@ -1,39 +1,14 @@
 import React, { ChangeEvent, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { getContext } from '@/context';
-import { getNewList } from '../service'
+import { getNewList } from '@/service'
+import { wrapPromise } from '@/common/util'
 import NewList from './common/newList'
 import { ListForm, Title, SubTitle, Tip, Input, LinkStyle } from './style/styles';
-import { ResData } from 'type';
 
-function wrapPromise(promise: Promise<ResData<any>>) {
-  let status = "pending";
-  let result: any;
-  let suspender = promise.then(
-    r => {
-      status = "success";
-      result = r;
-    },
-    e => {
-      status = "error";
-      result = e;
-    }
-  );
-  return {
-    read() {
-      if (status === "pending") {
-        throw suspender;
-      } else if (status === "error") {
-        throw result;
-      } else if (status === "success") {
-        return result;
-      }
-    }
-  };
-}
-
+const lazyNewList = wrapPromise(getNewList);
 const NewFetch = () => {
-  const resource = wrapPromise(getNewList()).read();
+  const resource = lazyNewList();
   return <NewList resource={ resource } />;
 }
 
@@ -76,7 +51,7 @@ const Home = () => {
       </div>
       <Link css={ LinkStyle } to="/edit"> redirect to edit </Link>
       <Link css={ LinkStyle } to="/list"> redirect to list </Link>
-      <Suspense fallback={ <div>Fetching Users ...</div> }>
+      <Suspense fallback={ <div>Fetching Data ...</div> }>
         <NewFetch />
       </Suspense>
     </ListForm>

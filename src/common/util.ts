@@ -16,6 +16,22 @@ function deepCopy(p: object, c: object = {}): object {
 }
 
 /**
+ * 随机数字和字母
+ * @param l codeLength
+ */
+function randomCode(l = 4) {
+  let arr = [];
+  const codes = '01234567890123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  while (arr.length < l) {
+    let i = Math.floor(Math.random() * codes.length);
+    if (arr.indexOf(i) < 0) {
+      arr.push(i);
+    }
+  }
+  return arr.map(i => codes[i]);
+}
+
+/**
  * stringFormat('xx$1x $3 xxx$2', 11,22,33)
  * @param {String} str
  * @param  {...any} args
@@ -229,20 +245,45 @@ function shareUrl(type: string, opts: ShareArg): string {
   const configs = {
     weibo: ({ url, title, pic }: ShareArg) => `http://service.weibo.com/share/share.php?url=${encodeURI(url)}&title=${title}&pic=${encodeURIComponent(pic || '')}`,
     qq: ({ url, title, desc }: ShareArg) => `http://connect.qq.com/widget/shareqq/index.html?url=${encodeURI(url)}&title=${title}&source=${desc || ''}`,
-    douban: ({
-      url, title, pic, desc,
-    }: ShareArg) => `https://www.douban.com/share/service?href=${encodeURI(url)}&name=${title}&image=${encodeURIComponent(pic || '')}&text=${desc || ''}`,
-    qzone: ({
-      url, title, pic, desc,
-    }: ShareArg) => `http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${encodeURI(url)}&title=${title}&pics=${encodeURIComponent(pic || '')}&summary=${desc || ''}&desc=${desc || ''}&site=${encodeURI(url)}`,
+    douban: ({ url, title, pic, desc, }: ShareArg) => `https://www.douban.com/share/service?href=${encodeURI(url)}&name=${title}&image=${encodeURIComponent(pic || '')}&text=${desc || ''}`,
+    qzone: ({ url, title, pic, desc, }: ShareArg) => `http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${encodeURI(url)}&title=${title}&pics=${encodeURIComponent(pic || '')}&summary=${desc || ''}&desc=${desc || ''}&site=${encodeURI(url)}`,
     facebook: ({ url }: ShareArg) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURI(url)}`,
     twitter: ({ url, title }: ShareArg) => `https://twitter.com/intent/tweet?text=${title}&url=${encodeURI(url)}&via=${encodeURI(url)}`,
   };
   return configs[type](opts);
 }
 
+/**
+ * 包装为 suspense 的数据子组件
+ * @param promise Promise 函数
+ */
+function wrapPromise(promise: (...args: any[]) => Promise<any>) {
+  let status = 'pending'
+  let result: any
+  return (...arg: any[]) => {
+    const thenable = promise(arg).then(
+      r => {
+        status = "success";
+        result = r;
+      },
+      e => {
+        status = "error";
+        result = e;
+      }
+    );
+    if (status === "pending") {
+      throw thenable;
+    } else if (status === "error") {
+      throw result;
+    } else if (status === "success") {
+      return result;
+    }
+  }
+}
+
 export {
   deepCopy,
+  randomCode,
   stringFormat,
   formatTime,
   htmlEncode,
@@ -255,4 +296,5 @@ export {
   compressPictureToBlob,
   dataURLtoBlob,
   shareUrl,
+  wrapPromise,
 };

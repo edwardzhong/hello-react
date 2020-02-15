@@ -32,7 +32,7 @@ axios.interceptors.response.use(res => {
       // storage.clear();
     }
   }
-  return res.data;
+  return res;
 });
 
 export const form: AxiosFn = (url, data) => axios({
@@ -41,7 +41,7 @@ export const form: AxiosFn = (url, data) => axios({
   url,
   data,
 }).then(res => res.data, (err: Error) => ({ code: -99, msg: err.message }));
-export const get: AxiosFn = (url, param) => axios.get(url, { params: param }).then(res => res.data).catch((err: Error) => ({ code: -99, msg: err.message }));
-export const post: AxiosFn = (url, param) => axios.post(url, param).then(res => res.data).catch((err: Error) => ({ code: -99, msg: err.message }));
-export const put: AxiosFn = (url, param) => axios.put(url, param).then(res => res.data).catch((err: Error) => ({ code: -99, msg: err.message }));
-export const del: AxiosFn = (url, param) => axios.delete(url, { data: param }).then(res => res.data).catch((err: Error) => ({ code: -99, msg: err.message }));
+export const get: AxiosFn = (url, param) => axios.get(url, { params: param }).then(res => res.data, (err: Error) => ({ code: -99, msg: err.message }));
+export const post: AxiosFn = (url, param) => axios.post(url, param).then(res => res.data, (err: Error) => ({ code: -99, msg: err.message }));
+export const put: AxiosFn = (url, param) => axios.put(url, param).then(res => res.data, (err: Error) => ({ code: -99, msg: err.message }));
+export const del: AxiosFn = (url, param) => axios.delete(url, { data: param }).then(res => res.data, (err: Error) => ({ code: -99, msg: err.message }));

@@ -6,8 +6,8 @@ import { getContext } from '@/context';
  * function component with render props
  */
 interface Prop {
-    name: string;
-    children: (props: ListState) => JSX.Element;
+  name: string;
+  children: (props: ListState) => JSX.Element;
 }
 
 const FunctionRender: React.FC<Prop> = ({ name, children }) => {
@@ -18,8 +18,7 @@ const FunctionRender: React.FC<Prop> = ({ name, children }) => {
     <div>
       <h2>function render props by children</h2>
       <h4>
-        this is
-        { name }
+        this is { name }
       </h4>
       {
         children({ ...state })
