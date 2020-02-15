@@ -258,19 +258,22 @@ function shareUrl(type: string, opts: ShareArg): string {
  * @param promise Promise 函数
  */
 function wrapPromise(promise: (...args: any[]) => Promise<any>) {
-  let status = 'pending'
-  let result: any
+  let status = 'pending';
+  let result: any;
+  let thenable: Promise<void>;
   return (...arg: any[]) => {
-    const thenable = promise(arg).then(
-      r => {
-        status = "success";
-        result = r;
-      },
-      e => {
-        status = "error";
-        result = e;
-      }
-    );
+    if (!thenable) {
+      thenable = promise(arg).then(
+        r => {
+          status = "success";
+          result = r;
+        },
+        e => {
+          status = "error";
+          result = e;
+        }
+      );
+    }
     if (status === "pending") {
       throw thenable;
     } else if (status === "error") {
