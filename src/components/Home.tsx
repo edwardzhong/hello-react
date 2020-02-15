@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getContext } from '@/context';
 import { getNewList } from '@/service'
 import { wrapPromise } from '@/common/util'
-import SuspenseHoc from './common/suspenseHoc'
+import SuspenseHoc from './common/SuspenseHoc'
 import NewList from './NewList'
 import styled from 'styled-components'
 import { ListForm, Title, SubTitle, Tip, Input, LinkStyle } from './style/styles';
