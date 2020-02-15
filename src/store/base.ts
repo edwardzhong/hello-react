@@ -7,6 +7,9 @@ export const state: BaseState = {
 };
 
 export const actions: ActionTree<BaseState> = {
+  setLogin({ loginInfo }, payload) {
+    Object.assign(loginInfo, payload);
+  },
   clearLogin({ loginInfo }) {
     loginInfo.token = null;
   },
@@ -22,37 +25,33 @@ export const actions: ActionTree<BaseState> = {
 
 export const asyncs: AsyncsTree = {
   async loginDis(dispatch, payload = {}) {
-    const ret = await login(payload);
-    const { data } = ret;
-    if (data.code == 200) {
-      dispatch('setLogin', data.data);
-      localStorage.setItem('loginInfo', JSON.stringify(data.data));
+    const res = await login(payload);
+    if (res.code == 200) {
+      dispatch('setLogin', res.data);
+      localStorage.setItem('loginInfo', JSON.stringify(res.data));
     }
-    return ret;
+    return res;
   },
   async registerDis(dispatch, payload = {}) {
-    const ret = await register(payload);
-    const { data } = ret;
-    if (data.code == 200) {
-      const loginRet = await login(payload);
-      const rdata = loginRet.data;
-      if (rdata.code == 200) {
-        dispatch('setLogin', rdata.data);
-        localStorage.setItem('loginInfo', JSON.stringify(rdata.data));
+    const res = await register(payload);
+    if (res.code == 200) {
+      const loginRes = await login(payload);
+      if (loginRes.code == 200) {
+        dispatch('setLogin', loginRes.data);
+        localStorage.setItem('loginInfo', JSON.stringify(loginRes.data));
       }
-      return loginRet;
+      return loginRes;
     } else {
-      return ret;
+      return res;
     }
   },
   async logoutDis(dispatch) {
-    const ret = await logout();
-    const { data } = ret;
-    if (data.code == 200) {
+    const res = await logout();
+    if (res.code == 200) {
       dispatch('clearLogin');
       dispatch('clearUser');
       localStorage.removeItem('loginInfo');
     }
-    return ret;
+    return res;
   },
 };
