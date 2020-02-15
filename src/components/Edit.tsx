@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { getContext } from '@/context';
 import Model from './common/Model';
-import {
-  ListForm, SubTitle, Tip, Input, Button, LinkStyle,
-} from './style/styles';
+import { ListForm, SubTitle, Tip, Input, Button, LinkStyle, } from './style/styles';
 
 const ListEdit = () => {
   const { state, action } = getContext();

@@ -5,8 +5,8 @@ declare module 'react' {
   interface HTMLAttributes<T> extends DOMAttributes<T> {
     styleName?: string;
     css?: any;
-    active?: any;
-    visible?: any;
+    active?: boolean;
+    visible?: boolean;
   }
 }
 
