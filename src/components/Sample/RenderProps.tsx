@@ -5,28 +5,28 @@ import { ListState } from 'type';
  * class component with render props
  */
 interface Prop {
-    render: (props: ListState) => JSX.Element;
+  render: (props: ListState) => JSX.Element;
 }
 // class RenderProps extends React.Component<Prop, ListState> {
-//     state = {
-//         user: { name: 'alex', email: 'alex@alex.com' },
-//         list: [
-//             { 'id': '1', 'txt': 'aaa' },
-//             { 'id': '2', 'txt': 'bbb' },
-//         ]
-//     }
+//   state = {
+//     user: { name: 'alex', email: 'alex@alex.com' },
+//     list: [
+//       { 'id': '1', 'txt': 'aaa' },
+//       { 'id': '2', 'txt': 'bbb' },
+//     ]
+//   }
 
-//     render() {
-//         return <div>
-//             <h2>render props</h2>
-//             {
-//                 this.props.render({
-//                     user: this.state.user,
-//                     list: this.state.list
-//                 })
-//             }
-//         </div>
-//     }
+//   render() {
+//     return <div>
+//       <h2>render props</h2>
+//       {
+//         this.props.render({
+//           user: this.state.user,
+//           list: this.state.list
+//         })
+//       }
+//     </div>
+//   }
 // }
 
 /*

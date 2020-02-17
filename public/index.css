@@ -41,11 +41,6 @@ img, a {
   -webkit-touch-callout: none; /* 禁止系统默认菜单 */
 }
 
-#root{
-  width: 100%;
-  height: 100%;
-}
-
 @font-face {
   font-family: 'fontello';
   src: url('./font/fontello.eot?4353859');

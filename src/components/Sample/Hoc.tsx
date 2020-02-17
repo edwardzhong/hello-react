@@ -1,10 +1,10 @@
 import React from 'react';
 
 interface ComProps {
-    theme: string;
+  theme: string;
 }
 interface Props extends ComProps {
-    url: string;
+  url: string;
 }
 
 /**

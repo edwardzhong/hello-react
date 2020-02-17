@@ -5,7 +5,7 @@ import { getContext } from '@/context';
  * function component with hoc
  */
 interface Props {
-    url: string;
+  url: string;
 }
 
 const funHoc = (Com: React.FC): React.FC<Props> => (props) => {

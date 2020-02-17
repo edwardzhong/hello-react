@@ -6,7 +6,7 @@ import { wrapPromise } from '@/common/util'
 import SuspenseHoc from './common/SuspenseHoc'
 import NewList from './NewList'
 import styled from 'styled-components'
-import { ListForm, Title, SubTitle, Tip, Input, LinkStyle } from './style/styles';
+import { ListForm, Title, SubTitle, Tip, Input, LinkStyle } from './style';
 
 const Pages = styled.ul`
   li{
