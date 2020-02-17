@@ -13,7 +13,7 @@ export const ListForm = styled.div`
   }`;
 
 export const Title = styled.h2`
-    text-align: center;`;
+  text-align: center;`;
 
 export const SubTitle = styled.h3`
   ${nowrap}

@@ -35,10 +35,10 @@ const ListEdit = () => {
     margin: 0 0 15px 0;
     padding: 0;
     li{
-        padding: 5px;
-        width: 90%;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 5px;
+      padding: 5px;
+      width: 90%;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 5px;
     }`;
 
   return (
