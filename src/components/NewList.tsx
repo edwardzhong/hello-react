@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ResData } from 'type';
 
 const NewList: React.FC<{
@@ -14,9 +14,11 @@ const NewList: React.FC<{
     setList(list.filter(i => i.id !== id));
   }
 
+  console.log(res);
+
   if (list.length) {
     return <ul>{
-      list.map((l, i) => <li key={ i } onClick={ () => remove(l.id) } style={{ cursor:'pointer'}}>{ l.title }</li>)
+      list.map((l, i) => <li key={ i } onClick={ () => remove(l.id) } style={ { cursor: 'pointer' } }>{ l.title }</li>)
     }
     </ul>
   }

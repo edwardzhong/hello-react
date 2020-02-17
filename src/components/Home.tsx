@@ -16,9 +16,9 @@ const Pages = styled.ul`
     cursor: pointer;
   }`
 
-// const lazyNewList = wrapPromise(getNewList, 2);
+// const fetchNewList = wrapPromise(getNewList, 2);
 // const NewListFetch = () => {
-//   const res = lazyNewList();
+//   const res = fetchNewList();
 //   return <NewList res={ res } />;
 // }
 
@@ -39,8 +39,8 @@ const Home = () => {
     setUser({ email: (e.target as HTMLInputElement).value });
   };
 
-  // const lazyNewList = wrapPromise(getNewList, page);
-  const lazyNewList = useCallback(wrapPromise(getNewList, page), [page]);
+  // const fetchNewList = wrapPromise(getNewList, page);
+  const fetchNewList = useCallback(wrapPromise(getNewList, page), [page]);
 
   return (
     <ListForm>
@@ -74,7 +74,7 @@ const Home = () => {
         <li onClick={ () => setPage(2) }> 2 </li>
       </Pages>
       <Suspense fallback={ <div>Fetching Data ...</div> }>
-        <NewListFetch fetch={ lazyNewList } />
+        <NewListFetch fetch={ fetchNewList } />
       </Suspense>
     </ListForm>
   );
