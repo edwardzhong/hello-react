@@ -1,6 +1,6 @@
 import React, { ChangeEvent, Suspense, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { getContext } from '@/context';
+import { GetContext } from '@/context';
 import { getNewList } from '@/service'
 import { wrapPromise } from '@/common/util'
 import SuspenseHoc from './common/SuspenseHoc'
@@ -27,7 +27,7 @@ const Pages = styled.ul`
 const NewListFetch = SuspenseHoc(NewList);
 
 const Home = () => {
-  const { state, action } = getContext();
+  const { state, action } = GetContext();
   const { user } = state;
   const { setUser } = action;
   const [page, setPage] = useState(1);

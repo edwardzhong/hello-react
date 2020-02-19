@@ -8,7 +8,7 @@ const states = store.state;
 const rootReducer = createReducer(store, dispatch);
 const Context = createContext(null);
 
-export const getContext: () => { state: ListState, action: PlainObject } = () => useContext(Context);
+export const GetContext: () => { state: ListState, action: PlainObject } = () => useContext(Context);
 export const Provider = (props: JSX.IntrinsicAttributes & React.ProviderProps<any>) => {
   const [state, commit] = useReducer(rootReducer, states);
   const action = bindActions(store, commit);

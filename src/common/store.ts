@@ -19,7 +19,7 @@ const createAction = (typeName: string, argName: string): Function => {
     // console.log(payload); // develop log
     return payload;
   };
-  // fn.type = typeName;
+  fn.type = typeName;
   fn.toString = () => typeName;
   return fn;
 };

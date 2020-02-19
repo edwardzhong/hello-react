@@ -1,5 +1,5 @@
 import React from 'react';
-import { getContext } from '@/context';
+import { GetContext } from '@/context';
 
 /**
  * function component with hoc
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const funHoc = (Com: React.FC): React.FC<Props> => (props) => {
-  const { state } = getContext();
+  const { state } = GetContext();
   const { list } = state;
   const [name] = React.useState('function hoc');
   return (

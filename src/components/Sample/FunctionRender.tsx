@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListState } from 'type';
-import { getContext } from '@/context';
+import { GetContext } from '@/context';
 
 /*
  * function component with render props
@@ -11,7 +11,7 @@ interface Prop {
 }
 
 const FunctionRender: React.FC<Prop> = ({ name, children }) => {
-  const { state } = getContext();
+  const { state } = GetContext();
   // const [user] = useState({ name: 'alex', email: 'alex@alex.com' });
   // const [list] = useState([{ 'id': '1', 'txt': 'aaa' }, { 'id': '2', 'txt': 'ccc' },]);
   return (

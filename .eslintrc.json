@@ -31,7 +31,9 @@
     "no-unused-vars": 0,
     "react/display-name": 0,
     "react/prop-types": 0,
-    "react/no-render-return-value": 0
+    "react/no-render-return-value": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "settings": {
     "react": {

@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { getContext } from '@/context';
+import { GetContext } from '@/context';
 import Model from './common/Model';
 import { ListForm, SubTitle, Tip, Input, Button, LinkStyle, } from './style';
 
 const ListEdit = () => {
-  const { state, action } = getContext();
+  const { state, action } = GetContext();
   const { user, list } = state;
   const { removeComment, addComment } = action;
   const inputRef = useRef(null);
