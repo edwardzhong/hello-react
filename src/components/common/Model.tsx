@@ -13,11 +13,11 @@ const PopLayer = styled.div`
   box-shadow: 0 0 2px 2px hsla(0,100%,0%,.1);
   background-color: #fff;
   overflow: hidden;
-  transition: all .3s ease-in-out;
   transform-style: preserve-3d;
-  visibility:hidden;
-  opacity:0;
+  visibility: hidden;
+  opacity: 0;
   transform: scale(0);
+  transition: all .3s ease-in-out;
   ${props => props.active && css`
     visibility: visible;
     opacity: 1;
