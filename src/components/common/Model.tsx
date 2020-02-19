@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Mask from './Mask';
 
 const PopLayer = styled.div`
@@ -15,10 +15,14 @@ const PopLayer = styled.div`
   overflow: hidden;
   transition: all .3s ease-in-out;
   transform-style: preserve-3d;
-  visibility:visible;
-  visibility: ${props => props.active ? 'visible' : 'hidden'};
-  opacity: ${props => props.active ? '1' : '0'};
-  transform: ${props => props.active ? 'scale(1,1)' : 'scale(0,0)'};`
+  visibility:hidden;
+  opacity:0;
+  transform: scale(0);
+  ${props => props.active && css`
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);`
+  }`
 
 const Body = styled.div`
   display: flex;
