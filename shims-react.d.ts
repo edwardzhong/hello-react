@@ -4,7 +4,7 @@ import { DOMAttributes } from 'react';
 declare module 'react' {
   interface HTMLAttributes<T> extends DOMAttributes<T> {
     styleName?: string;
-    css?: string;
+    css?: any;
     active?: boolean;
     visible?: boolean;
   }
