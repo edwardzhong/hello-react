@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ResData } from 'type';
 
-const NewList: React.FC<{
-  res: ResData<Array<{ id: string; title: string, content: string }>>
-}> = ({ res }) => {
-
+type List = Array<{ id: string; title: string, content: string }>
+const NewList: React.FC<{ res: ResData<List> }> = ({ res }) => {
   const [list, setList] = useState(res.data || []);
   useEffect(() => {
     setList(res.data || [])
