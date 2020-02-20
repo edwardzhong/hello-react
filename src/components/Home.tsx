@@ -39,7 +39,6 @@ const Home = () => {
     setUser({ email: (e.target as HTMLInputElement).value });
   };
 
-  // const fetchNewList = wrapPromise(getNewList, page);
   const fetchNewList = useCallback(wrapPromise(getNewList, page), [page]);
 
   return (

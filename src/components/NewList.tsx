@@ -21,6 +21,7 @@ const NewList: React.FC<{ res: ResData<List> }> = ({ res }) => {
     </ul>
   }
   return <div>no data</div>
+
 }
 
 export default NewList
