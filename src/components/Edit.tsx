@@ -1,9 +1,20 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { GetContext } from '@/context';
 import Model from './common/Model';
+import styled from 'styled-components';
 import { ListForm, SubTitle, Tip, Input, Button, LinkStyle, } from './style';
+
+const UL = styled.ul`
+  list-style-type: none;
+  margin: 0 0 15px 0;
+  padding: 0;
+  li{
+    padding: 5px;
+    width: 90%;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+  }`
 
 const ListEdit = () => {
   const { state, action } = GetContext();
@@ -13,7 +24,7 @@ const ListEdit = () => {
 
   const showDialog = (id: string) => {
     Model.open({
-      title:'are you sure',
+      title: 'are you sure',
       content: 'remove this item ?',
       onOk: () => removeComment({ id })
     })
@@ -29,17 +40,6 @@ const ListEdit = () => {
     });
     input.value = '';
   };
-
-  const UL = styled.ul`
-    list-style-type: none;
-    margin: 0 0 15px 0;
-    padding: 0;
-    li{
-      padding: 5px;
-      width: 90%;
-      border-bottom: 1px solid #eee;
-      margin-bottom: 5px;
-    }`;
 
   return (
     <>

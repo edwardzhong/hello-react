@@ -20,7 +20,7 @@ function deepCopy(p: object, c: object = {}): object {
  * @param l codeLength
  */
 function randomCode(l = 4) {
-  let arr = [];
+  const arr = [];
   const codes = '01234567890123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   while (arr.length < l) {
     let i = Math.floor(Math.random() * codes.length);
@@ -235,6 +235,63 @@ function dataURLtoBlob(base64: string): Blob {
   return new Blob([u8arr], { type: mime });
 }
 
+
+/**
+ * 图形验证码
+ * @param canvas 
+ * @param str 
+ */
+function drawCode(canvas: HTMLCanvasElement, str: string) {
+  const h = canvas.height;
+  const w = canvas.width;
+  const ctx = canvas.getContext('2d');
+  ctx.font = '80px Verdana';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.lineWidth = 4;
+  ctx.clearRect(0, 0, w, h);
+
+  //随机线条
+  for (let i = 0; i < 50; i++) {
+    const hsl = Math.floor(Math.random() * 360);
+    const sx = Math.floor(Math.random() * w);
+    const sy = Math.floor(Math.random() * h / 2);
+    const dx = Math.floor(Math.random() * w);
+    const dy = Math.floor(Math.random() * (h - h / 2) + h / 2);
+    ctx.save();
+    ctx.strokeStyle = 'hsl(' + hsl + ',80%,80%)';
+    ctx.beginPath();
+    ctx.moveTo(sx, sy);
+    ctx.lineTo(dx, dy);
+    ctx.stroke();
+    ctx.restore();
+  }
+  // 随机字符
+  str.split('').forEach((a, i) => {
+    const hsl = Math.floor(Math.random() * 360);
+    const rot = (Math.floor(Math.random() * 2) * 2 - 1) * Math.random() * Math.PI / 6;
+    ctx.save();
+    ctx.translate(40 + i * 60, h / 2);
+    ctx.rotate(rot);
+    ctx.fillStyle = 'hsl(' + hsl + ',40%,40%)';
+    ctx.fillText(a, 0, 0);
+    ctx.restore();
+  });
+  //前景圆形
+  // for (let i = 0; i < 30; i++) {
+  //   const hsl = Math.floor(Math.random() * 360);
+  //   const x = Math.floor(Math.random() * w);
+  //   const y = Math.floor(Math.random() * h);
+  //   const r = Math.ceil(Math.random() * 8);
+  //   ctx.save();
+  //   ctx.beginPath();
+  //   ctx.fillStyle = 'hsl(' + hsl + ',100%, 95%)';
+  //   ctx.arc(x, y, r, 0, 2 * Math.PI, false);
+  //   ctx.fill();
+  //   ctx.restore();
+  // }
+}
+
 type ShareArg = { url: string; title: string; pic?: string; desc?: string };
 /**
  * sns分享链接
@@ -298,6 +355,7 @@ export {
   compressPictureToBase64,
   compressPictureToBlob,
   dataURLtoBlob,
+  drawCode,
   shareUrl,
   wrapPromise,
 };

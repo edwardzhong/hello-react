@@ -1,36 +1,14 @@
-import React, { ChangeEvent, Suspense, useState, useCallback } from 'react';
+import React, { ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { GetContext } from '@/context';
-import { getNewList } from '@/service'
-import { wrapPromise } from '@/common/util'
-import SuspenseHoc from './common/SuspenseHoc'
-import NewList from './NewList'
-import styled from 'styled-components'
 import { ListForm, Title, SubTitle, Tip, Input, LinkStyle } from './style';
 
-const Pages = styled.ul`
-  li{
-    display: inline-block;
-    padding: 10px;
-    color:hsl(200,100%,50%);
-    cursor: pointer;
-  }`
-
-// const fetchNewList = wrapPromise(getNewList, 2);
-// const NewListFetch = () => {
-//   const res = fetchNewList();
-//   return <NewList res={ res } />;
-// }
-
-// const NewListFetch: React.FC<{ fetch: () => any }> = ({ fetch }) => <NewList res={ fetch() } />
-
-const NewListFetch = SuspenseHoc(NewList);
 
 const Home = () => {
   const { state, action } = GetContext();
   const { user } = state;
   const { setUser } = action;
-  const [page, setPage] = useState(1);
+  
   const changeName = (e: ChangeEvent) => {
     setUser({ name: (e.target as HTMLInputElement).value });
   };
@@ -38,9 +16,7 @@ const Home = () => {
   const changeEmail = (e: ChangeEvent) => {
     setUser({ email: (e.target as HTMLInputElement).value });
   };
-
-  const fetchNewList = useCallback(wrapPromise(getNewList, page), [page]);
-
+  
   return (
     <ListForm>
       <Title>Hello Webpack React Hooks!</Title>
@@ -68,13 +44,7 @@ const Home = () => {
       </div>
       <Link css={ LinkStyle } to="/edit"> redirect to edit </Link>
       <Link css={ LinkStyle } to="/sample"> redirect to sample </Link>
-      <Pages>
-        <li onClick={ () => setPage(1) }> 1 </li>
-        <li onClick={ () => setPage(2) }> 2 </li>
-      </Pages>
-      <Suspense fallback={ <div>Fetching Data ...</div> }>
-        <NewListFetch fetch={ fetchNewList } />
-      </Suspense>
+      <Link css={ LinkStyle } to="/list"> redirect to list </Link>
     </ListForm>
   );
 };
