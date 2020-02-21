@@ -127,10 +127,11 @@ function htmlDecode(str: string = ''): string {
  * @param {Number} n
  */
 function getContentSummary(str: string, n: number): string {
-  const replaceHtmlTags = (str: string) => str.replace(/<\s*\/?\s*\w+[\S\s]*?>/g, ''); const // 过滤掉html标签
-    pattern = /^[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+/;
-  let ret = ''; let count = 0; let
-    m;
+  const replaceHtmlTags = (str: string) => str.replace(/<\s*\/?\s*\w+[\S\s]*?>/g, ''); // 过滤掉html标签
+  const pattern = /^[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+/;
+  let ret = ''; 
+  let count = 0; 
+  let m;
   str = replaceHtmlTags(htmlDecode(str));
 
   while (str.length) {
