@@ -1,6 +1,6 @@
 html {
   font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', STHeiti, 'Microsoft Yahei', Tahoma, Simsun, sans-serif;
-  font-size: 24px;
+  font-size: 16px;
   color: #2e2e2e;
   line-height: 1.6;
   width: 100%;
@@ -98,38 +98,38 @@ img, a {
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-bell:before { content: '\e800'; } /* '' */
-.icon-record:before { content: '\e801'; } /* '' */
-.icon-briefcase:before { content: '\e802'; } /* '' */
-.icon-feather:before { content: '\e803'; } /* '' */
-.icon-location:before { content: '\e804'; } /* '' */
-.icon-tag:before { content: '\e805'; } /* '' */
-.icon-heart:before { content: '\e806'; } /* '' */
-.icon-cog:before { content: '\e807'; } /* '' */
-.icon-forward:before { content: '\e808'; } /* '' */
-.icon-eye:before { content: '\e809'; } /* '' */
-.icon-search:before { content: '\e80a'; } /* '' */
-.icon-logout:before { content: '\e80b'; } /* '' */
-.icon-edit-alt:before { content: '\e80c'; } /* '' */
-.icon-camera:before { content: '\e80d'; } /* '' */
-.icon-globe:before { content: '\e80f'; } /* '' */
-.icon-minus:before { content: '\e81a'; } /* '' */
-.icon-ok:before { content: '\e828'; } /* '' */
-.icon-list:before { content: '\f0ca'; } /* '' */
-.icon-ellipsis:before { content: '\f141'; } /* '' */
-.icon-qq:before { content: '\f1d6'; } /* '' */
-.icon-wechat:before { content: '\f1d7'; } /* '' */
-.icon-paper:before { content: '\f1d8'; } /* '' */
-.icon-venus:before { content: '\f221'; } /* '' */
-.icon-mars:before { content: '\f222'; } /* '' */
-.icon-transgender:before { content: '\f224'; } /* '' */
-.icon-venus-double:before { content: '\f226'; } /* '' */
-.icon-mars-double:before { content: '\f227'; } /* '' */
-.icon-venus-mars:before { content: '\f228'; } /* '' */
-.icon-neuter:before { content: '\f22c'; } /* '' */
-.icon-whatsapp:before { content: '\f232'; } /* '' */
-.icon-hourglass:before { content: '\f252'; } /* '' */
-.icon-user:before { content: '\f2bd'; } /* '' */
-.icon-facebook:before { content: '\f308'; } /* '' */
-.icon-weibo:before { content: '\f33f'; } /* '' */
-.icon-comment:before { content: '\f4ac'; } /* '' */
+.icon-bell:before { content: '\e800'; }
+.icon-record:before { content: '\e801'; }
+.icon-briefcase:before { content: '\e802'; }
+.icon-feather:before { content: '\e803'; }
+.icon-location:before { content: '\e804'; }
+.icon-tag:before { content: '\e805'; }
+.icon-heart:before { content: '\e806'; }
+.icon-cog:before { content: '\e807'; }
+.icon-forward:before { content: '\e808'; }
+.icon-eye:before { content: '\e809'; }
+.icon-search:before { content: '\e80a'; }
+.icon-logout:before { content: '\e80b'; }
+.icon-edit-alt:before { content: '\e80c'; }
+.icon-camera:before { content: '\e80d'; }
+.icon-globe:before { content: '\e80f'; }
+.icon-minus:before { content: '\e81a'; }
+.icon-ok:before { content: '\e828'; }
+.icon-list:before { content: '\f0ca'; }
+.icon-ellipsis:before { content: '\f141'; }
+.icon-qq:before { content: '\f1d6'; }
+.icon-wechat:before { content: '\f1d7'; }
+.icon-paper:before { content: '\f1d8'; }
+.icon-venus:before { content: '\f221'; }
+.icon-mars:before { content: '\f222'; }
+.icon-transgender:before { content: '\f224'; }
+.icon-venus-double:before { content: '\f226'; }
+.icon-mars-double:before { content: '\f227'; }
+.icon-venus-mars:before { content: '\f228'; }
+.icon-neuter:before { content: '\f22c'; }
+.icon-whatsapp:before { content: '\f232'; }
+.icon-hourglass:before { content: '\f252'; }
+.icon-user:before { content: '\f2bd'; }
+.icon-facebook:before { content: '\f308'; }
+.icon-weibo:before { content: '\f33f'; }
+.icon-comment:before { content: '\f4ac'; }

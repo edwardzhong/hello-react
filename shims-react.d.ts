@@ -6,21 +6,5 @@ declare module 'react' {
     styleName?: string;
     css?: any;
     active?: boolean;
-    visible?: boolean;
   }
 }
-
-
-// import * as axios from './axios'
-// import * as context from './context'
-
-// declare namespace Axios {
-//     export type Data = axios.Data;
-//     export type Response = axios.Response;
-// }
-
-// declare namespace Context {
-//     export type Store = context.Store;
-//     export type Action = context.Action;
-//     export type Reducer = context.Reducer;
-// }
