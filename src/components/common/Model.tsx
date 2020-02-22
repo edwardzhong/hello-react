@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styled, { css } from 'styled-components';
-import Mask from './Mask';
+import Backdrop from './Backdrop';
 
 const PopLayer = styled.div`
   position: relative;
@@ -101,7 +101,7 @@ class Model extends Component {
   render() {
     const { visible, title, content } = this.state
     return <>
-      <Mask visible={ visible } >
+      <Backdrop visible={ visible } >
         <PopLayer active={ visible } style={ { transformOrigin: `${mousePos ? mousePos.x + 'px' : '50%'} ${mousePos ? mousePos.y + 'px' : '50%'}` } }>
           <Body>
             { title && <h3> { title }</h3> }
@@ -112,7 +112,7 @@ class Model extends Component {
             <a onClick={ this.confirm }> yes</a>
           </Footer>
         </PopLayer>
-      </Mask>
+      </Backdrop>
     </>
   }
 }
