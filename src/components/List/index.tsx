@@ -1,11 +1,11 @@
-import React, { useState, useCallback, Suspense } from 'react';
+import React, { useState, useCallback, /* Suspense */ } from 'react';
 import { Link } from 'react-router-dom';
 import { getNewList } from '@/service'
-// import { useFetch } from '@/common/hooks'
-import { wrapPromise } from '@/common/util'
-import SuspenseHoc from '../common/SuspenseHoc'
-import NewList from './NewList'
-// import FetchList from './FetchList';
+import { useFetch } from '@/common/hooks'
+// import { wrapPromise } from '@/common/util'
+// import SuspenseHoc from '../common/SuspenseHoc'
+// import NewList from './NewList'
+import FetchList from './FetchList';
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -34,20 +34,16 @@ const Title = styled.h3`
 // }
 // const NewListFetch: React.FC<{ fetch: () => any }> = ({ fetch }) => <NewList res={ fetch() } />
 
-const NewListFetch = SuspenseHoc(NewList);
+// const NewListFetch = SuspenseHoc(NewList);
 const List = () => {
   const [page, setPage] = useState(1);
-  const fetchNewList = useCallback(wrapPromise(getNewList, page), [page]);
-  // const [isFetching, res, setArg] = useFetch(getNewList, 1);
-
-  // const toPage = (i: number) => {
-  //   setPage(i);
-  //   setArg(i);
-  // }
+  // const fetchNewList = useCallback(wrapPromise(getNewList, page), [page]);
+  const fetch = useCallback(() => getNewList(page), [page]);
+  const [isFetching, res] = useFetch(fetch);
 
   return <Container>
     <Link to="/"><NavLink>redirect to home</NavLink></Link>
-    <Title>Suspense List</Title>
+    {/* <Title>Suspense List</Title>
     <p>page: { page }</p>
     <Pages>
       <li onClick={ () => setPage(1) }> 1 </li>
@@ -55,18 +51,18 @@ const List = () => {
     </Pages>
     <Suspense fallback={ <div>Fetching Data ...</div> }>
       <NewListFetch fetch={ fetchNewList } />
-    </Suspense>
+    </Suspense> */}
     <Title>Hooks List</Title>
-    {/* <p>page: { page }</p>
+    <p>page: { page }</p>
     <Pages>
-      <li onClick={ () => toPage(1) }> 1 </li>
-      <li onClick={ () => toPage(2) }> 2 </li>
+      <li onClick={ () => setPage(1) }> 1 </li>
+      <li onClick={ () => setPage(2) }> 2 </li>
     </Pages>
     {
       isFetching
         ? <div>loading...</div>
         : <FetchList res={ res } />
-    } */}
+    }
   </Container>
 }
 

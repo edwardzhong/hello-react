@@ -105,20 +105,24 @@ export const useCodes: (canvasRef: MutableRefObject<HTMLCanvasElement>) => [stri
   return [codes, updateCode];
 }
 
-export const useFetch = (fetch: (arg?: any) => Promise<any>, arg: any, callabck?: (res: any) => void) => {
+/**
+ * fetch data
+ * @param fetch useCallback function
+ * @param callabck 
+ */
+export const useFetch = (fetch: () => Promise<any>, callabck?: (res: any) => void) => {
   const [isFetching, setFetching] = useState(true);
   const [response, setResponse] = useState();
-  const [payload, setPayload] = useState(arg);
 
   useEffect(() => {
     (async () => {
       setFetching(true);
-      const res = await fetch(payload)
+      const res = await fetch()
       setResponse(res);
       if (callabck) callabck(res);
       setFetching(false);
     })();
-  }, [payload]);
+  }, [fetch]);
 
-  return [isFetching, response, setPayload];
+  return [isFetching, response];
 }
