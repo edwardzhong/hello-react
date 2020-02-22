@@ -1,10 +1,14 @@
-import { useReducer, ChangeEvent } from 'react';
+import { useReducer, useState, useEffect, ChangeEvent } from 'react';
 
 function stateReducer(state: object | Function, newState: object) {
   return typeof newState === 'function' ? newState(state) : { ...state, ...newState };
 }
 
-function useForm(initialState: object) {
+/**
+ * form input
+ * @param initialState init state
+ */
+export const useForm = (initialState: object) => {
   const [state, setState] = useReducer(stateReducer, initialState || {});
 
   const createPropsGetter = (type: string) => (name: string, ownValue: string) => {
@@ -47,4 +51,37 @@ function useForm(initialState: object) {
   ];
 }
 
-export default useForm;
+/**
+ * 倒计时
+ * @param s seconds
+ */
+export const useSecond = (s: number): [number, (s: number) => void] => {
+  const [second, setSecond] = useState(s || 0);
+
+  useEffect(() => {
+    if (second < 1) return () => { }
+    const timer = setTimeout(() => {
+      setSecond(second - 1)
+    }, 1000);
+    return () => clearTimeout(timer)
+  }, [second]);
+
+  return [second, setSecond];
+}
+
+/**
+ * key enter
+ * @param submit submit function
+ */
+export const useKeyEnter = (submit: () => void) => {
+  useEffect(() => {
+    const keyEnter = (e: KeyboardEvent) => {
+      if (e.keyCode != 13) return;
+      submit();
+    }
+    document.addEventListener("keydown", keyEnter, false);
+    return () => {
+      document.removeEventListener("keydown", keyEnter, false);
+    }
+  }, [submit]);
+}

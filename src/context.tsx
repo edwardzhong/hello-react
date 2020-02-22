@@ -14,7 +14,7 @@ export const Provider = (props: JSX.IntrinsicAttributes & React.ProviderProps<an
   const action = bindActions(store, commit);
   dispatch = commit;
   console.log(state); // develop log
-  return useMemo(() => (<Context.Provider { ...props } value={ { state, action } } />), [state, dispatch])
+  return useMemo(() => <Context.Provider { ...props } value={ { state, action } } />, [state, action, props]);
 };
 
 export default Context;
