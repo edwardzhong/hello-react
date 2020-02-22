@@ -28,7 +28,7 @@ function randomCode(l = 4) {
       arr.push(i);
     }
   }
-  return arr.map(i => codes[i]);
+  return arr.map(i => codes[i]).join('');
 }
 
 /**

@@ -1,4 +1,5 @@
-import { useReducer, useState, useEffect, ChangeEvent } from 'react';
+import { useReducer, useState, useEffect, ChangeEvent, MutableRefObject } from 'react';
+import { randomCode, drawCode } from './util'
 
 function stateReducer(state: object | Function, newState: object) {
   return typeof newState === 'function' ? newState(state) : { ...state, ...newState };
@@ -84,4 +85,22 @@ export const useKeyEnter = (submit: () => void) => {
       document.removeEventListener("keydown", keyEnter, false);
     }
   }, [submit]);
+}
+
+/**
+ * generate canvas checkcode
+ * @param canvasRef 
+ */
+export const useCodes: (canvasRef: MutableRefObject<HTMLCanvasElement>) => [string, () => void] = canvasRef => {
+  const [codes, setCodes] = useState(randomCode());
+
+  useEffect(() => {
+    drawCode(canvasRef.current, codes);
+  }, [codes]);
+
+  const updateCode = () => {
+    setCodes(randomCode());
+  }
+
+  return [codes, updateCode];
 }
