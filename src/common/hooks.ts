@@ -52,6 +52,26 @@ export const useForm = (initialState: object) => {
   ];
 }
 
+export const useWinSize = () => {
+  const [width, setWidth] = useState(window.innerWidth || document.documentElement.clientWidth);
+  const [height, setHeight] = useState(window.innerHeight || document.documentElement.clientHeight);
+
+  const onResize = () => {
+    setWidth(window.innerWidth || document.documentElement.clientWidth);
+    setHeight(window.innerHeight || document.documentElement.clientHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', onResize, false);
+
+    return () => {
+      window.removeEventListener('resize', onResize, false);
+    };
+  }, []);
+
+  return [width, height];
+}
+
 /**
  * 倒计时
  * @param s seconds
