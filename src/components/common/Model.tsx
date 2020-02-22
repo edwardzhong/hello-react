@@ -22,7 +22,7 @@ const PopLayer = styled.div`
     visibility: visible;
     opacity: 1;
     transform: scale(1);`
-  }`
+}`
 
 const Body = styled.div`
   display: flex;

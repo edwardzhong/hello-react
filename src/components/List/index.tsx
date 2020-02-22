@@ -1,7 +1,7 @@
 import React, { useState, useCallback, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { getNewList } from '@/service'
-// import useFetch from '@/common/useFetch'
+// import { useFetch } from '@/common/hooks'
 import { wrapPromise } from '@/common/util'
 import SuspenseHoc from '../common/SuspenseHoc'
 import NewList from './NewList'

@@ -31,16 +31,16 @@ const Home = () => {
     <div>
       <p>
         hello,
-          { user.name }
+        { user.name }
         { ' ' }
         !
-        </p>
+      </p>
       <p>
         your email is
-          { user.email }
+        { user.email }
         { ' ' }
         !
-        </p>
+      </p>
       <Tip>please change the name and email !!</Tip>
     </div>
     <div>
