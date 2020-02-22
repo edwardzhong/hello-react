@@ -1,7 +1,7 @@
 /**
  * deep copy
- * @param {Object} p
- * @param {Object} c
+ * @param {Object} p parent object
+ * @param {Object} c child object to return
  */
 function deepCopy(p: object, c: object = {}): object {
   for (const i in p) {
@@ -17,7 +17,7 @@ function deepCopy(p: object, c: object = {}): object {
 
 /**
  * 随机数字和字母
- * @param l codeLength
+ * @param {Number} l code length
  */
 function randomCode(l = 4) {
   const arr = [];
@@ -33,8 +33,8 @@ function randomCode(l = 4) {
 
 /**
  * stringFormat('xx$1x $3 xxx$2', 11,22,33)
- * @param {String} str
- * @param  {...any} args
+ * @param {String} str   string
+ * @param  {...any} args arguments to fill string
  */
 function stringFormat(str: string, ...args: any[]): string {
   // args = args.flat();// Array can be Array, because flat function
@@ -92,8 +92,8 @@ function formatTime(str: string): string {
 /**
  * html encode
  * html转码
- * @param  {String} str [description]
- * @return {String}     [description]
+ * @param  {String} str html string
+ * @return {String}     encode string
  */
 function htmlEncode(str: string): string {
   if (!str) return '';
@@ -108,8 +108,8 @@ function htmlEncode(str: string): string {
 /**
  * html decode
  * html解码
- * @param  {String} str [description]
- * @return {String}     [description]
+ * @param  {String} str encode string
+ * @return {String}     html string
  */
 function htmlDecode(str: string = ''): string {
   if (!str) return '';
@@ -123,8 +123,8 @@ function htmlDecode(str: string = ''): string {
 
 /**
  * Intercept the first n strings
- * @param {String} str
- * @param {Number} n
+ * @param {String} str string
+ * @param {Number} n   string length to cut
  */
 function getContentSummary(str: string, n: number): string {
   const replaceHtmlTags = (str: string) => str.replace(/<\s*\/?\s*\w+[\S\s]*?>/g, ''); // 过滤掉html标签
@@ -157,8 +157,8 @@ function getContentSummary(str: string, n: number): string {
 /**
  * Count the number of string
  * 计算字符串文字数量(拉丁中日韩字符)
- * @param  {String} str
- * @return {Number} string number
+ * @param  {String} str string
+ * @return {Number} word number
  */
 function wordCount(str: string): number {
   const pattern = /[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g;
@@ -177,7 +177,8 @@ function wordCount(str: string): number {
 
 /**
  * 计算包含双字节字符和emoji的准确长度
- * @param str 字符串
+ * @param {String} str string
+ * @return {Number} string length
  */
 function charCount(str: string): number {
   const reg = /[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g;
@@ -239,8 +240,8 @@ function dataURLtoBlob(base64: string): Blob {
 
 /**
  * 图形验证码
- * @param canvas 
- * @param str 
+ * @param {HTMLCanvasElement} canvas 
+ * @param {String} str 
  */
 function drawCode(canvas: HTMLCanvasElement, str: string) {
   const h = canvas.height;
