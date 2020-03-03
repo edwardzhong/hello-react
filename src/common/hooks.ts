@@ -52,6 +52,9 @@ export const useForm = (initialState: object) => {
   ];
 }
 
+/**
+ * window size
+ */
 export const useWinSize = () => {
   const [width, setWidth] = useState(window.innerWidth || document.documentElement.clientWidth);
   const [height, setHeight] = useState(window.innerHeight || document.documentElement.clientHeight);

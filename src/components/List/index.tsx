@@ -42,7 +42,9 @@ const List = () => {
   const [isFetching, res] = useFetch(fetch);
 
   return <Container>
-    <Link to="/"><NavLink>redirect to home</NavLink></Link>
+    <Link to="/">
+      <NavLink>redirect to home</NavLink>
+    </Link>
     {/* <Title>Suspense List</Title>
     <p>page: { page }</p>
     <Pages>

@@ -3,6 +3,7 @@ import { ResData } from 'type';
 
 type List = Array<{ id: string; title: string, content: string }>
 const NewList: React.FC<{ res: ResData<List> }> = ({ res }) => {
+  
   const [list, setList] = useState(res.data || []);
   useEffect(() => {
     setList(res.data || [])
