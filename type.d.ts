@@ -43,9 +43,8 @@ interface ResData<T> {
   msg?: string;
   data?: T;
 }
-type ActionRes = Promise<ResData<any>>;
-type ActionFn<T> = (arg?: T) => ActionRes;
-type AxiosFn = (url: string, param?: any) => ActionRes;
+
+type AxiosFn = (url: string, param?: any) => Promise<ResData<any>>;
 
 export {
   PlainObject,

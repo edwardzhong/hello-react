@@ -59,7 +59,7 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader',
+          'babel-loader?cacheDirectory',
           {
             loader: 'ts-loader',
             options: {
