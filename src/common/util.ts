@@ -52,8 +52,8 @@ function formatTime(str: string): string {
   const d = new Date(str);
   const n = new Date();
   const r = n.getTime() - d.getTime();
-  const dateStr = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
-  const timeStr = `${(`0${d.getHours()}`).slice(-2)}:${(`0${d.getMinutes()}`).slice(-2)}:${(`0${d.getSeconds()}`).slice(-2)}`;
+  const dateStr = `${d.getFullYear()}-${('0' + d.getMonth()).slice(-2)}-${('0' + d.getDate()).slice(-2)}`;
+  const timeStr = `${('0' + d.getHours()).slice(-2)}:${('0' + d.getMinutes()).slice(-2)}:${('0' + d.getSeconds()).slice(-2)}`;
   const just = 1000 * 10;
   const min = 1000 * 60;
   const hour = 1000 * 60 * 60;
