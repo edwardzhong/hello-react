@@ -35,6 +35,13 @@ axios.interceptors.response.use(res => {
   return res;
 });
 
+// axios.interceptors.response.use(res => {
+//   if (res.config.url.search(/\/adminLogin/i) > -1 && res.data.code == 10010 && res.headers.Authorization) {
+//     localStorage.setItem('token', res.headers.Authorization);
+//   }
+//   return res;
+// });
+
 export const form: AxiosFn = (url, data) => axios({
   headers: { 'Content-Type': 'multipart/form-data;chartset=UTF-8' },
   method: 'post',
