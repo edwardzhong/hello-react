@@ -1,4 +1,4 @@
-import { AsyncsTree, ActionTree, BaseState } from 'type';
+import { AsyncsTree, ActionTree, BaseState, BaseAction } from 'type';
 import { login, register, logout } from '../service';
 
 export const state: BaseState = {
@@ -6,7 +6,7 @@ export const state: BaseState = {
   user: { id: '1', name: 'jeff', email: 'jeff@gmail.com', },
 };
 
-export const actions: ActionTree<BaseState> = {
+export const actions: ActionTree<BaseState, BaseAction> = {
   setLogin({ loginInfo }, payload) {
     Object.assign(loginInfo, payload);
   },

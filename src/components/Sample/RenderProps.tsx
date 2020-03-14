@@ -1,11 +1,11 @@
 import React from 'react';
-import { ListState } from 'type';
+import { State } from 'type';
 
 /*
  * class component with render props
  */
 interface Prop {
-  render: (props: ListState) => JSX.Element;
+  render: (props: Partial<State>) => JSX.Element;
 }
 // class RenderProps extends React.Component<Prop, ListState> {
 //   state = {

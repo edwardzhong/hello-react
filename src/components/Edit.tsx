@@ -26,7 +26,7 @@ const ListEdit = () => {
     Model.open({
       title: 'are you sure',
       content: 'remove this item ?',
-      onOk: () => removeComment({ id })
+      onOk: () => removeComment(id)
     })
   };
 
@@ -35,7 +35,7 @@ const ListEdit = () => {
     const val = input.value.trim();
     if (!val) return;
     addComment({
-      id: Math.round(Math.random() * 1000000),
+      id: '' + Math.round(Math.random() * 1000000),
       txt: val,
     });
     input.value = '';

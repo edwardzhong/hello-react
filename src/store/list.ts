@@ -1,6 +1,6 @@
-import { ListState, PItem, Store } from 'type';
+import { Store, ListState, ListAction, PItem, } from 'type';
 
-const list: Store<ListState> = {
+const list: Store<ListState, ListAction> = {
   state: {
     list: [
       { id: '1', txt: 'webpack 4' },
@@ -17,8 +17,8 @@ const list: Store<ListState> = {
         list.push(payload);
       }
     },
-    removeComment({ list }, payload: PItem) {
-      const index = list.findIndex((obj) => obj.id == payload.id);
+    removeComment({ list }, id: string) {
+      const index = list.findIndex((obj) => obj.id == id);
       if (index >= 0) {
         list.splice(index, 1);
       }

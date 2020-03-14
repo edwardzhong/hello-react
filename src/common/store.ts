@@ -57,7 +57,7 @@ const combineStore = (obj: PlainObject) => {
  * @param store
  * @param dispatch
  */
-const createReducer = (store: Store<PlainObject>, dispatch: Dispatch): Reducer => {
+const createReducer = (store: Store<PlainObject, PlainObject>, dispatch: Dispatch): Reducer => {
   const { actions, asyncs } = store;
   return (state = {}, action: Command) => produce(state, (draft) => {
     const { type, arg } = action;
@@ -72,13 +72,14 @@ const createReducer = (store: Store<PlainObject>, dispatch: Dispatch): Reducer =
  * @param {Object} actions
  * @param {Function} dispatch
  */
-const bindActions = (store: Store<PlainObject>, dispatch: Dispatch): PlainObject => {
+const bindActions = (store: Store<PlainObject, PlainObject>, dispatch: Dispatch): PlainObject => {
   const { actions, asyncs } = store;
   return Object.keys({ ...actions, ...asyncs }).reduce((next, key) => {
     next[key] = (arg: any) => dispatch({ type: key, arg });
     return next;
   }, {});
 };
+
 
 export {
   createAction,

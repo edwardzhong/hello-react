@@ -1,6 +1,5 @@
 import { useReducer, useState, useEffect, ChangeEvent, MutableRefObject } from 'react';
 import { randomCode, drawCode } from './util'
-import { ResData } from 'type';
 
 function stateReducer(state: object | Function, newState: object) {
   return typeof newState === 'function' ? newState(state) : { ...state, ...newState };
