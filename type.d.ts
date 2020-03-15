@@ -45,9 +45,9 @@ interface ListState {
 interface State extends ListState, BaseState { }
 
 interface BaseAction {
-  setLogin(payload: any): void;
+  setLogin(payload: LoginInfo): void;
   clearLogin(): void;
-  setUser(payload: any): void;
+  setUser(payload: UserInfo): void;
   clearUser(): void;
 }
 

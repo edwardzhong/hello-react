@@ -1,4 +1,4 @@
-import { Store, ListState, ListAction, PItem, } from 'type';
+import { Store, ListState, ListAction } from 'type';
 
 const list: Store<ListState, ListAction> = {
   state: {
@@ -10,7 +10,7 @@ const list: Store<ListState, ListAction> = {
     ],
   },
   actions: {
-    addComment({ list }, payload: Array<PItem> | PItem) {
+    addComment({ list }, payload: any[] | any) {
       if (Array.isArray(payload)) {
         list.concat(payload);
       } else {
