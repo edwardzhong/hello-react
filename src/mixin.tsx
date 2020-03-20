@@ -13,10 +13,10 @@ export const nowrap = css`
   overflow: hidden;
   text-overflow: ellipsis;`;
 
-export const nowrapTwo = css`
+export const nowraps = (l: number) => css`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: ${l};
   word-break:break-all;
-  overflow: hidden;`;
+  overflow: hidden;`
