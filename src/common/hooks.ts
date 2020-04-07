@@ -1,5 +1,6 @@
 import { useReducer, useState, useEffect, ChangeEvent, MutableRefObject } from 'react';
 import { randomCode, drawCode } from './util'
+import { PlainObject, ResData } from 'type';
 
 function stateReducer(state: object | Function, newState: object) {
   return typeof newState === 'function' ? newState(state) : { ...state, ...newState };
@@ -130,20 +131,20 @@ export const useCodes: (canvasRef: MutableRefObject<HTMLCanvasElement>) => [stri
 
 /**
  * fetch data
- * @param fetch useCallback function
+ * @param fetch function 
  */
-export const useFetch: (fetch: () => Promise<any>) => [boolean, any, (arg: any) => void] = fetch => {
+export const useFetch: <T = PlainObject>(fetch: () => Promise<ResData<PlainObject>>) => [boolean, T, (arg: any) => void] = fetch => {
   const [isFetching, setFetching] = useState(true);
-  const [response, setResponse] = useState();
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     (async () => {
       setFetching(true);
       const res = await fetch();
-      setResponse(res);
+      if (res.code == 0 && res.data) setData(res.data);
       setFetching(false);
     })();
   }, [fetch]);
 
-  return [isFetching, response, setResponse];
+  return [isFetching, data, setData];
 }

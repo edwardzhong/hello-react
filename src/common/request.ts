@@ -8,17 +8,9 @@ axios.defaults.withCredentials = true;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 
 axios.interceptors.request.use(config => {
-  const info = localStorage.getItem('selfInfo');
-  const params = config.method == 'get' ? config.params || {} : config.data || {};
-  if (info) {
-    const obj = JSON.parse(info);
-    // if ( obj && obj.token) {
-    //     Object.assign(params, { token: obj.token });
-    // }
-    if (obj.token) {
-      config.headers.Authorization = `Bearer ${obj.token}`;
-    }
-  }
+  const params = config.method == "get" ? config.params || {} : config.data || {};
+  const token = localStorage.getItem("token");
+  if (token) config.headers.Authorization = 'Bearer ' + token;
   params._t = Math.random();
   return config;
 });
