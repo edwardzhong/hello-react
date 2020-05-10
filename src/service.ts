@@ -1,6 +1,13 @@
-import { get, post } from './common/request';
+import { get, post } from './common/request'
+import { PlainObject, ResData } from 'type';
 
-export const login = (arg: any) => post('/sign', arg);
-export const register = (arg: any) => post('/register', arg);
-export const logout = (arg?: any) => post('/signout', arg);
+type Res<T> = Promise<ResData<T>>;
+type PromiseFn<P, T> = (arg: P) => Res<T>;
+
+export const check: () => Res<any> = () => get('/check')
+export const register: PromiseFn<{ name: string; password: string }, PlainObject> = arg => post('/register', arg)
+export const login: PromiseFn<{ name: string; password: string }, PlainObject> = arg => post('/login', arg)
+export const logout: () => Res<any> = () => get('/logout');
+export const getList: PromiseFn<PlainObject, PlainObject[]> = arg => get('/list', arg)
 export const getNewList = (page: number) => get(`home/bbs/new/page/${page}`)
+// export const download = (arg: string) => `${api}/download?ids=${arg}`

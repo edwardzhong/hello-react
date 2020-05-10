@@ -4,6 +4,10 @@ import hoc from './Hoc';
 import funHoc from './FunctionHoc';
 import RenderProps from './RenderProps';
 import FunctionRender from './FunctionRender';
+import styled from 'styled-components'
+
+const Container = styled.div`
+  padding:50px;`
 
 // @hoc
 class ComA extends React.Component<{ theme: string }, {}> {
@@ -27,27 +31,27 @@ const HocFun = funHoc(ComFun);
 // )
 // const HocB = hoc(ComB);
 
-const List = () => (
-  <>
+const Sample = () => (
+  <Container>
     <HocA theme="blue" url="http://aa.com" />
     <HocFun url="http://ccc.com" />
     <RenderProps render={
       ({ user, list }) => (
         <div>
           <div>
-                  name:
+            name:
             { user.name }
           </div>
           <div>
-                  Email:
+            Email:
             { user.email }
           </div>
           <ul>
             {
               list.map((l, i) => (
-                <li key={i}>
+                <li key={ i }>
                   { l.txt }
-                  {' '}
+                  { ' ' }
                 </li>
               ))
             }
@@ -63,9 +67,9 @@ const List = () => (
             <ul>
               {
                 list.map((l, i) => (
-                  <li key={i}>
+                  <li key={ i }>
                     { l.txt }
-                    {' '}
+                    { ' ' }
                   </li>
                 ))
               }
@@ -76,7 +80,7 @@ const List = () => (
       }
     </FunctionRender>
     <Link css="font-size:16px; color: hsl(200,100%,50%)" to="/"> redirect to home </Link>
-  </>
+  </Container>
 );
 
-export default List;
+export default Sample;

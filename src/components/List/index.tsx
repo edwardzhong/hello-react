@@ -39,7 +39,7 @@ const List = () => {
   const [page, setPage] = useState(1);
   // const fetchNewList = useCallback(wrapPromise(getNewList, page), [page]);
   const fetch = useCallback(() => getNewList(page), [page]);
-  const [isFetching, res] = useFetch(fetch);
+  const [isFetching, res] = useFetch<any>(fetch);
 
   return <Container>
     <Link to="/">

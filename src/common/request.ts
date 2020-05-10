@@ -28,8 +28,11 @@ axios.interceptors.response.use(res => {
 });
 
 // axios.interceptors.response.use(res => {
-//   if (res.config.url.search(/\/adminLogin/i) > -1 && res.data.code == 10010 && res.headers.Authorization) {
-//     localStorage.setItem('token', res.headers.Authorization);
+//   if (res.headers.authorization) {
+//     localStorage.setItem('token', res.headers.authorization);
+//   }
+//   if (res.data.code == 403) {
+//     store.commit('logout');
 //   }
 //   return res;
 // });
