@@ -404,7 +404,7 @@ input, textarea {
 }
 
 img,a{
-  -webkit-touch-callout: none;//禁止系统默认菜单
+  -webkit-touch-callout: none; /* 禁止系统默认菜单 */
 }
 
 /**

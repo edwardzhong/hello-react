@@ -3,8 +3,8 @@ import { ResData } from 'type';
 
 type List = Array<{ id: string; title: string, content: string }>
 const FetchList: React.FC<{ res: ResData<List> }> = ({ res }) => {
-
-  const [list, setList] = useState(res.data || []);
+  const data = res ? (res.data || []) : [];
+  const [list, setList] = useState(data);
   const toRemove = (id: string) => {
     setList(list.filter(l => l.id !== id));
   }
