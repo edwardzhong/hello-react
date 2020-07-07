@@ -2,10 +2,11 @@ import { css } from 'styled-components';
 
 export const fontBase = '#555';
 
-export const imagebg = css`
-  background-repeat: no-repeat;
-  background-size:contain;
-  background-position: 50%;`;
+export const imgContain = (img: string) => css`
+  background: url(${img}) no-repeat 50% / contain;`
+
+export const imgCover = (img: string) => css`
+  background: url(${img}) no-repeat 50% / cover;`
 
 export const nowrap = css`
   white-space: nowrap;

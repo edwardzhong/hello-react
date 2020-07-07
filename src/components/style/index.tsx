@@ -38,6 +38,7 @@ export const Button = styled.button`
   padding: 8px 20px;
   background-color: hsl(200,100%,50%);
   color:#fff;
+  border-width:0;
   border-radius: 5px;
   font-size: 14px;
   margin: 10px 0;
