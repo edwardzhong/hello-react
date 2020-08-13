@@ -44,6 +44,26 @@ function stringFormat(str: string, ...args: any[]): string {
   });
 }
 
+export const formatDate = (date: Date) => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return (
+    [year, month, day].map(formatNumber).join('/') +
+    ' ' +
+    [hour, minute, second].map(formatNumber).join(':')
+  )
+}
+
+const formatNumber = (n: number) => {
+  const s = n.toString()
+  return s[1] ? s : '0' + s
+}
+
 /**
  * 格式化日期
  * @param str 日期格式字符串
@@ -52,8 +72,8 @@ function formatTime(str: string): string {
   const d = new Date(str);
   const n = new Date();
   const r = n.getTime() - d.getTime();
-  const dateStr = `${d.getFullYear()}-${('0' + d.getMonth()).slice(-2)}-${('0' + d.getDate()).slice(-2)}`;
-  const timeStr = `${('0' + d.getHours()).slice(-2)}:${('0' + d.getMinutes()).slice(-2)}:${('0' + d.getSeconds()).slice(-2)}`;
+  const dateStr = [d.getFullYear, d.getMonth() + 1, d.getDate()].map(formatNumber).join('/');
+  const timeStr = [d.getHours(), d.getMinutes(), d.getSeconds()].map(formatNumber).join(':');
   const just = 1000 * 10;
   const min = 1000 * 60;
   const hour = 1000 * 60 * 60;
@@ -129,8 +149,8 @@ function htmlDecode(str: string = ''): string {
 function getContentSummary(str: string, n: number): string {
   const replaceHtmlTags = (str: string) => str.replace(/<\s*\/?\s*\w+[\S\s]*?>/g, ''); // 过滤掉html标签
   const pattern = /^[a-zA-Z0-9_\u0392-\u03c9\u0410-\u04F9]+/;
-  let ret = ''; 
-  let count = 0; 
+  let ret = '';
+  let count = 0;
   let m;
   str = replaceHtmlTags(htmlDecode(str));
 
