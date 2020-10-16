@@ -52,7 +52,7 @@ let mousePos: { x: number, y: number } | null;
 const getClickPosition = function getClickPosition(e: MouseEvent) {
   mousePos = {
     x: e.pageX - window.innerWidth / 2 + 150,
-    y: e.pageY - 100
+    y: e.pageY - 180
   };
   // 100ms 内发生过点击事件，则从点击位置动画展示
   // 否则直接 zoom 展示
