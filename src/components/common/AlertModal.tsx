@@ -48,7 +48,7 @@ const Footer = styled.footer`
     }
   }`
 
-let mousePos: { x: string, y: string };
+let mousePos = { x: '50%', y: '50%' };
 const getClickPosition = function getClickPosition(e: MouseEvent) {
   mousePos = {
     x: (e.pageX - window.innerWidth / 2 + 150) + 'px',
