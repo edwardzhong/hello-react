@@ -28,7 +28,7 @@ const Backdrop: React.FC<{ visible: boolean }> = ({ children, visible }) => (
     <PopLayer active={ visible }>
       { children }
     </PopLayer>,
-    document.getElementById('modalRoot'),
+    document.getElementById('modal-target'),
   )
 );
 

@@ -11,6 +11,7 @@ const PopLayer = styled.div`
   z-index: 100;
   border-radius: 8px;
   box-shadow: 0 0 2px 2px hsla(0,100%,0%,.1);
+  /* box-shadow: 0 6px 20px 0 hsla(0, 0%, 0%, 0.19), 0 8px 17px 0 hsla(0, 0%, 0%, 0.2); */
   background-color: #fff;
   overflow: hidden;
   transform-style: preserve-3d;
@@ -26,13 +27,13 @@ const PopLayer = styled.div`
 
 const Body = styled.div`
   display: flex;
-  flex-flow:column nowrap;
+  flex-flow: column nowrap;
   justify-content:center;
   height: 80px;
   padding: 10px;
   text-align: center;
   font-size: 16px;
-  border-bottom:1px solid #eee;`
+  border-bottom: 1px solid #eee;`
 
 const Footer = styled.footer`
   display: flex;
@@ -56,10 +57,11 @@ const getClickPosition = function getClickPosition(e: MouseEvent) {
   // 100ms 内发生过点击事件，则从点击位置动画展示
   // 否则直接 zoom 展示
   // 这样可以兼容非点击方式展开
+  // 只有点击事件支持从鼠标位置动画展开
   setTimeout(() => {
     mousePos = null;
   }, 100);
-}; // 只有点击事件支持从鼠标位置动画展开
+};
 
 if (typeof window !== 'undefined' && window.document && window.document.documentElement) {
   document.documentElement.addEventListener('click', getClickPosition);
@@ -95,7 +97,7 @@ class Model extends Component {
   close = () => {
     this.setState({ visible: false });
     setTimeout(() => {
-      this.state.el.parentNode.removeChild(this.state.el);
+      document.getElementById('modal-target').innerHTML = '';
     }, 350);
   }
 
