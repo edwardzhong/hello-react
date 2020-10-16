@@ -48,18 +48,18 @@ const Footer = styled.footer`
     }
   }`
 
-let mousePos: { x: number, y: number } | null;
+let mousePos: { x: string, y: string };
 const getClickPosition = function getClickPosition(e: MouseEvent) {
   mousePos = {
-    x: e.pageX - window.innerWidth / 2 + 150,
-    y: e.pageY - 180
+    x: (e.pageX - window.innerWidth / 2 + 150) + 'px',
+    y: (e.pageY - 180) + 'px'
   };
   // 100ms 内发生过点击事件，则从点击位置动画展示
   // 否则直接 zoom 展示
   // 这样可以兼容非点击方式展开
   // 只有点击事件支持从鼠标位置动画展开
   setTimeout(() => {
-    mousePos = null;
+    mousePos = { x: '50%', y: '50%' };
   }, 100);
 };
 
@@ -115,7 +115,7 @@ class Model extends Component {
     const { visible, title, content } = this.state
     return <>
       <Backdrop visible={ visible } >
-        <PopLayer active={ visible } style={ { transformOrigin: `${mousePos ? mousePos.x + 'px' : '50%'} ${mousePos ? mousePos.y + 'px' : '50%'}` } }>
+        <PopLayer active={ visible } style={ { transformOrigin: `${mousePos.x} ${mousePos.y}` } }>
           <Body>
             { title && <h3> { title }</h3> }
             { content && <p>{ content }</p> }
