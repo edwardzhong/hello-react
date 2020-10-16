@@ -22,7 +22,7 @@ const PopLayer = styled.div`
     visibility: visible;
     opacity: 1;
     transform: scale(1);`
-}`
+  }`
 
 const Body = styled.div`
   display: flex;
@@ -50,7 +50,7 @@ const Footer = styled.footer`
 let mousePos: { x: number, y: number } | null;
 const getClickPosition = function getClickPosition(e: MouseEvent) {
   mousePos = {
-    x: e.pageX - window.innerWidth / 2 + 100,
+    x: e.pageX - window.innerWidth / 2 + 150,
     y: e.pageY - 100
   };
   // 100ms 内发生过点击事件，则从点击位置动画展示
@@ -66,6 +66,8 @@ if (typeof window !== 'undefined' && window.document && window.document.document
 }
 
 type Option = {
+  el?: HTMLDivElement;
+  visible?: boolean;
   title?: string;
   content?: string;
   onOk?: () => void;
@@ -73,7 +75,7 @@ type Option = {
 }
 
 class Model extends Component {
-  state = {
+  state: Option = {
     visible: false,
     title: '',
     content: '',
@@ -81,11 +83,20 @@ class Model extends Component {
     onCancel: () => { },
   }
   open = (opt: Option) => {
-    this.setState({ ...opt, visible: true });
+    this.setState({ ...opt });
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ visible: true });
+    }, 50);
   }
 
   close = () => {
     this.setState({ visible: false });
+    setTimeout(() => {
+      this.state.el.parentNode.removeChild(this.state.el);
+    }, 350);
   }
 
   cancel = () => {
@@ -116,8 +127,12 @@ class Model extends Component {
     </>
   }
 }
-const div = document.createElement('div');
-document.body.appendChild(div);
-const Box = ReactDOM.render(React.createElement(Model), div);
 
-export default Box;
+const openDialog = (opt: Option) => {
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  const Box = ReactDOM.render(React.createElement(Model), div);
+  opt.el = div;
+  return Box.open(opt)
+};
+export default openDialog;

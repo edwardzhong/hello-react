@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { GetContext } from '@/context';
-import Model from './common/Model';
+import Alert from './common/AlertModal';
 import styled from 'styled-components';
 import { ListForm, SubTitle, Tip, Input, Button, LinkStyle, } from './style';
 
@@ -23,12 +23,19 @@ const ListEdit = () => {
   const inputRef = useRef(null);
 
   const showDialog = (id: string) => {
-    Model.open({
+    Alert({
       title: 'are you sure',
       content: 'remove this item ?',
       onOk: () => removeComment(id)
     })
   };
+
+  const showDia=()=>{
+    Alert({
+      title: 'are you sure',
+      content: 'remove this item ?',
+    })
+  }
 
   const add = () => {
     const input = inputRef.current;
@@ -45,6 +52,7 @@ const ListEdit = () => {
     <>
       <ListForm>
         <SubTitle>This is list page</SubTitle>
+        <Button onClick={ showDia } title="add item">show dialog</Button>
         <div>
           <p>
             hello,
@@ -59,6 +67,7 @@ const ListEdit = () => {
             !
           </p>
           <Tip>please add and remove the list item !!</Tip>
+          <Button onClick={ showDia } title="add item" style={ { marginLeft: '300px' } }>show dialog</Button>
         </div>
         <UL>
           {
@@ -72,6 +81,8 @@ const ListEdit = () => {
         </UL>
         <Input ref={ inputRef } type="text" />
         <Button onClick={ add } title="add item">Add Item</Button>
+        <Button onClick={ showDia } title="add item">show dialog</Button>
+        <Button onClick={ showDia } title="add item" style={ { marginLeft: '900px' } }>show dialog</Button>
         <Link css={ LinkStyle } to="/">redirect to home</Link>
       </ListForm>
     </>
