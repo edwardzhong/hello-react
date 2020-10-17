@@ -10,8 +10,7 @@ const PopLayer = styled.div`
   width: 300px;
   z-index: 100;
   border-radius: 8px;
-  box-shadow: 0 0 2px 2px hsla(0,100%,0%,.1);
-  /* box-shadow: 0 6px 20px 0 hsla(0, 0%, 0%, 0.19), 0 8px 17px 0 hsla(0, 0%, 0%, 0.2); */
+  box-shadow: 0 6px 20px 0 hsla(0, 0%, 0%, 0.19), 0 8px 17px 0 hsla(0, 0%, 0%, 0.2);
   background-color: #fff;
   overflow: hidden;
   transform-style: preserve-3d;
