@@ -5,6 +5,7 @@ import { Provider } from './context';
 import PageLoad from './components/Pageload';
 import pages from './config/page'
 import GlobalStyle from './globalStyle';
+import '../public/normalize.css';
 import '../public/index.css';
 
 const lazyComponent = (name: string) => lazy(() => import(`./components/${name}`));

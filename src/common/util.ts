@@ -245,16 +245,29 @@ function compressPictureToBlob(img: HTMLImageElement, size = 400): Promise<Blob>
  * base64 装换为 Blob 对象
  * @param {String} base64
  */
-function dataURLtoBlob(base64: string): Blob {
+ function dataURLtoBlob(base64: string): Blob {
   const arr = base64.split(',');
   const mime = arr[0].match(/:(.*?);/)[1];
-  const bstr = atob(arr[1]);
-  let n = bstr.length;
+  const bytes = window.atob(arr[1]);
+  let n = bytes.length;
   const u8arr = new Uint8Array(n);
   while (n--) {
-    u8arr[n] = bstr.charCodeAt(n);
+    u8arr[n] = bytes.charCodeAt(n);
   }
   return new Blob([u8arr], { type: mime });
+}
+
+/**
+ * 保存文件
+ * @param blob 
+ * @param filename 
+ */
+function saveFile(blob:Blob, filename:string) {
+  const a = document.createElement("a");
+  a.download = filename;
+  a.href = URL.createObjectURL(blob);
+  a.click();
+  URL.revokeObjectURL(a.href)
 }
 
 
@@ -377,6 +390,7 @@ export {
   compressPictureToBase64,
   compressPictureToBlob,
   dataURLtoBlob,
+  saveFile,
   drawCode,
   shareUrl,
   wrapPromise,
