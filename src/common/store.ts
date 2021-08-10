@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { PlainObject, Command, Reducer, Store, Dispatch } from 'type';
+import { PlainObject, Command, Reducer, Store, Dispatch } from 'types/type';
 
 /**
  * generate Redux action

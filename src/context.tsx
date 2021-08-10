@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useContext, useMemo } from 'react';
 import { createReducer, bindActions } from './common/store';
 import store from './store';
-import { State, Actions, Dispatch } from 'type';
+import { State, Actions, Dispatch } from 'types/type';
 
 let dispatch: Dispatch;
 const states = store.state;

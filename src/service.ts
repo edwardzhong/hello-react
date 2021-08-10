@@ -1,5 +1,5 @@
 import { get, post } from './common/request'
-import { PlainObject, ResData } from 'type';
+import { PlainObject, ResData } from 'types/type';
 
 type Res<T> = Promise<ResData<T>>;
 type PromiseFn<P, T> = (arg: P) => Res<T>;

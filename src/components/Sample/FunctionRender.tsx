@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListState } from 'type';
+import { ListState } from 'types/type';
 import { GetContext } from '@/context';
 
 /*

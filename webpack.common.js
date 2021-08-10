@@ -23,6 +23,13 @@ module.exports = {
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
+  cache: {
+    type: 'filesystem',
+    cacheDirectory: resolve(__dirname, '.temp_cache'),
+    buildDependencies: {
+      config: [__filename],
+    },
+  },
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     runtimeChunk: 'single',

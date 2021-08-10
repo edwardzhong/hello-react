@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AxiosFn } from 'type';
+import { AxiosFn } from 'types/type';
 import { api } from '@/config/app';
 
 axios.defaults.baseURL = api;

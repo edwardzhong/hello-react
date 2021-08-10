@@ -1,4 +1,4 @@
-import { AsyncsTree, ActionTree, BaseState, BaseAction } from 'type';
+import { AsyncsTree, ActionTree, BaseState, BaseAction } from 'types/type';
 import { login, register, logout } from '../service';
 
 export const state: BaseState = {

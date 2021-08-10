@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ResData } from 'type';
+import { ResData } from 'types/type';
 
 type List = Array<{ id: string; title: string, content: string }>
 const FetchList: React.FC<{ res: ResData<List> }> = ({ res }) => {

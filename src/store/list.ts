@@ -1,4 +1,4 @@
-import { Store, ListState, ListAction } from 'type';
+import { Store, ListState, ListAction } from 'types/type';
 
 const list: Store<ListState, ListAction> = {
   state: {
