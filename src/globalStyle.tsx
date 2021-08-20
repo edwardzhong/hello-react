@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`body{
     margin-bottom:0;
   }
   #root {
+    position: relative;
     width: 100%;
     height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', STHeiti, 'Microsoft Yahei', Tahoma, Simsun, sans-serif;
