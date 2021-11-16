@@ -133,7 +133,8 @@ export const useCodes: (canvasRef: MutableRefObject<HTMLCanvasElement>) => [stri
  * fetch data
  * @param fetch function 
  */
-export const useFetch: <T = PlainObject>(fetch: () => Promise<ResData<PlainObject>>) => [boolean, T, (arg: any) => void] = fetch => {
+type UseFetch = <T = PlainObject>(fetch: () => Promise<ResData<T>>) => [boolean, T, (arg: any) => void];
+export const useFetch: UseFetch = fetch => {
   const [isFetching, setFetching] = useState(true);
   const [data, setData] = useState(null);
 
