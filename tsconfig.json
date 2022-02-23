@@ -9,6 +9,7 @@
     "importHelpers": true,
     "strict": false,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
